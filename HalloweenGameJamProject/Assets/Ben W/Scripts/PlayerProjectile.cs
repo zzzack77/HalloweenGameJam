@@ -2,7 +2,10 @@ using UnityEngine;
 
 public class PlayerProjectile : MonoBehaviour
 {
-    private Rigidbody2D rb;
+    public Rigidbody2D rb;
+    public float timeAlive = 4;
+    public float shootForce = 0.2f;
+    public int damage = 2;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -12,7 +15,7 @@ public class PlayerProjectile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        rb.AddForce(transform.right * 5, ForceMode2D.Force);
+        TravelForward();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -20,8 +23,19 @@ public class PlayerProjectile : MonoBehaviour
         if (collision.collider.CompareTag("Enemy"))
         {
             Enemy enemy = collision.collider.GetComponent<Enemy>();
-            enemy.TakeDamage(2);
+            enemy.TakeDamage(damage);
+            Destroy(gameObject);
         }
-        Destroy(gameObject);
+        
+    }
+
+    public void TravelForward()
+    {
+        rb.AddForce(transform.right * shootForce, ForceMode2D.Impulse);
+        timeAlive -= Time.deltaTime;
+        if (timeAlive < 0)
+        {
+            Destroy(gameObject);
+        }
     }
 }
