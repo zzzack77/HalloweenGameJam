@@ -19,9 +19,11 @@ public class Pistol : PlayerRangedWeapon
             Shoot();
 
         }
+        // Rotates the weapon to the cursor position
         RotateWeapon();
     }
 
+    // Shoots the bullet and reduces ammo, also reloads if ammo reaches 0
     public override void Shoot()
     {
         

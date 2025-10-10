@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -6,6 +7,18 @@ public class Player : MonoBehaviour
     public float speed = 5f; // Movement speed
     private Rigidbody2D rb;
     private Vector2 moveInput;
+
+    public float speedPowerupDuration = 10f;
+
+    private void OnEnable()
+    {
+        Powerup.OnSpeedBoost += SpeedPowerup;
+    }
+
+    private void OnDisable()
+    {
+        Powerup.OnSpeedBoost -= SpeedPowerup;
+    }
 
     void Start()
     {
@@ -31,6 +44,17 @@ public class Player : MonoBehaviour
 
     public void SpeedPowerup()
     {
-
+        speed = 10f;
+        // Maybe apply some effect/sound effects
+        // Potential UI update to show powerup
+        StartCoroutine(SpeedPowerupTimer());
     }
+
+    IEnumerator SpeedPowerupTimer()
+    {
+        yield return new WaitForSeconds(speedPowerupDuration);
+        speed = 5f;
+    }
+
+
 }
