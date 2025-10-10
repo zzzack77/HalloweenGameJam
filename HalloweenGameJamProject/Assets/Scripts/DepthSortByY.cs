@@ -5,6 +5,7 @@ public class DepthSortByY : MonoBehaviour
 {
     private Transform player;
     private SpriteRenderer sr;
+    public float distance;
 
     void Start()
     {
@@ -30,9 +31,10 @@ public class DepthSortByY : MonoBehaviour
 
 
         if (player == null) return;
-
+        Debug.Log(this.transform.position.y - distance);
+        Debug.Log(player.transform.position.y);
         // If player is below object (visually in front)
-        if (castShadow && (this.transform.position.y < player.transform.position.y))
+        if (castShadow && ((this.transform.position.y - distance) < player.transform.position.y))
             sr.sortingLayerName = "InfrontPlayer"; // player in front
         else
             sr.sortingLayerName = "BehindPlayer"; // player behind

@@ -19,6 +19,11 @@ public class PlayerScript : MonoBehaviour
         float moveX = Input.GetAxisRaw("Horizontal"); // A/D or Left/Right
         float moveY = Input.GetAxisRaw("Vertical");   // W/S or Up/Down
 
+        if (moveX != 0)
+        {
+            transform.localScale = new Vector3(Mathf.Sign(moveX), 1f, 1f);
+        }
+
         // Store movement direction
         moveInput = new Vector2(moveX, moveY).normalized;
     }
