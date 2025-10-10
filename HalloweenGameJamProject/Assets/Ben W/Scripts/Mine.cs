@@ -3,14 +3,16 @@ using UnityEngine;
 
 public class Mine : MonoBehaviour
 {
-    private bool mineIsArmed = false;
-    [SerializeField] private Transform[] mineShotPoint;
+    private bool mineIsArmed = false; 
+    [SerializeField] private Transform[] mineShotPoint; // The transform of where projectiles will shoot from
     [SerializeField] private GameObject projectile;
     private void Start()
     {
         StartCoroutine(mineArm());
-        StartCoroutine(ActivateCollider());
+        
     }
+
+    // Countdown to activate the mine
     private IEnumerator mineArm()
     {
         yield return new WaitForSeconds(1.5f);
@@ -18,6 +20,7 @@ public class Mine : MonoBehaviour
         // Play arm sound (click and a beep)
     }
 
+    // Explodes the mine, firing projectiles in all directions
     private void DetonateMine()
     {
         for (int i = 0; i < mineShotPoint.Length; i++)
@@ -46,11 +49,5 @@ public class Mine : MonoBehaviour
         }
     }
 
-    IEnumerator ActivateCollider()
-    {
-        Collider2D col = GetComponent<CircleCollider2D>();
-        col.enabled = false;
-        yield return new WaitForFixedUpdate();  // wait for next physics step
-        col.enabled = true; // now things will "enter"
-    }
+    
 }

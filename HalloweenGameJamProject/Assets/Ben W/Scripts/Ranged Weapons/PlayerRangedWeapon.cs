@@ -35,4 +35,6 @@ public class PlayerRangedWeapon : MonoBehaviour
         yield return new WaitForSeconds(reloadTime);
         currentAmmo = maxAmmo;
     }
+
+   
 }

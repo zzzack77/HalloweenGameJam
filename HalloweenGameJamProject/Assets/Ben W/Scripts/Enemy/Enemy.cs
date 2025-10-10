@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public int health;
-    public void TakeDamage(int damage)
+    public float health;
+    public void TakeDamage(float damage)
     {
         health -= damage;
         if (health <= 0)

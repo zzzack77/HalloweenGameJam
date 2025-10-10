@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class PlayerProjectile : MonoBehaviour
@@ -5,7 +6,9 @@ public class PlayerProjectile : MonoBehaviour
     public Rigidbody2D rb;
     public float timeAlive = 4;
     public float shootForce = 0.2f;
-    public int damage = 2;
+    public float damage = 2f;
+    public float damageIncrease = 2f;
+    public float damageBoostDuration = 8f;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -16,6 +19,16 @@ public class PlayerProjectile : MonoBehaviour
     void Update()
     {
         TravelForward();
+    }
+
+    private void OnEnable()
+    {
+        Powerup.OnDamageBoost += DamageBoostPowerup;
+    }
+
+    private void OnDisable()
+    {
+        Powerup.OnDamageBoost -= DamageBoostPowerup;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -29,6 +42,16 @@ public class PlayerProjectile : MonoBehaviour
         
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Enemy"))
+        {
+            Enemy enemy = collision.GetComponent<Enemy>();
+            enemy.TakeDamage(damage);
+            Destroy(gameObject);
+        }
+    }
+
     public void TravelForward()
     {
         rb.AddForce(transform.right * shootForce, ForceMode2D.Impulse);
@@ -37,5 +60,17 @@ public class PlayerProjectile : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    public void DamageBoostPowerup()
+    {
+        damage += damageIncrease;
+        StartCoroutine(DamageBoostTimer());
+    }
+
+    IEnumerator DamageBoostTimer()
+    {
+        yield return new WaitForSeconds(damageBoostDuration);
+        damage -= damageIncrease;
     }
 }
