@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,6 +12,8 @@ public class FlowFieldManager : MonoBehaviour
     public float cellSize = 1f;
     public Vector3 origin = Vector3.zero;
     
+    public float regenerationInterval = 0.2f;
+    private Vector3 lastGridOrigin; // Tracks the grid's last position
    
     
     [Header("Goal")]
@@ -33,26 +36,61 @@ public class FlowFieldManager : MonoBehaviour
         field = new FlowField(width, height, cellSize, origin);
     }
 
+    void Start()
+    {
+        lastGridOrigin = Vector3.one * float.MaxValue; // Force an update on the first run
+        StartCoroutine(UpdateFieldRoutine());
+    }
    
 
     void Update()
     {
-        if (goal != null)
+     
+    }
+    
+    private IEnumerator UpdateFieldRoutine()
+    {
+        while (true)
         {
-            // 1. Reset costs from the previous frame
-            field.ResetDynamicCosts();
-
-            // 2. Add new costs based on current agent positions
-            foreach (var agent in allAgents)
+            if (goal != null)
             {
-                field.WorldToGrid(agent.transform.position, out int gx, out int gy);
-                field.AddCost(gx, gy, agentCost);
-            }
+                // Calculate where the grid's bottom-left corner should be to keep the player centered.
+                float halfWorldWidth = (width * cellSize) * 0.5f;
+                float halfWorldHeight = (height * cellSize) * 0.5f;
+                Vector3 newOrigin = new Vector3(goal.position.x - halfWorldWidth, goal.position.y - halfWorldHeight, 0);
 
-            // 3. Generate the field with all costs applied
-            field.GenerateField(goal.position, maxAngle);
+                // We only need to do the expensive path calculation IF the player has moved enough
+                // to require shifting the grid's origin point.
+                if (Vector3.SqrMagnitude(newOrigin - lastGridOrigin) > cellSize * cellSize)
+                {
+                    lastGridOrigin = newOrigin;
+                    field.origin = newOrigin;
+
+                    // Now, generate the full field including agent avoidance
+                    UpdateFieldCostsAndGenerate();
+                }
+            }
+            yield return new WaitForSeconds(regenerationInterval);
         }
     }
+
+    void UpdateFieldCostsAndGenerate()
+    {
+        // 1. Reset all dynamic costs since the grid has shifted.
+        field.ResetDynamicCosts(); // Use the old, simple reset method for this.
+
+        // 2. Add costs for agents currently within the grid.
+        foreach (var agent in allAgents)
+        {
+            field.WorldToGrid(agent.transform.position, out int gx, out int gy);
+            // AddCost should check if the agent is within the new grid bounds
+            field.AddCost(gx, gy, agentCost);
+        }
+
+        // 3. Generate the master flow field.
+        field.GenerateField(goal.position, maxAngle);
+    }
+
 
     public Vector2 GetDirection(Vector3 worldPos)
     {
