@@ -1,16 +1,20 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using System.Collections;
 
 public class LightProximity : MonoBehaviour
 {
-    public float safeDistance = 5f; // how close player must stay
-    public AudioSource dangerAudio; // assign in inspector
-    public AudioSource deathAudio;
-    public float fadeSpeed = 0.1f;    // speed of fade-out
-    public float dangerDelay = 17f; // seconds before death
+    [Header("Settings")]
+    public float fadeSpeed = 1f;      // fade-out speed
+    public float fadeInSpeed = 3f;    // fade-in speed (higher = faster)
+    public float dangerDelay = 17f;   // seconds before death
 
-    private bool isSafe = false;
-    private Coroutine dangerCoroutine;
+    [Header("Audio Sources")]
+    public AudioSource dangerAudio;   // danger sound
+    public AudioSource thudding;      // heartbeat sound
+
+    private bool isSafe = true;
+    private bool inDanger = false;
+    private float dangerTimer;
 
     void Update()
     {
@@ -18,67 +22,118 @@ public class LightProximity : MonoBehaviour
 
         bool nearLight = LightManager.Instance.IsNearAnyLight(transform.position);
 
-        if (nearLight && !isSafe)
+        if (nearLight)
         {
-            // Entered safe area
-            isSafe = true;
-            Debug.Log("Entered light area");
-
-            // Fade out danger sound if playing
-            if (dangerCoroutine != null)
+            if (!isSafe)
             {
-                StopCoroutine(dangerCoroutine);
-                dangerCoroutine = null;
+                isSafe = true;
+                OnEnterLight();
             }
-            StartCoroutine(FadeOutDangerAudio());
         }
-        else if (!nearLight && isSafe)
+        else
         {
-            // Left safe area
-            isSafe = false;
-            Debug.Log("Left light area - danger!");
+            if (isSafe)
+            {
+                isSafe = false;
+                OnLeaveLight();
+            }
+        }
 
-            // Start danger sequence
-            if (dangerCoroutine == null)
-                dangerCoroutine = StartCoroutine(DangerSequence());
+        // Handle danger timer
+        if (!isSafe)
+        {
+            dangerTimer += Time.deltaTime;
+            if (dangerTimer >= dangerDelay)
+            {
+                OnDeath();
+            }
         }
     }
 
-    private IEnumerator DangerSequence()
+    private void OnLeaveLight()
     {
-        // Start looping danger audio
-        if (dangerAudio != null && !dangerAudio.isPlaying)
+        inDanger = true;
+        dangerTimer = 0f;
+
+        // Fade in danger and heartbeat
+        if (dangerAudio)
         {
-            dangerAudio.volume = 1f;
-            dangerAudio.loop = true;
-            dangerAudio.Play();
+            dangerAudio.volume = 0f;
+            if (!dangerAudio.isPlaying) dangerAudio.Play();
+            StartCoroutine(FadeInAudio(dangerAudio, fadeInSpeed));
         }
 
-        float elapsed = 0f;
-
-        while (elapsed < dangerDelay)
+        if (thudding)
         {
-            if (isSafe) yield break; // player returned to light — cancel death
-            elapsed += Time.deltaTime;
-            yield return null;
+            thudding.volume = 0f;
+            thudding.loop = true;
+            if (!thudding.isPlaying) thudding.Play();
+            StartCoroutine(FadeInAudio(thudding, fadeInSpeed));
         }
+    }
 
-        // If still unsafe after delay, trigger death
+    private void OnEnterLight()
+    {
+        inDanger = false;
+
+        // Fade out both audios smoothly
+        if (dangerAudio)
+            StartCoroutine(FadeOutAudio(dangerAudio, fadeSpeed));
+
+        if (thudding)
+            StartCoroutine(FadeOutAudio(thudding, fadeSpeed));
+    }
+
+    private void OnDeath()
+    {
+        if (!inDanger) return;
+
         Debug.Log("Player died after staying out of light too long.");
-        //FindObjectOfType<PlayerDeath>()?.Death();
+
+        StopAudioInstant(dangerAudio);
+        StopAudioInstant(thudding);
+
+        inDanger = false;
+
+        // Example:
+        // FindObjectOfType<PlayerDeath>()?.Death();
     }
 
-    private IEnumerator FadeOutDangerAudio()
+    private IEnumerator FadeOutAudio(AudioSource audio, float speed)
     {
-        if (dangerAudio == null) yield break;
+        if (!audio || !audio.isPlaying) yield break;
 
-        while (dangerAudio.volume > 0f)
+        float startVolume = audio.volume;
+
+        while (audio.volume > 0f)
         {
-            dangerAudio.volume -= Time.deltaTime * fadeSpeed;
+            audio.volume -= Time.deltaTime * speed;
             yield return null;
         }
 
-        dangerAudio.Stop();
-        dangerAudio.volume = 1f; // reset for next time
+        audio.Stop();
+        audio.volume = startVolume;
+    }
+
+    private IEnumerator FadeInAudio(AudioSource audio, float speed)
+    {
+        if (!audio) yield break;
+
+        float targetVolume = 1f;
+
+        while (audio.volume < targetVolume)
+        {
+            audio.volume += Time.deltaTime * speed;
+            yield return null;
+        }
+
+        audio.volume = targetVolume;
+    }
+
+    private void StopAudioInstant(AudioSource audio)
+    {
+        if (!audio) return;
+        audio.Stop();
+        audio.volume = 1f;
     }
 }
