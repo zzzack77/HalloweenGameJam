@@ -6,6 +6,8 @@ public class Mine : MonoBehaviour
     private bool mineIsArmed = false; 
     [SerializeField] private Transform[] mineShotPoint; // The transform of where projectiles will shoot from
     [SerializeField] private GameObject projectile;
+
+    
     private void Start()
     {
         StartCoroutine(mineArm());
