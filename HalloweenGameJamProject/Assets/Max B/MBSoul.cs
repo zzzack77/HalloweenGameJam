@@ -7,6 +7,8 @@ public class MBSoul : MonoBehaviour
     private Transform player;
     private bool homingActive = false;
     private float speed;
+    private float spinTimer = 0f;
+    private float spinSpeedMultiplier = 2f;
 
     void Start()
     {
@@ -35,6 +37,16 @@ public class MBSoul : MonoBehaviour
 
         // Smoothly blend current velocity toward target velocity
         rb.linearVelocity = Vector2.Lerp(rb.linearVelocity, targetVelocity, 0.1f);
+
+        // Rotate to face movement direction
+        float angle = Mathf.Atan2(rb.linearVelocity.y, rb.linearVelocity.x) * Mathf.Rad2Deg;
+        rb.MoveRotation(angle);
+
+        // Handling spining on the spot, based on move speed - FOR PROTOTYPE ONLY, WILL NEED ANIMATION TO ACTUALLY LOOK GOOD
+        float speed = rb.linearVelocity.magnitude;
+        spinTimer += speed * spinSpeedMultiplier * Time.fixedDeltaTime;
+        float scaleY = Mathf.Sin(spinTimer) * 0.3f;
+        transform.localScale = new Vector3(0.3f, scaleY, 0.3f);
     }
 
 
