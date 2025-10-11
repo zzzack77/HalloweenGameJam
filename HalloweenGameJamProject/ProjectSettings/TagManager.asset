@@ -41,14 +41,8 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: BehindPlayer
-    uniqueID: 2273176489
-    locked: 0
   - name: Player
     uniqueID: 2922836565
-    locked: 0
-  - name: InfrontPlayer
-    uniqueID: 3317315297
     locked: 0
   m_RenderingLayers:
   - Default

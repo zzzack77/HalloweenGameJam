@@ -12,7 +12,9 @@ public class LightProximity : MonoBehaviour
     public AudioSource dangerAudio;   // danger sound
     public AudioSource thudding;      // heartbeat sound
 
+    [SerializeField]
     private bool isSafe = true;
+    [SerializeField]
     private bool inDanger = false;
     private float dangerTimer;
 
