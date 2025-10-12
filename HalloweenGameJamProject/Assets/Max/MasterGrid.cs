@@ -19,7 +19,12 @@ public class MasterGrid : MonoBehaviour
         GenerateObstacleMap();
      
     }
-    
+
+    public void RegenerateObstacleMap()
+    {
+        obstacleMap = new bool[width , height];
+        GenerateObstacleMap();
+    }
    
     public bool InBounds(int x, int y) => x >= 0 && y >= 0 && x < width && y < height;
 
@@ -29,11 +34,7 @@ public class MasterGrid : MonoBehaviour
         return obstacleMap[x, y];
     }
 
-    public void SetObstacle(int x, int y, bool blocked)
-    {
-        if (!InBounds(x, y)) return;
-        obstacleMap[x, y] = blocked;
-    }
+    
 
     public void WorldToGrid(Vector3 worldPos, out int gx, out int gy)
     {
