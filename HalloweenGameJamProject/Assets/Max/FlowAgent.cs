@@ -5,7 +5,7 @@ using UnityEngine;
 public class FlowAgent : MonoBehaviour
 {
     public float moveSpeed = 3f;
-    
+    [SerializeField] private bool bDestroyOnExitOfGrid = false;
 
     private Rigidbody2D rb;
 
@@ -30,6 +30,11 @@ public class FlowAgent : MonoBehaviour
             // Move along flow direction
             Vector2 move = dir.normalized * (moveSpeed * Time.fixedDeltaTime);
             rb.MovePosition(rb.position + move);
+        }
+        else if (dir == Vector2.zero && bDestroyOnExitOfGrid)
+        {
+
+            Destroy(this.gameObject);
         }
     }
 

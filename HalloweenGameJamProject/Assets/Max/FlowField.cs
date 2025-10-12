@@ -36,6 +36,7 @@ public class FlowField
     {
         if (!InBounds(x, y)) return;
         costField[Index(x, y)] = blocked ? int.MaxValue : 1;
+        
     }
 
     public Vector3 GridToWorld(int x, int y)
@@ -85,7 +86,11 @@ public class FlowField
                 if (!InBounds(newX, newY)) continue;
 
                 int newIndex = Index(newX, newY);
-                if (costField[newIndex] == int.MaxValue) continue;
+                if (costField[newIndex] == int.MaxValue)
+                {
+                    
+                    continue;
+                }
 
                 int moveCost = (directionX != 0 && directionY != 0) ? 14 : 10;
                 int newCost = integrationField[currentIndex] + moveCost + costField[newIndex];
@@ -182,7 +187,7 @@ public class FlowField
     
     /// <summary>
     /// Resets all non-obstacle cells back to their default cost of 1.
-    /// This is crucial for clearing agent costs from the previous frame.
+    /// This is crucial for clearing agent costs from the previous Search.
     /// </summary>
     public void ResetDynamicCosts()
     {
@@ -222,6 +227,107 @@ public class FlowField
             Vector3 pos = GridToWorld(x, y);
             Vector2 dir = directionField[Index(x, y)];
             Gizmos.DrawLine(pos, pos + new Vector3(dir.x,dir.y, 0 ) * (cellSize * 0.5f));
+        }
+        
+        Gizmos.color = Color.red;
+        for (int x = 0; x < width; x++)
+        for (int y = 0; y < height; y++)
+        {
+            if (costField[Index(x,y)] ==  int.MaxValue)
+                
+                
+                Gizmos.DrawCube(GridToWorld(x, y), Vector3.one * cellSize);
+        }
+    }
+    
+   // MODIFIED: This method now handles the proximity cost calculation.
+    public void UpdateCostsFromMasterGrid(MasterGrid masterGrid, int proximityPenalty, int maxDistance)
+    {
+        if (masterGrid == null)
+        {
+            ResetDynamicCosts();
+            return;
+        }
+
+        // A 2D array to store the distance of each cell from the nearest obstacle.
+        // We initialize it with a large value to represent "not yet calculated".
+        int[][] obstacleDistances = new int[width][];
+        for (int index = 0; index < width; index++)
+        {
+            obstacleDistances[index] = new int[height];
+        }
+
+        Queue<Vector2Int> frontier = new Queue<Vector2Int>();
+        masterGrid.WorldToGrid(origin, out int startMasterX, out int startMasterY);
+
+        // --- Step 1: Initialize all costs and find the initial set of obstacle cells ---
+        for (int x = 0; x < width; x++)
+        {
+            for (int y = 0; y < height; y++)
+            {
+                obstacleDistances[x][y] = int.MaxValue;
+                int masterX = startMasterX + x;
+                int masterY = startMasterY + y;
+                int idx = Index(x, y);
+
+                if (masterGrid.IsObstacle(masterX, masterY))
+                {
+                    costField[idx] = int.MaxValue;
+                    obstacleDistances[x][y] = 0; // This is an obstacle cell, distance is 0.
+                    frontier.Enqueue(new Vector2Int(x, y));
+                }
+                else
+                {
+                    costField[idx] = 1; // Default cost for a clear cell.
+                }
+            }
+        }
+
+        // --- Step 2: Perform a Breadth-First Search (BFS) to calculate distances ---
+        while (frontier.Count > 0)
+        {
+            var current = frontier.Dequeue();
+            int currentDist = obstacleDistances[current.x][current.y];
+
+            // Stop propagating if we've reached the maximum distance.
+            if (currentDist >= maxDistance) continue;
+            
+            // Check all 8 neighbors.
+            for (int dx = -1; dx <= 1; dx++)
+            for (int dy = -1; dy <= 1; dy++)
+            {
+                if (dx == 0 && dy == 0) continue;
+                
+                int nx = current.x + dx;
+                int ny = current.y + dy;
+
+                // If neighbor is in bounds and we've found a shorter path to it...
+                if (InBounds(nx, ny) && obstacleDistances[nx][ny] > currentDist + 1)
+                {
+                    obstacleDistances[nx][ny] = currentDist + 1;
+                    frontier.Enqueue(new Vector2Int(nx, ny));
+                }
+            }
+        }
+
+        // --- Step 3: Apply the penalty based on the calculated distances ---
+        if (proximityPenalty > 0)
+        {
+            for (int x = 0; x < width; x++)
+            {
+                for (int y = 0; y < height; y++)
+                {
+                    int dist = obstacleDistances[x][y];
+
+                    // If the cell is near an obstacle (but not an obstacle itself)
+                    if (dist > 0 && dist <= maxDistance)
+                    {
+                        // This formula creates a falloff effect: cells closer to obstacles get a higher penalty.
+                        int penalty = (proximityPenalty * (maxDistance - dist + 1)) / maxDistance;
+                        costField[Index(x, y)] += penalty;
+                    }
+                }
+            }
         }
     }
 }

@@ -22,11 +22,24 @@ public class FlowFieldManager : MonoBehaviour
     [Range(0f, 180f)]
     public float maxAngle = 75f;
 
+    [Header("Costs")] 
     [Tooltip("Cost added to cells occupied by other agents")]
     public int agentCost = 5;
 
+    
+    [Tooltip("Highest cost added to cells directly next to an obstacle.")]
+    public int obstacleProximityPenalty = 20;
+
+    
+    [Tooltip("How many cells away from an obstacle the proximity penalty will spread.")]
+    public int maxProximityDistance = 4;
+
     private FlowField field;
     public List<FlowAgent> allAgents = new List<FlowAgent>();
+    
+    
+    
+    [SerializeField] private  MasterGrid masterGrid;
 
     void Awake()
     {
@@ -34,6 +47,7 @@ public class FlowFieldManager : MonoBehaviour
         else Instance = this;
 
         field = new FlowField(width, height, cellSize, origin);
+       
     }
 
     void Start()
@@ -45,7 +59,7 @@ public class FlowFieldManager : MonoBehaviour
 
     void Update()
     {
-     
+    
     }
     
     private IEnumerator UpdateFieldRoutine()
@@ -57,7 +71,7 @@ public class FlowFieldManager : MonoBehaviour
                 // Calculate where the grid's bottom-left corner should be to keep the player centered.
                 float halfWorldWidth = (width * cellSize) * 0.5f;
                 float halfWorldHeight = (height * cellSize) * 0.5f;
-                Vector3 newOrigin = new Vector3(goal.position.x - halfWorldWidth, goal.position.y - halfWorldHeight, 0);
+                Vector3 newOrigin = new Vector3(  Mathf.RoundToInt(goal.position.x)- halfWorldWidth, Mathf.RoundToInt(goal.position.y) - halfWorldHeight, 0);
 
                 // We only need to do the expensive path calculation IF the player has moved enough
                 // to require shifting the grid's origin point.
@@ -79,6 +93,13 @@ public class FlowFieldManager : MonoBehaviour
         // 1. Reset all dynamic costs since the grid has shifted.
         field.ResetDynamicCosts(); // Use the old, simple reset method for this.
 
+        
+        if (masterGrid != null)
+        {
+            field.UpdateCostsFromMasterGrid(masterGrid, obstacleProximityPenalty, maxProximityDistance);
+
+        }
+        
         // 2. Add costs for agents currently within the grid.
         foreach (var agent in allAgents)
         {
@@ -86,7 +107,6 @@ public class FlowFieldManager : MonoBehaviour
             // AddCost should check if the agent is within the new grid bounds
             field.AddCost(gx, gy, agentCost);
         }
-
         // 3. Generate the master flow field.
         field.GenerateField(goal.position, maxAngle);
     }
