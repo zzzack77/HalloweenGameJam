@@ -65,7 +65,7 @@ public class MainMenuScript : MonoBehaviour
         int score = 0;
         //leaderboard.SetEntry(PlayerPrefs.GetString("username"), score);
 
-        leaderboard.SetEntry("kingbob", 20);
+        leaderboard.SetEntry("mr white", 21);
 
         //Debug.Log("Quit Game");
         //Application.Quit();
