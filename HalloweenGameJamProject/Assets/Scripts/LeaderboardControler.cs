@@ -1,58 +1,51 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using Dan.Main;
+using Dan.Models;
 using NUnit.Framework;
+using System;
 
 public class LeaderboardControler : MonoBehaviour
 {
-    public List<TextMeshProUGUI> names;
-    public List<TextMeshProUGUI> scores;
+    private MainMenuScript mainMenuScript;
 
-    private string publicKey = "8015fc7098126da68db4e6c17dfa6c23c1e492bed89323b6ba5c2f3ba24e5fcf";
+    private Entry[] leaderboardEntries;
+    private bool entriesLoaded = false;
 
     private void Start()
     {
+        mainMenuScript = FindFirstObjectByType<MainMenuScript>();
         LoadEntries();
     }
 
-    public void LoadEntries()
+    private void LoadEntries()
     {
-        Leaderboards.HalloweenGameJamLeaderboard.GetEntries(entries =>
-        {
-            foreach (TextMeshProUGUI name in names) 
-            {
-                name.text = "";
-            }
-            foreach (var score in scores)
-            {
-                score.text = "";
-            }
-
-            float length = Mathf.Min(names.Count, entries.Length);
-            for (int i = 0; i < length; i++)
-            {
-                names[i].text = entries[i].Username;
-                scores[i].text = entries[i].Score.ToString();
-
-            }
-
-        });
+        Leaderboards.HalloweenGameJamLeaderboard.GetEntries(OnEntriesLoaded, OnError);
     }
-    public void SetEntry(string username, int score)
+
+    private void OnEntriesLoaded(Entry[] entries)
     {
+        leaderboardEntries = entries;
+        entriesLoaded = true;
 
-
-        Leaderboards.HalloweenGameJamLeaderboard.UploadNewEntry(username, score, isSuccessful =>
+        foreach (Entry entry in entries)
         {
-            if (isSuccessful)
-            {
-                LoadEntries();
-            }
+            Debug.Log($"{entry.Username}: {entry.Score}");
         }
-
-        );
     }
-
+    public Entry[] GetLeaderboardEntries()
+    {
+        if (!entriesLoaded)
+        {
+            Debug.LogWarning("Leaderboard data not loaded yet!");
+            return null;
+        }
+        return leaderboardEntries;
+    }
+    private void OnError(string error)
+    {
+        Debug.LogError(error);
+    }
 }

@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
+using Dan.Models;
 
 public class MainMenuScript : MonoBehaviour
 {
@@ -13,7 +14,7 @@ public class MainMenuScript : MonoBehaviour
     private VisualElement settingsPanel;
 
 
-    private LeaderboardControler leaderboard;
+    private LeaderboardControler leaderboardController;
     void OnEnable()
     {
         var uiDocument = GetComponent<UIDocument>();
@@ -24,13 +25,19 @@ public class MainMenuScript : MonoBehaviour
         var howToPlayButton = root.Q<Button>("howToPlay-button");
         var quitButton = root.Q<Button>("quit-button");
 
+        // Get labels
+
         // Assign events
         playButton.clicked += StartGame;
         howToPlayButton.clicked += OpenHowToPlay;
         quitButton.clicked += QuitGame;
 
 
-        leaderboard = FindFirstObjectByType<LeaderboardControler>();
+        leaderboardController = FindFirstObjectByType<LeaderboardControler>();
+
+        
+
+        //username1.text = "hello";
     }
 
     void StartGame()
@@ -62,10 +69,14 @@ public class MainMenuScript : MonoBehaviour
 
     void QuitGame()
     {
+        var username1 = root.Q<Label>("name-1");
+
+        Entry[] data = leaderboardController.GetLeaderboardEntries();
+        username1.text = data[0].Username;
         int score = 0;
         //leaderboard.SetEntry(PlayerPrefs.GetString("username"), score);
 
-        leaderboard.SetEntry("mr white", 21);
+        //leaderboard.SetEntry("Zack", 4);
 
         //Debug.Log("Quit Game");
         //Application.Quit();
