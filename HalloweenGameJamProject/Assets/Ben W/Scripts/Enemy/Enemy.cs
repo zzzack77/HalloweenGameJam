@@ -3,6 +3,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public float health;
+
     public void TakeDamage(float damage)
     {
         health -= damage;
@@ -15,3 +16,5 @@ public class Enemy : MonoBehaviour
     }
     
 }
+
+
