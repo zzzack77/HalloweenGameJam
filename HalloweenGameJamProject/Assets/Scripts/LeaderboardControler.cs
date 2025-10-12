@@ -34,6 +34,7 @@ public class LeaderboardControler : MonoBehaviour
         {
             Debug.Log($"{entry.Username}: {entry.Score}");
         }
+        mainMenuScript.LoadLeaderboardUI();
     }
     public Entry[] GetLeaderboardEntries()
     {

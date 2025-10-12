@@ -1,14 +1,49 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI%20Toolkit/MainMenuButtons.uss?fileID=7433441132597879392&amp;guid=04a4f7ebfb82ec440ab704b02b2b8977&amp;type=3#MainMenuButtons" />
-    <ui:VisualElement style="flex-grow: 1; align-items: flex-start; background-color: rgb(22, 22, 22); flex-direction: column;">
-        <ui:VisualElement style="flex-grow: 1; width: 100%; height: 80%;">
-            <ui:Label text="Soul Catcher" style="position: absolute; top: 101px; left: 75px; height: 145px; width: 820px; color: rgb(0, 178, 255); font-size: 116px; -unity-font-style: bold;" />
-            <ui:Button text="Play" name="play-button" class="buttons" style="position: absolute; top: 328px; left: 1173px; height: 116px;" />
-            <ui:Button text="Play" name="play-button" class="buttons" style="position: absolute; top: 493px; left: 1178px; height: 116px;" />
-            <ui:Button text="Play" name="play-button" class="buttons" style="position: absolute; top: 653px; left: 1193px; height: 116px;" />
+    <ui:VisualElement style="flex-grow: 1; align-items: flex-start; background-color: rgb(22, 22, 22); flex-direction: row;">
+        <ui:VisualElement style="flex-grow: 1; width: 33%; height: 100%;">
+            <ui:VisualElement style="flex-grow: 1; height: 30%; width: 100%;" />
+            <ui:VisualElement style="flex-grow: 1; height: 70%; width: 100%; padding-bottom: 244px; padding-right: 20px; padding-left: 20px; justify-content: space-evenly;">
+                <ui:Button text="Play" name="play-button" class="buttons" />
+                <ui:Button text="Leaderboard" name="leaderboard-button" class="buttons" />
+                <ui:Button text="How To Play" name="howToPlay-button" class="buttons" />
+                <ui:Button text="Quit" name="quit-button" class="buttons" />
+            </ui:VisualElement>
         </ui:VisualElement>
-        <ui:VisualElement style="flex-grow: 1; width: 100%; height: 20%; justify-content: space-evenly; margin-left: 10px; margin-right: 10px; flex-direction: row;">
-            <ui:Button text="Leaderboard" name="leaderboard-button" class="buttons" style="position: absolute; top: 23px; left: 63px; height: 113px;" />
+        <ui:VisualElement style="flex-grow: 1; width: 67%; height: 100%; padding-top: 50px; padding-right: 50px; padding-bottom: 50px; padding-left: 50px;">
+            <ui:VisualElement style="flex-grow: 1; background-color: rgb(48, 48, 48); border-top-left-radius: 42px; border-top-right-radius: 42px; border-bottom-right-radius: 42px; border-bottom-left-radius: 42px; flex-direction: column;">
+                <ui:VisualElement style="flex-grow: 1; flex-direction: row; height: 100%;">
+                    <ui:VisualElement style="flex-grow: 1; flex-direction: row; width: 100%;">
+                        <ui:VisualElement style="flex-grow: 1; width: 10%; background-color: rgb(79, 79, 79);">
+                            <ui:Label text="No." name="Label" class="leaderboardText" style="font-size: 52px;" />
+                            <ui:Label text="1." class="leaderboardText" />
+                            <ui:Label text="2." class="leaderboardText" />
+                            <ui:Label text="3." class="leaderboardText" />
+                            <ui:Label text="4." class="leaderboardText" />
+                            <ui:Label text="5." class="leaderboardText" />
+                            <ui:Label text="6." class="leaderboardText" />
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 1; width: 70%;">
+                            <ui:Label text="Name" name="Label" class="leaderboardText" style="font-size: 52px;" />
+                            <ui:Label text=" " name="name1" class="leaderboardText" />
+                            <ui:Label name="name2" class="leaderboardText" />
+                            <ui:Label name="name3" class="leaderboardText" />
+                            <ui:Label name="name4" class="leaderboardText" />
+                            <ui:Label name="name5" class="leaderboardText" />
+                            <ui:Label name="name6" class="leaderboardText" />
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 1; width: 20%; background-color: rgb(89, 89, 89);">
+                            <ui:Label text="Score" name="Label" class="leaderboardText" style="font-size: 52px;" />
+                            <ui:Label text=" " name="score1" class="leaderboardText" />
+                            <ui:Label name="score2" class="leaderboardText" />
+                            <ui:Label name="score3" class="leaderboardText" />
+                            <ui:Label name="score4" class="leaderboardText" />
+                            <ui:Label name="score5" class="leaderboardText" />
+                            <ui:Label name="score6" class="leaderboardText" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>
