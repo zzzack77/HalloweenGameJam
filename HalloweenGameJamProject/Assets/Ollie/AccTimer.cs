@@ -15,7 +15,7 @@ public class AccTimer : MonoBehaviour
     public event Action Tick;
 
     Coroutine _loop;
-    float _interval;
+    public float _interval;
     float _elapsed;
     bool _running;
 
