@@ -1,0 +1,17 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/MainMenuButtons.uss?fileID=7433441132597879392&amp;guid=04a4f7ebfb82ec440ab704b02b2b8977&amp;type=3#MainMenuButtons" />
+    <ui:VisualElement style="flex-grow: 1; align-items: flex-start; background-color: rgb(22, 22, 22); flex-direction: row;">
+        <ui:VisualElement style="flex-grow: 1; width: 30%; justify-content: space-between; align-items: center; height: 100%; padding-bottom: 555px;">
+            <ui:Label text="The Soul Seeker" style="font-size: 65px; color: rgb(255, 255, 255); -unity-font-style: bold-and-italic; align-self: flex-start; -unity-text-outline-width: 1px; -unity-text-outline-color: rgb(0, 235, 255); text-shadow: 0 0 7.9px rgba(0, 0, 0, 0);" />
+            <ui:VisualElement style="flex-grow: 1; width: 90%; height: 100%; justify-content: space-evenly; margin-left: 10px; margin-right: 10px;">
+                <ui:Button text="Play" name="play-button" class="buttons" />
+                <ui:Button text="Leaderboard" name="leaderboard-button" class="buttons" />
+                <ui:Button text="How to play" name="howToPlay-button" class="buttons" />
+                <ui:Button text="Quit" name="quit-button" class="buttons" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement style="flex-grow: 1; width: 70%; height: 100%; padding-top: 20px; padding-right: 20px; padding-bottom: 20px; padding-left: 121px;">
+            <ui:ListView />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
