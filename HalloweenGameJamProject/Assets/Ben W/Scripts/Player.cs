@@ -4,12 +4,18 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public float lightHP = 100f; //light from lantern - acts as functional hp (percentage of max light) 
+    [SerializeField] private GameObject meleeAttack;
+
     public float speed = 5f; // Movement speed
     private Rigidbody2D rb;
     private Vector2 moveInput;
 
     public float speedPowerupDuration = 10f;
 
+    public float timeInbetwwenMeleeAttack = 1f;
+    private bool canMeleeAttack = true;
+
+    public float meleeDamage = 3;
     private void OnEnable()
     {
         Powerup.OnSpeedBoost += SpeedPowerup;
@@ -34,6 +40,18 @@ public class Player : MonoBehaviour
 
         // Store movement direction
         moveInput = new Vector2(moveX, moveY).normalized;
+
+        if (Input.GetKeyDown(KeyCode.Mouse0) && canMeleeAttack)
+        {
+            meleeAttack.SetActive(true);
+            canMeleeAttack = false;
+            StartCoroutine(MeleeAttackCooldown());
+
+        }
+        if (Input.GetKeyUp(KeyCode.Mouse0))
+        {
+            meleeAttack.SetActive(false);
+        }
     }
 
     void FixedUpdate()
@@ -76,5 +94,10 @@ public class Player : MonoBehaviour
     }
 
     //^
+    IEnumerator MeleeAttackCooldown()
+    {
+        yield return new WaitForSeconds(timeInbetwwenMeleeAttack);
+        canMeleeAttack = true;
+    }    
 
 }
