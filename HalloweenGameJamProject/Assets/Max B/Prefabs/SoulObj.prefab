@@ -165,3 +165,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17738459b901d9d4890272143bb7507b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speedRange: {x: 2, y: 4}
+  randomizeCurveSign: 1
+  curveAmountRange: {x: 0.3, y: 0.7}
+  orbitSpeedRange: {x: 1, y: 2}
+  orbitRadiusRange: {x: 0.7, y: 1.5}
+  springStrengthRange: {x: 5, y: 7}
+  dampingRange: {x: 0.18, y: 0.22}
+  returnSpringStrengthRange: {x: 6, y: 8}
+  returnDampingRange: {x: 0.22, y: 0.28}
+  noiseMagnitudeRange: {x: 0.5, y: 1.5}
+  homingDelayRange: {x: 0.8, y: 1.2}
+  attractionRadiusRange: {x: 1.8, y: 2.2}
+  speed: 0
+  curveSign: 0
+  curveAmount: 0
+  orbitSpeed: 0
+  orbitRadius: 0
+  springStrength: 0
+  damping: 0
+  returnSpringStrength: 0
+  returnDamping: 0
+  noiseMagnitude: 0
+  homingDelay: 0
+  attractionRadius: 0

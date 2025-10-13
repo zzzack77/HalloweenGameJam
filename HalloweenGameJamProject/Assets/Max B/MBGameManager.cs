@@ -13,13 +13,6 @@ public class MBGameManager : MonoBehaviour
     public float playerDamage = 25f;
     public int soulCount = 0;
 
-    [Header("Soul Settings")]
-    public float soulMinSpeed = 5f;
-    public float soulMaxSpeed = 10f;
-    public float soulHomingDelay = 0.1f;
-    public float soulMinHomingForce = 5f;
-    public float soulMaxHomingForce = 15f;
-
     [Header("Enemy Settings")]
     public float enemyMinHealth = 50f;
     public float enemyMaxHealth = 100f;

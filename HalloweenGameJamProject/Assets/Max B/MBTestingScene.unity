@@ -210,11 +210,6 @@ MonoBehaviour:
   playerSpeed: 5
   playerDamage: 25
   soulCount: 0
-  soulMinSpeed: 5
-  soulMaxSpeed: 10
-  soulHomingDelay: 0.1
-  soulMinHomingForce: 5
-  soulMaxHomingForce: 15
   enemyMinHealth: 50
   enemyMaxHealth: 100
   enemyMinNumSouls: 1
