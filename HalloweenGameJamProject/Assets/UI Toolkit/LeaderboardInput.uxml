@@ -25,7 +25,7 @@
                     </ui:VisualElement>
                     <ui:VisualElement style="flex-grow: 1; flex-direction: row; height: 70%;">
                         <ui:VisualElement style="flex-grow: 1; padding-top: 20px; padding-right: 20px; padding-bottom: 20px; padding-left: 20px; width: 50%;">
-                            <ui:Button text="Return" name="quit-button" class="deathScreenButtons" style="background-color: rgb(99, 0, 4); color: rgb(255, 255, 255); font-size: 35px; -unity-font-style: bold;" />
+                            <ui:Button text="Return" name="returnButton" class="deathScreenButtons" style="background-color: rgb(99, 0, 4); color: rgb(255, 255, 255); font-size: 35px; -unity-font-style: bold;" />
                         </ui:VisualElement>
                         <ui:VisualElement style="flex-grow: 1; padding-top: 20px; padding-right: 20px; padding-bottom: 20px; padding-left: 20px; width: 50%;">
                             <ui:Button text="Play" name="play-button" class="deathScreenButtons" style="background-color: rgb(10, 89, 0); color: rgb(255, 255, 255); -unity-font-style: bold; font-size: 35px;" />

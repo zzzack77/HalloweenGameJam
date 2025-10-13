@@ -16,6 +16,8 @@ public class LeaderboardControler : MonoBehaviour
     private void Start()
     {
         LoadEntries();
+
+        SetEntry("asd5", 56);
     }
 
     private void LoadEntries()
@@ -46,11 +48,12 @@ public class LeaderboardControler : MonoBehaviour
 
     public void SetEntry(string username, int score)
     {
-        Debug.Log(username + score);
+        
         Leaderboards.HalloweenGameJamLeaderboard.UploadNewEntry(username, score, isSuccessful =>
         {
             if (isSuccessful)
             {
+                Debug.Log(username + " " +  score);
                 LoadEntries();
             }
             else {
