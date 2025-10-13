@@ -4,7 +4,7 @@ public class WeaponAim : MonoBehaviour
 {
     public Transform player;
     private SpriteRenderer playerSprite;
-    private SpriteRenderer GunSprite;
+    public SpriteRenderer GunSprite;
 
     void Start()
     {
@@ -29,6 +29,7 @@ public class WeaponAim : MonoBehaviour
         else
         {
             transform.localScale = new Vector3(1, 1, 1);
+            GunSprite.flipY = false;
         }
     }
 }
