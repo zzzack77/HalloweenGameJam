@@ -6,7 +6,8 @@ public class FlowAgent : MonoBehaviour
 {
     public float moveSpeed = 3f;
     [SerializeField] private bool bDestroyOnExitOfGrid = false;
-
+    // A unique ID to link this GameObject to its data in the manager's arrays.
+    public int AgentId { get; private set; }
     private Rigidbody2D rb;
 
     void Start()
