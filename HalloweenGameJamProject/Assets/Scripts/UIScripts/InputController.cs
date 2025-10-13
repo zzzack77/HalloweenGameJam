@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using System.Text.RegularExpressions;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UIElements;
 
 public class LeaderboardInputController : MonoBehaviour
@@ -17,23 +18,25 @@ public class LeaderboardInputController : MonoBehaviour
     private TextField textInput;
     private Label feedbackLabel;
     private Button submitButton;
+    private Button returnButton;
 
-    private int testScore = 50;
+    private int testScore = 64;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void OnEnable()
     {
-        leaderboardController = FindFirstObjectByType<LeaderboardControler>();
+        // Get doc and ui root
         var uiDocument = GetComponent<UIDocument>();
         root = uiDocument.rootVisualElement;
 
-
+        // Find UI elements
         textInput = root.Q<TextField>("textInput");
-        feedbackLabel = root.Q<Label>("errorMessage");
-        
         textInput.maxLength = 16;
+        feedbackLabel = root.Q<Label>("errorMessage");
         submitButton = root.Q<Button>("enterUsername");
+        returnButton = root.Q<Button>("returnButton");
 
+        // input validation checks
         this.textInput.RegisterValueChangedCallback(evt =>
         {
             string input = evt.newValue.Trim();
@@ -42,8 +45,9 @@ public class LeaderboardInputController : MonoBehaviour
             ValidateUsername(input);
         });
 
-
+        // On buttons clicks
         submitButton.clicked += () => HandleSubmit(textInput.value);
+        returnButton.clicked += () => ReturnButtonPress();
     }
 
     void HandleSubmit(string username)
@@ -53,18 +57,25 @@ public class LeaderboardInputController : MonoBehaviour
         {
             // Save username to PlayerPrefs
             PlayerPrefs.SetString("Username", username);
+
+
+            // --------- REMOVE LINE OF CODE ---------------
             PlayerPrefs.SetInt("Score", testScore);
             PlayerPrefs.Save(); // ensure it’s written to disk
 
             submitButton.text = "Saved!";
             Debug.Log($"Username saved: {username}");
+
+            //Debug.Log("Username from PlayerPrefs: " + PlayerPrefs.GetString("Username", "No name saved"));
+
             leaderboardController = FindFirstObjectByType<LeaderboardControler>();
 
-            leaderboardController.SetEntry(username, 50);
+            leaderboardController.SetEntry(username, PlayerPrefs.GetInt("Score"));
+
 
             // Open main menu leaderboard
-            mainMenu.SetActive(true);
-            this.gameObject.SetActive(false);
+            //mainMenu.SetActive(true);
+            //this.gameObject.SetActive(false);
         }
         else
         {
@@ -115,4 +126,10 @@ public class LeaderboardInputController : MonoBehaviour
 
         return null; // no error
     }
+    void ReturnButtonPress()
+    {
+        mainMenu.SetActive(true);
+        this.gameObject.SetActive(false);
+    }
+
 }
