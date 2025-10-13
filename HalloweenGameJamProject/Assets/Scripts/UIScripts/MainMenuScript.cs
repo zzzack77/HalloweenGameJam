@@ -4,13 +4,14 @@ using UnityEngine.UIElements;
 using Dan.Models;
 using Dan.Main;
 using System;
+using System.Security.Cryptography.X509Certificates;
+using UnityEditor.Search;
+using UnityEditor.PackageManager;
 
 public class MainMenuScript : MonoBehaviour
 {
     // Name of the scene to load when "Start" is clicked
     [SerializeField] private string gameSceneName = "SampleScene";
-    [SerializeField] private VisualTreeAsset mainMenuAsset;
-    [SerializeField] private VisualTreeAsset settingsAsset;
 
     private VisualElement root;
     private VisualElement settingsPanel;
@@ -33,11 +34,13 @@ public class MainMenuScript : MonoBehaviour
         // Assign events
         playButton.clicked += StartGame;
         leaderboard.clicked += OpenLeaderboard;
-        howToPlayButton.clicked += OpenHowToPlay;
+        //howToPlayButton.clicked += OpenHowToPlay;
         quitButton.clicked += QuitGame;
 
 
         leaderboardController = FindFirstObjectByType<LeaderboardControler>();
+
+        LoadLeaderboardUI();
     }
     
     
@@ -45,8 +48,8 @@ public class MainMenuScript : MonoBehaviour
     public void LoadLeaderboardUI()
     {
         // Collect all label names in an array
-        string[] labelNames = { "name1", "name2", "name3", "name4", "name5", "name6" };
-        string[] labelScores = { "score1", "score2", "score3", "score4", "score5", "score6" };
+        string[] labelNames = { "name1", "name2", "name3", "name4", "name5", "name6", "name6", "name7", "name8", "name9", "name10", };
+        string[] labelScores = { "score1", "score2", "score3", "score4", "score5", "score6", "score7", "score8", "score9", "score10", };
 
         // Get the leaderboard entries
         Entry[] data = leaderboardController.GetLeaderboardEntries();
@@ -94,6 +97,25 @@ public class MainMenuScript : MonoBehaviour
                 label.text = "-";
             }
         }
+        
+        // Show personal entry on leaderboard
+        Leaderboards.HalloweenGameJamLeaderboard.GetPersonalEntry(
+            callback: OnEntryReceived,
+            errorCallback: OnError
+        );
+    }
+    void OnEntryReceived(Entry entry)
+    {
+        var playerRank = root.Q<Label>("playerRank");
+        var playerName = root.Q<Label>("playerName");
+        var playerScore = root.Q<Label>("playerScore");
+        playerRank.text = entry.RankSuffix();
+        playerName.text = entry.Username.ToString();
+        playerScore.text = entry.Score.ToString();
+    }
+    void OnError(string error)
+    {
+        Debug.LogError("Failed to get leaderboard entry: " + error);
     }
 
     void StartGame()
@@ -104,19 +126,6 @@ public class MainMenuScript : MonoBehaviour
     {
         Debug.Log("pressed button");
         LoadLeaderboardUI();
-    }
-
-    void OpenHowToPlay()
-    {
-        if (settingsPanel == null && settingsAsset != null)
-        {
-            settingsPanel = settingsAsset.CloneTree();
-            root.Add(settingsPanel);
-
-            var backButton = settingsPanel.Q<Button>("back-button");
-            if (backButton != null)
-                backButton.clicked += CloseHowToPlay;
-        }
     }
 
     void CloseHowToPlay()
@@ -130,7 +139,6 @@ public class MainMenuScript : MonoBehaviour
 
     void QuitGame()
     {
-        Leaderboards.HalloweenGameJamLeaderboard.UploadNewEntry("Another Guy", 42);
         int score = 0;
         //leaderboard.SetEntry(PlayerPrefs.GetString("username"), score);
 

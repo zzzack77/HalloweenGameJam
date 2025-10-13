@@ -9,14 +9,12 @@ using System;
 
 public class LeaderboardControler : MonoBehaviour
 {
-    private MainMenuScript mainMenuScript;
-
+     
     private Entry[] leaderboardEntries;
     private bool entriesLoaded = false;
 
     private void Start()
     {
-        mainMenuScript = FindFirstObjectByType<MainMenuScript>();
         LoadEntries();
     }
 
@@ -32,9 +30,9 @@ public class LeaderboardControler : MonoBehaviour
 
         foreach (Entry entry in entries)
         {
-            Debug.Log($"{entry.Username}: {entry.Score}");
+            //Debug.Log($"{entry.Username}: {entry.Score}");
         }
-        mainMenuScript.LoadLeaderboardUI();
+        
     }
     public Entry[] GetLeaderboardEntries()
     {
@@ -44,6 +42,21 @@ public class LeaderboardControler : MonoBehaviour
             return null;
         }
         return leaderboardEntries;
+    }
+
+    public void SetEntry(string username, int score)
+    {
+        Debug.Log(username + score);
+        Leaderboards.HalloweenGameJamLeaderboard.UploadNewEntry(username, score, isSuccessful =>
+        {
+            if (isSuccessful)
+            {
+                LoadEntries();
+            }
+            else {
+                Debug.Log("Didnt submit entry");
+            }
+        });
     }
     private void OnError(string error)
     {
