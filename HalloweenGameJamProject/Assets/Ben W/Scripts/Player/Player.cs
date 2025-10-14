@@ -21,6 +21,8 @@ public class Player : MonoBehaviour
     private bool canThrowMine = true;
     public float mineThrowCooldown = 10f;
 
+    
+
     // Subcribe and describe from events
     private void OnEnable()
     {
@@ -49,17 +51,19 @@ public class Player : MonoBehaviour
         // Store movement direction
         moveInput = new Vector2(moveX, moveY).normalized;
 
-        if (Input.GetKeyDown(KeyCode.Mouse0) && canMeleeAttack)
+        if (Input.GetKeyDown(KeyCode.Mouse0) && canMeleeAttack )
         {
             meleeAttack.SetActive(true);
             // Melee Cooldown
             StartCoroutine(CooldownHelper.CooldownRoutine(val => canMeleeAttack = val, meleeCooldown));
 
         }
-        if (Input.GetKeyUp(KeyCode.Mouse0))
+        if (Input.GetKeyUp(KeyCode.Mouse0) )
         {
             meleeAttack.SetActive(false);
         }
+
+     
     }
 
     void FixedUpdate()
@@ -114,4 +118,7 @@ public class Player : MonoBehaviour
         }
         
     }
+    
+    
+    
 }
