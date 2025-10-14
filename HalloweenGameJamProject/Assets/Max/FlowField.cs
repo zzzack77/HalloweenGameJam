@@ -1,6 +1,8 @@
 using System.Collections.Generic;
+using Unity.Collections;
 using UnityEngine;
-
+using Unity.Mathematics;
+using Unity.Jobs;
 public class FlowField
 {
     public int width;
@@ -9,10 +11,12 @@ public class FlowField
     public Vector3 origin;
    
 
-    private int[] integrationField;
-    private Vector2[] directionField;
-    private int[] costField;
+    private NativeArray<int> integrationField;
+    private NativeArray<float2> directionField;
+    private NativeArray<int> costField;
 
+    private JobHandle flowFieldJobHandle;
+    private bool bJobScheduled = false;
     public FlowField(int width, int height, float cellSize, Vector3 origin)
     {
         this.width = width;
@@ -21,14 +25,21 @@ public class FlowField
         this.origin = origin;
         
 
-        integrationField = new int[width * height];
-        directionField = new Vector2[width * height];
-        costField = new int[width * height];
+        integrationField = new NativeArray<int>(width*height, Allocator.Persistent);
+        directionField = new NativeArray<float2>(width*height, Allocator.Persistent);
+        costField = new NativeArray<int>(width*height, Allocator.Persistent);
 
         // default costs = 1
         for (int i = 0; i < costField.Length; i++) costField[i] = 1;
     }
-
+    public void Dispose()
+    {
+        // Ensure any running job is complete before we dispose of the data it's using.
+        flowFieldJobHandle.Complete();
+        integrationField.Dispose();
+        directionField.Dispose();
+        costField.Dispose();
+    }
     private int Index(int x, int y) => x + y * width;
     private bool InBounds(int x, int y) => x >= 0 && y >= 0 && x < width && y < height;
 
@@ -55,134 +66,55 @@ public class FlowField
     /// Builds the integration and direction fields for a given goal.
     /// </summary>
    
-    public void GenerateField(Vector3 goalWorld , float maxAngle = 75f)
+    public void GenerateFieldAysnc(Vector3 goalWorld , float maxAngle = 75f)
     {
+        //ensures previous job is completed
+        flowFieldJobHandle.Complete();
+        
         WorldToGrid(goalWorld, out int goalX, out int goalY);
-        if (!InBounds(goalX, goalY)) return;
-
-        int size = width * height;
-        for (int i = 0; i < size; i++)
+        if(!InBounds(goalX, goalY)) return;
+        // reset integration field
+        for (int i = 0; i < integrationField.Length; i++)
+        {
             integrationField[i] = int.MaxValue;
-
-        Queue<Vector2Int> frontier = new Queue<Vector2Int>();
-        int goalIndex = Index(goalX, goalY);
-        integrationField[goalIndex] = 0;
-        frontier.Enqueue(new Vector2Int(goalX, goalY));
-
-        /*
-         * carries out a breadthFirst search on all cells in the grid
-         */
-        while (frontier.Count > 0)
-        {
-            var currentVector = frontier.Dequeue();
-            int currentX = currentVector.x, currentY = currentVector.y;
-            int currentIndex = Index(currentX, currentY);
-
-            for (int directionX = -1; directionX <= 1; directionX++)
-            for (int directionY = -1; directionY <= 1; directionY++)
-            {
-                if (directionX == 0 && directionY == 0) continue;
-                int newX = currentX + directionX, newY = currentY + directionY;
-                if (!InBounds(newX, newY)) continue;
-
-                int newIndex = Index(newX, newY);
-                if (costField[newIndex] == int.MaxValue)
-                {
-                    
-                    continue;
-                }
-
-                int moveCost = (directionX != 0 && directionY != 0) ? 14 : 10;
-                int newCost = integrationField[currentIndex] + moveCost + costField[newIndex];
-
-               
-
-                
-
-                if (newCost < integrationField[newIndex])
-                {
-                    integrationField[newIndex] = newCost;
-                    frontier.Enqueue(new Vector2Int(newX, newY));
-                }
-            }
         }
-        
-       // Build direction field
-       
-       /*
-        * Loops through the grid to add the direction to the goal in every cell
-        */
-        for (int x = 0; x < width; x++)
-        for (int y = 0; y < height; y++)
+        // setup of multithreaded job
+        var job = new GenerateFlowFieldJob
         {
-            int idx = Index(x, y);
-            if (integrationField[idx] == int.MaxValue)
-            {
-                directionField[idx] = Vector2.zero;
-                continue;
-            }
+            // input data
+            gridSize = new int2(width, height),
+            goalPos = new int2(goalX, goalY),
+            maxFlowAngle = maxAngle,
+            costField = this.costField,
 
-            // --- Find the single best neighbor, regardless of direction ---
-            int bestCost = int.MaxValue;
-            Vector2 bestDir = Vector2.zero;
-
-            for (int dx = -1; dx <= 1; dx++)
-            for (int dy = -1; dy <= 1; dy++)
-            {
-                if (dx == 0 && dy == 0) continue;
-
-                int nx = x + dx, ny = y + dy;
-                if (!InBounds(nx, ny)) continue;
-
-                int nIdx = Index(nx, ny);
-                if (integrationField[nIdx] < bestCost)
-                {
-                    bestCost = integrationField[nIdx];
-                    bestDir = new Vector2(dx, dy);
-                }
-            }
-
-            // --- Now, validate that best direction ---
-            bool bestIsDiagonal = bestDir.x != 0 && bestDir.y != 0;
-
-            if (bestIsDiagonal)
-            {
-                Vector2 vectorToGoal = (Vector2)goalWorld - (Vector2)GridToWorld(x, y);
-                if (Vector2.Angle(bestDir, vectorToGoal) > maxAngle)
-                {
-                    
-                    bestCost = int.MaxValue;
-                    bestDir = Vector2.zero;
-                    //Checks cardinal directions if the angle to the goal is to great
-                    for (int dx = -1; dx <= 1; dx++)
-                    for (int dy = -1; dy <= 1; dy++)
-                    {
-                        
-                        if (Mathf.Abs(dx) + Mathf.Abs(dy) != 1) continue;
-
-                        int nx = x + dx, ny = y + dy;
-                        if (!InBounds(nx, ny)) continue;
-                        
-                        int nIdx = Index(nx, ny);
-                        if (integrationField[nIdx] < bestCost)
-                        {
-                            bestCost = integrationField[nIdx];
-                            bestDir = new Vector2(dx, dy);
-                        }
-                    }
-                }
-            }
-
-            directionField[idx] = bestDir.normalized;
-        }
+            // output data
+            integrationField = this.integrationField,
+            directionField = this.directionField
+        };
         
+        //schedule the job
+        flowFieldJobHandle = job.Schedule();
+        bJobScheduled = true;
     }
 
     public Vector2 GetDirectionAtWorld(Vector3 worldPos)
     {
+        flowFieldJobHandle.Complete();
+        
         WorldToGrid(worldPos, out int gx, out int gy);
         if (!InBounds(gx, gy)) return Vector2.zero;
-        return directionField[Index(gx, gy)];
+
+        float2 dir = directionField[Index(gx, gy)];
+        return new Vector2(dir.x, dir.y);
+    }
+
+    public void CompleteJob()
+    {
+        if (bJobScheduled)
+        {
+            flowFieldJobHandle.Complete();
+            bJobScheduled = false;
+        }
     }
     
     /// <summary>
@@ -220,6 +152,19 @@ public class FlowField
     // Optional for debug visualisation
     public void DrawGizmos()
     {
+        
+        if (bJobScheduled)
+        {
+            flowFieldJobHandle.Complete();
+        }
+
+        
+        // when the game isn't running but the editor still tries to draw gizmos.
+        if (!directionField.IsCreated || !costField.IsCreated)
+        {
+            return;
+        }
+        
         Gizmos.color = Color.green;
         for (int x = 0; x < width; x++)
         for (int y = 0; y < height; y++)

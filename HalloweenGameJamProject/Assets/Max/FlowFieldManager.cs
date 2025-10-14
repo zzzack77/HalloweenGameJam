@@ -49,6 +49,13 @@ public class FlowFieldManager : MonoBehaviour
         field = new FlowField(width, height, cellSize, origin);
        
     }
+    void OnDestroy()
+    {
+        if (field != null)
+        {
+            field.Dispose();
+        }
+    }
 
     void Start()
     {
@@ -91,7 +98,7 @@ public class FlowFieldManager : MonoBehaviour
     void UpdateFieldCostsAndGenerate()
     {
         // 1. Reset all dynamic costs since the grid has shifted.
-        field.ResetDynamicCosts(); // Use the old, simple reset method for this.
+        field.CompleteJob(); // Use the old, simple reset method for this.
 
         
         if (masterGrid != null)
@@ -108,7 +115,7 @@ public class FlowFieldManager : MonoBehaviour
             field.AddCost(gx, gy, agentCost);
         }
         // 3. Generate the master flow field.
-        field.GenerateField(goal.position, maxAngle);
+        field.GenerateFieldAysnc(goal.position, maxAngle);
     }
 
 
