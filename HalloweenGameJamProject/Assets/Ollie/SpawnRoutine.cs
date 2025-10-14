@@ -77,7 +77,7 @@ public class SpawnRoutine : MonoBehaviour
         }
 
 
-        Debug.Log($"Interval: {timer._interval}  Tick at {Time.time:F2}s");
+        //Debug.Log($"Interval: {timer._interval}  Tick at {Time.time:F2}s");
 
     }
 }
