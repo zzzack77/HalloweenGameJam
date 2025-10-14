@@ -1,19 +1,28 @@
 using System;
 using System.Collections;
+using TMPro;
 using UnityEngine;
-using Random = System.Random;
+using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 [RequireComponent(typeof(Collider2D))]
 public class GraveStone : MonoBehaviour , IPayLighting
 {
     [SerializeField] private Sprite usedGravestone;
     [SerializeField] private Canvas promptCanvas;
+    [SerializeField] private Canvas rewardCanvas;
+    [SerializeField] private Image rewardImage;
+    [SerializeField] private TextMeshProUGUI rewardText;
+    [SerializeField] private Sprite[] items;
+
+    [SerializeField] private float RandomizerTime= 0.2f;
     public float lightingCost { get; } = 10;
     public bool bActive{get;set;}
     public bool PlayerInRange { get; private set; }
     public bool canInteract = true;
+    private bool canInteractEquip = false;
 
-    
+    private Coroutine RandomizeImageHandle;
    
     public bool CanActivate(ref float playerLight)
     {
@@ -26,28 +35,90 @@ public class GraveStone : MonoBehaviour , IPayLighting
             Activate();
             return true;
         }
+        
+        if (canInteractEquip && bActive)
+        {
+            Debug.Log("canInteractEquip");
+            //------- equip logic here -------
+            rewardCanvas.gameObject.SetActive(false);
+            canInteractEquip = false;
+            return true;
+        }
         return false;
     }
 
     public void Activate()
     {
-       Invoke(nameof(DelayedReward) , 2f);
+        if (rewardImage != null)
+        {
+            rewardCanvas.gameObject.SetActive(true);
+            RandomizeImageHandle = StartCoroutine(RandomizeImage());
+        }
+        
+        Invoke(nameof(DelayedReward) , 2f);
     }
+
     private void DelayedReward()
     {
+        canInteractEquip = true;
+        StopCoroutine(RandomizeImageHandle);
         
-        FinishActivation();
+        int i = Random.Range(0, items.Length);
+        switch (i)
+        {
+            case 1 :
+                rewardText.text = "Press Space to Equip Augment...";
+                
+                break;
+            case 2 :
+                rewardText.text = "Press Space to Equip Weapon...";
+                break;
+            case 3 :
+                rewardText.text = "Press Space to Equip ...";
+                break;
+            case 4 :
+                rewardText.text = "Press Space to Equip ...";
+                break;
+            case 5 :
+                rewardText.text = "Press Space to Equip ...";
+                break;
+            case 6 :
+                rewardText.text = "Press Space to Equip ...";
+                break;
+            default:
+                break;
+        }
+        rewardImage.sprite = items[i];
+        if(rewardText != null)
+        {
+            rewardText.gameObject.SetActive(true);
+        }
+        
+
+    FinishActivation();
+    }
+
+    IEnumerator RandomizeImage()
+    {
+        
+        while (true && rewardImage)
+        {
+            int i =  Random.Range(0, items.Length);
+            rewardImage.sprite = items[i];
+            yield return new WaitForSeconds(RandomizerTime);
+        }
+        
     }
     
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (!other.CompareTag("Player") || !canInteract) return;
+        if (!other.CompareTag("Player") || !canInteract && !canInteractEquip) return;
         PlayerInRange = true;
         BAPlayer player = other.GetComponent<BAPlayer>();
         if (player)
         {
             player.SetInteractable(this);
-            if (promptCanvas)
+            if (promptCanvas && canInteract)
             {
                 promptCanvas.gameObject.SetActive(true);
             }
@@ -57,7 +128,7 @@ public class GraveStone : MonoBehaviour , IPayLighting
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (!other.CompareTag("Player")) return;
+        if (!other.CompareTag("Player") || !canInteract && !canInteractEquip) return;
         PlayerInRange = false;
         BAPlayer player = other.GetComponent<BAPlayer>();
         if (player)
@@ -73,7 +144,7 @@ public class GraveStone : MonoBehaviour , IPayLighting
 
     private void FinishActivation()
     {
-        canInteract = false;
+        
         if (usedGravestone)
         {
             GetComponent<SpriteRenderer>().sprite = usedGravestone;

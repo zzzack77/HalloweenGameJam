@@ -194,7 +194,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8469840969686667954
 RectTransform:
   m_ObjectHideFlags: 0
@@ -333,7 +333,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6276008304462015916
 RectTransform:
   m_ObjectHideFlags: 0
@@ -642,6 +642,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   usedGravestone: {fileID: 6359245561678627703, guid: 152e0a5c353965841b75b27a6d893403, type: 3}
   promptCanvas: {fileID: 8826005859506446920}
+  rewardCanvas: {fileID: 4814403904024699652}
+  rewardImage: {fileID: 260084363602194320}
+  rewardText: {fileID: 932761622077352494}
+  items:
+  - {fileID: -1251921460288418418, guid: 5184da77aeaff194486c667fac2df8a6, type: 3}
+  - {fileID: -2032160249, guid: 20be030eaeb16b149b5b6c63276a3eb6, type: 3}
+  - {fileID: 7938417114378459739, guid: 152e0a5c353965841b75b27a6d893403, type: 3}
+  - {fileID: 5069602607931332970, guid: 152e0a5c353965841b75b27a6d893403, type: 3}
+  RandomizerTime: 0.1
   canInteract: 1
 --- !u!212 &4535704539113239882
 SpriteRenderer:
