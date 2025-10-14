@@ -1,0 +1,13 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/MainMenuButtons.uss?fileID=7433441132597879392&amp;guid=04a4f7ebfb82ec440ab704b02b2b8977&amp;type=3#MainMenuButtons" />
+    <ui:VisualElement style="flex-grow: 1; align-items: flex-start; background-color: rgb(22, 22, 22); flex-direction: column;">
+        <ui:VisualElement style="flex-grow: 1; width: 100%; height: 80%;">
+            <ui:Label text="Soul Catcher" style="position: absolute; top: 101px; left: 75px; height: 145px; width: 820px; color: rgb(0, 178, 255); font-size: 116px; -unity-font-style: bold;" />
+            <ui:Button name="leaderboard-button" text="How to play" class="buttons" style="position: absolute; top: 52px; left: 1539px; height: 113px; width: 337px;" />
+        </ui:VisualElement>
+        <ui:Button text="Leaderboard" name="leaderboard-button" class="buttons" style="position: absolute; top: 889px; left: 72px; height: 113px; width: 457px;" />
+        <ui:VisualElement style="flex-grow: 1; width: 100%; height: 20%; justify-content: space-evenly; margin-left: 10px; margin-right: 10px; flex-direction: row;">
+            <ui:Button text="Play" name="leaderboard-button" class="buttons" style="position: absolute; top: 41px; left: 1341px; height: 106px; width: 503px;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

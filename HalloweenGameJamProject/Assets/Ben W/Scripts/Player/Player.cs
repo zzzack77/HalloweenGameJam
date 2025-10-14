@@ -12,18 +12,26 @@ public class Player : MonoBehaviour
 
     public float speedPowerupDuration = 10f;
 
-    public float timeInbetwwenMeleeAttack = 1f;
+    public float meleeCooldown = 1f;
     private bool canMeleeAttack = true;
 
     public float meleeDamage = 3;
+
+    [SerializeField] GameObject mine;
+    private bool canThrowMine = true;
+    public float mineThrowCooldown = 10f;
+
+    // Subcribe and describe from events
     private void OnEnable()
     {
         Powerup.OnSpeedBoost += SpeedPowerup;
+        AbilityManager.OnMineAbility += ThrowMine;
     }
 
     private void OnDisable()
     {
         Powerup.OnSpeedBoost -= SpeedPowerup;
+        AbilityManager.OnMineAbility -= ThrowMine;
     }
 
     void Start()
@@ -44,8 +52,8 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Mouse0) && canMeleeAttack)
         {
             meleeAttack.SetActive(true);
-            canMeleeAttack = false;
-            StartCoroutine(MeleeAttackCooldown());
+            // Melee Cooldown
+            StartCoroutine(CooldownHelper.CooldownRoutine(val => canMeleeAttack = val, meleeCooldown));
 
         }
         if (Input.GetKeyUp(KeyCode.Mouse0))
@@ -94,10 +102,16 @@ public class Player : MonoBehaviour
     }
 
     //^
-    IEnumerator MeleeAttackCooldown()
-    {
-        yield return new WaitForSeconds(timeInbetwwenMeleeAttack);
-        canMeleeAttack = true;
-    }    
+    
 
+
+    public void ThrowMine()
+    {
+        if (canThrowMine)
+        {
+            Instantiate(mine, transform.position, Quaternion.identity);
+            StartCoroutine(CooldownHelper.CooldownRoutine(val => canThrowMine = val, mineThrowCooldown));
+        }
+        
+    }
 }

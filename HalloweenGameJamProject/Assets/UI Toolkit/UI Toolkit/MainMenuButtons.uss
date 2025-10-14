@@ -1,0 +1,67 @@
+.buttons {
+    width: 33%;
+    height: 83px;
+    background-color: rgba(0, 159, 255, 0.04);
+    font-size: 43px;
+    -unity-font-style: bold;
+    color: rgb(255, 255, 255);
+    transition-timing-function: ease-in-out;
+    transition-duration: 0.3s;
+    border-left-color: rgb(0, 161, 255);
+    border-right-color: rgb(0, 161, 255);
+    border-top-color: rgb(0, 161, 255);
+    border-bottom-color: rgb(0, 161, 255);
+    border-top-width: 3px;
+    border-right-width: 3px;
+    border-bottom-width: 3px;
+    border-left-width: 3px;
+    border-top-left-radius: 9px;
+    border-top-right-radius: 9px;
+    border-bottom-right-radius: 9px;
+    border-bottom-left-radius: 9px;
+}
+
+.buttons:hover {
+    background-color: rgba(0, 159, 255, 0.26);
+    font-size: 43px;
+    -unity-font-style: bold;
+    color: rgb(255, 255, 255);
+    transition-timing-function: ease-in-out;
+    transition-duration: 0.3s;
+    text-shadow: 0 0 0 rgb(255, 255, 255);
+    border-left-color: rgb(0, 161, 255);
+    border-right-color: rgb(0, 161, 255);
+    border-top-color: rgb(0, 161, 255);
+    border-bottom-color: rgb(0, 161, 255);
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-top-left-radius: 9px;
+    border-top-right-radius: 9px;
+    border-bottom-right-radius: 9px;
+    border-bottom-left-radius: 9px;
+    scale: 1.05 1;
+}
+
+.buttons:active {
+    background-color: rgba(0, 38, 96, 0.62);
+    font-size: 43px;
+    -unity-font-style: bold;
+    color: rgb(255, 255, 255);
+    transition-timing-function: ease-in-out;
+    transition-duration: 0.1s;
+    border-left-color: rgb(0, 161, 255);
+    border-right-color: rgb(0, 161, 255);
+    border-top-color: rgb(0, 161, 255);
+    border-bottom-color: rgb(0, 161, 255);
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-top-left-radius: 9px;
+    border-top-right-radius: 9px;
+    border-bottom-right-radius: 9px;
+    border-bottom-left-radius: 9px;
+    scale: 1.025 1.025;
+}

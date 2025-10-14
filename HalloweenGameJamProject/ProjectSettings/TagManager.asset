@@ -51,5 +51,8 @@ TagManager:
   - name: InfrontPlayer
     uniqueID: 3317315297
     locked: 0
+  - name: Campfire
+    uniqueID: 3548257001
+    locked: 0
   m_RenderingLayers:
   - Default
