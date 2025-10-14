@@ -184,7 +184,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 10
   rb: {fileID: 6295444751825990650}
-  Exploder: {fileID: 0}
+  Exploder: {fileID: 4388167833636718656}
 --- !u!114 &3725232909228038150
 MonoBehaviour:
   m_ObjectHideFlags: 0
