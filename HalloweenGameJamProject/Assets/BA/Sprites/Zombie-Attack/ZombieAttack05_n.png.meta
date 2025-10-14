@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 361cc13636825444e91a593c4b8da0e9
+guid: 245e012773240364490a18d778c5d9bc
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6463527108227353469
-    second: ZombieWalk01_0
+      213: -766408829937405788
+    second: ZombieAttack05_n_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,23 +100,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ZombieWalk01_0
+      name: ZombieAttack05_n_0
       rect:
         serializedVersion: 2
-        x: 144
-        y: 165
-        width: 384
-        height: 479
+        x: 0
+        y: 0
+        width: 720
+        height: 720
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d7bcff1e8af03b950800000000000000
-      internalID: 6463527108227353469
+      spriteID: 4a0bbd2da3b2d55f0800000000000000
+      internalID: -766408829937405788
       vertices: []
       indices: 
       edges: []
@@ -125,19 +125,17 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 81aa7f3ba2316ce41ba3c1388da9eb46
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
-    secondaryTextures:
-    - texture: {fileID: 2800000, guid: 9f3b39d814f6fd949a72660f4e2f2dbc, type: 3}
-      name: _NormalMap
+    secondaryTextures: []
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      ZombieWalk01_0: 6463527108227353469
+      ZombieAttack05_n_0: -766408829937405788
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
