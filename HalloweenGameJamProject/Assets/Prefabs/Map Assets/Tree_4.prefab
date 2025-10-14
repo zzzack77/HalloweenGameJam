@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2698703075427048963}
   - component: {fileID: 8880522236598718949}
   - component: {fileID: 7811108476892749583}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Tree_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -167,7 +167,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1302464480548615568}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -200,7 +200,7 @@ GameObject:
   - component: {fileID: 3380093383608317875}
   - component: {fileID: 802487957703576051}
   - component: {fileID: 6735430844132853785}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}

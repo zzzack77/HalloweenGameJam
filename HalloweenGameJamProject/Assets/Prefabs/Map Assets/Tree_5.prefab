@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 720090264293632617}
   - component: {fileID: 5631318110869036948}
   - component: {fileID: 2640558948649546624}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -127,7 +127,7 @@ GameObject:
   - component: {fileID: 6655057139351457291}
   - component: {fileID: 5641465996174046409}
   - component: {fileID: 730810862480524034}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Tree_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -283,7 +283,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2699693985670638205}
   - component: {fileID: 8656979283744565283}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}

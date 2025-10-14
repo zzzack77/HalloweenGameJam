@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6815877832785791150}
   - component: {fileID: 4207199429826294034}
   - component: {fileID: 5952960978645657085}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Spike_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -169,7 +169,7 @@ GameObject:
   - component: {fileID: 5513472216717811172}
   - component: {fileID: 9079609857487312452}
   - component: {fileID: 7833366948259776947}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -283,7 +283,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6132080359965937496}
   - component: {fileID: 5256324333641378014}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
