@@ -6,7 +6,7 @@ public enum Ability
 {
     None,
     Mine,
-    Placeholder,
+    FireWheel,
     Placeholder2
 }
 public class AbilityManager : MonoBehaviour
@@ -22,6 +22,9 @@ public class AbilityManager : MonoBehaviour
             {
                 case Ability.Mine:
                     OnMineAbility?.Invoke();
+                    break;
+                case Ability.FireWheel:
+                    // event
                     break;
             }
         }
