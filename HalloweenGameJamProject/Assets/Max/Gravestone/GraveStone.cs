@@ -43,7 +43,7 @@ public class GraveStone : MonoBehaviour , IPayLighting
     {
         if (!other.CompareTag("Player") || !canInteract) return;
         PlayerInRange = true;
-        Player player = other.GetComponent<Player>();
+        BAPlayer player = other.GetComponent<BAPlayer>();
         if (player)
         {
             player.SetInteractable(this);
@@ -59,7 +59,7 @@ public class GraveStone : MonoBehaviour , IPayLighting
     {
         if (!other.CompareTag("Player")) return;
         PlayerInRange = false;
-        Player player = other.GetComponent<Player>();
+        BAPlayer player = other.GetComponent<BAPlayer>();
         if (player)
         {
             player.SetInteractable(null); 

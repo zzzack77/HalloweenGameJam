@@ -21,7 +21,7 @@ public class Player : MonoBehaviour
     private bool canThrowMine = true;
     public float mineThrowCooldown = 10f;
 
-    private IPayLighting interactable;
+    
 
     // Subcribe and describe from events
     private void OnEnable()
@@ -63,11 +63,7 @@ public class Player : MonoBehaviour
             meleeAttack.SetActive(false);
         }
 
-        if (interactable != null && Input.GetKeyDown(KeyCode.Space))
-        {
-            interactable.CanActivate(ref lightHP);
-            Debug.Log("player activated");
-        }
+     
     }
 
     void FixedUpdate()
@@ -124,9 +120,5 @@ public class Player : MonoBehaviour
     }
     
     
-    public void SetInteractable(IPayLighting interactable)
-    {
-        this.interactable = interactable;
-        Debug.Log("interactable set");
-    }
+    
 }

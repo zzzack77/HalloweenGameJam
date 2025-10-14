@@ -72,7 +72,7 @@ public class Campfire : MonoBehaviour, IPayLighting
     {
         if (!other.CompareTag("Player") || bActive) return;
         PlayerInRange = true;
-        Player player = other.GetComponent<Player>();
+        BAPlayer player = other.GetComponent<BAPlayer>();
         if (player)
         {
             player.SetInteractable(this);
@@ -93,7 +93,7 @@ public class Campfire : MonoBehaviour, IPayLighting
     {
         if (!other.CompareTag("Player")) return;
         PlayerInRange = false;
-        Player player = other.GetComponent<Player>();
+        BAPlayer player = other.GetComponent<BAPlayer>();
         if (player)
         {
             player.SetInteractable(null); 
