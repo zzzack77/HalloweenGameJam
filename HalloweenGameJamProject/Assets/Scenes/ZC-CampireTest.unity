@@ -8259,6 +8259,14 @@ PrefabInstance:
       propertyPath: m_ShadowMesh.m_InitialTrim
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2837540791841191694, guid: f7552fd1aeaf3b1409a9674b281aee01, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2837540791841191694, guid: f7552fd1aeaf3b1409a9674b281aee01, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3274200896595672901, guid: f7552fd1aeaf3b1409a9674b281aee01, type: 3}
       propertyPath: m_LocalPosition.x
       value: 6.519757

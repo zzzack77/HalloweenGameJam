@@ -17,7 +17,7 @@ public class LeaderboardControler : MonoBehaviour
     {
         LoadEntries();
 
-        SetEntry("asd5", 56);
+        //SetEntry("asd5", 56);
     }
 
     private void LoadEntries()
