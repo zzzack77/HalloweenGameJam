@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 3274200896595672901}
   - component: {fileID: 6633999185654085551}
   - component: {fileID: 5339534032944457848}
-  m_Layer: 0
+  - component: {fileID: 4588463892832807380}
+  m_Layer: 10
   m_Name: Camp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116,6 +117,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &4588463892832807380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1963116341231503971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 057121460a4571b45bfa63d3f4900d92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  safeRadius: 14.31
+  radiusColor: {r: 1, g: 1, b: 0, a: 0.25}
 --- !u!1 &2433008279602617494
 GameObject:
   m_ObjectHideFlags: 0
@@ -126,7 +141,7 @@ GameObject:
   m_Component:
   - component: {fileID: 49024283708536757}
   - component: {fileID: 4102205026022635227}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CenterOrage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -239,7 +254,7 @@ GameObject:
   - component: {fileID: 7347769234298796366}
   - component: {fileID: 6712536026803995164}
   - component: {fileID: 746123491746708816}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5027,7 +5042,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 2095756753
-  m_SortingLayer: 5
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_RenderMode: 0
   m_MeshDistribution: 0
@@ -5071,7 +5086,7 @@ GameObject:
   m_Component:
   - component: {fileID: 300055640343522670}
   - component: {fileID: 8034651707623452567}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: InnerYellow (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5183,7 +5198,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4530719680389553975}
   - component: {fileID: 2837540791841191694}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: shadow_Circle_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5270,7 +5285,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6327538414905229282}
   - component: {fileID: 6323841266896454918}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: OuterRed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5382,7 +5397,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4583473690664369231}
   - component: {fileID: 7269308972166589894}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: InnerYellow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
