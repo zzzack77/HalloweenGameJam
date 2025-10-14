@@ -50,6 +50,7 @@ MonoBehaviour:
   linearStep: 0.02
   useUnscaledTime: 1
   autoStart: 0
+  _interval: 0
 --- !u!114 &5940338947789757671
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63,3 +64,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer: {fileID: 137182562016514828}
+  player: {fileID: 0}
+  Zombie: {fileID: 4303306956157691926, guid: 5ae76704bf56d344cb9c4ccfd40bf831, type: 3}
+  Goblin: {fileID: 4303306956157691926, guid: 64f99311c9c287648a124b856b6c25e4, type: 3}
+  Skeleton: {fileID: 4303306956157691926, guid: 520ed75a7fa75e44c9b99e1968f282a9, type: 3}

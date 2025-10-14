@@ -9,10 +9,14 @@ public class PlayerProjectile : MonoBehaviour
     public float damage = 2f;
     public float damageIncrease = 2f;
     public float damageBoostDuration = 8f;
+
+    private AugmentStructure effects;
+   
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        effects = GameObject.FindGameObjectWithTag("Player").GetComponent<BAPlayer>().effects;
     }
 
     // Update is called once per frame
@@ -46,7 +50,7 @@ public class PlayerProjectile : MonoBehaviour
     {
         if (collision.CompareTag("Enemy"))
         {
-            Enemy enemy = collision.GetComponent<Enemy>();
+            Enemy enemy = collision.GetComponentInParent<Enemy>();
             enemy.TakeDamage(damage);
             Destroy(gameObject);
         }

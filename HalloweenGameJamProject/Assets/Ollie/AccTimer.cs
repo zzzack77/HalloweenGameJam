@@ -82,7 +82,7 @@ public class AccTimer : MonoBehaviour
                 // Debug first few ticks to verify cadence
                 if (dbgCount < 6)
                 {
-                    Debug.Log($"[AcceleratingTimer] Tick at {Time.time:F2}s | interval was {_interval:F3}s");
+                    //Debug.Log($"[AcceleratingTimer] Tick at {Time.time:F2}s | interval was {_interval:F3}s");
                     dbgCount++;
                 }
 
