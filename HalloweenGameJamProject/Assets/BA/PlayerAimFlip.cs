@@ -10,6 +10,8 @@ public class PlayerAimFlip : MonoBehaviour
 
     public Vector2 localScale;
 
+    [SerializeField] Transform pistolPosition;
+
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -19,7 +21,7 @@ public class PlayerAimFlip : MonoBehaviour
 
     void Update()
     {
-
+        playerArm.transform.position = pistolPosition.position;
         //Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         //if (mousePosition.x < transform.position.x && !IsFacingLeft)
         //{
@@ -42,6 +44,7 @@ public class PlayerAimFlip : MonoBehaviour
         {
             Flip(false);
             FlipArm(playerArm, false);
+            
         }
         else if (mousePosition.x > transform.position.x && !IsFacingLeft)
         {
