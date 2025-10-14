@@ -9,6 +9,10 @@ public class Enemy : MonoBehaviour
     private BAPlayer player;
     private bool explode;
     [SerializeField] private GameObject Exploder;
+    [SerializeField] private GameObject Burner;
+    [SerializeField] private SpriteRenderer spriteRenderer;
+    private int index;
+
     
 
     Coroutine freezeCo;
@@ -38,6 +42,7 @@ public class Enemy : MonoBehaviour
             // Update score
             if (explode)
             {
+                spriteRenderer.enabled = false;
                 Explosion();
             }
             else
@@ -52,16 +57,18 @@ public class Enemy : MonoBehaviour
     {
         if (augmentStructure != null)
         {
-            Debug.Log("past enemy");
+            //Debug.Log("past enemy");
             if (augmentStructure.burn == true)
             {
+                Burner.SetActive(true);
+                index = 5;
                 burn();
             }
-            else if (augmentStructure.freeze == true)
+            if (augmentStructure.freeze == true)
             {
                 freeze(2.5f);
             }
-            else if(augmentStructure.explode == true)
+            if(augmentStructure.explode == true)
             {
                 explode = true;
             }
@@ -92,14 +99,29 @@ public class Enemy : MonoBehaviour
 
     public void burn()
     {
-        int index = 3;
         if (index <= 0)
         {
+            Burner.SetActive(false);
             return;
         }
         else
         {
-            health--; 
+            health--;
+            if (health <= 0)
+            {
+                // Play death animation
+                // Update score
+                if (explode)
+                {
+                    spriteRenderer.enabled = false;
+                    Explosion();
+                }
+                else
+                {
+                    Destroy(gameObject);
+
+                }
+            }
             index--;
             Invoke("burn", 1f);
         }
