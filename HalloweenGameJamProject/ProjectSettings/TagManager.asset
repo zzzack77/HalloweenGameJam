@@ -54,5 +54,8 @@ TagManager:
   - name: Campfire
     uniqueID: 3548257001
     locked: 0
+  - name: Smoke
+    uniqueID: 2095756753
+    locked: 0
   m_RenderingLayers:
   - Default
