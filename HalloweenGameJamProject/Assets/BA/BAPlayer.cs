@@ -12,6 +12,8 @@ public class BAPlayer : MonoBehaviour
     public float speedPowerupDuration = 10f;
     public Animator animator;
 
+    public AugmentStructure effects; 
+
     private void OnEnable()
     {
         Powerup.OnSpeedBoost += SpeedPowerup;
@@ -26,6 +28,8 @@ public class BAPlayer : MonoBehaviour
     {
         // Get the Rigidbody2D component
         rb = GetComponent<Rigidbody2D>();
+        effects = new AugmentStructure();
+        effects.setAug(2, true);
     }
 
     void Update()

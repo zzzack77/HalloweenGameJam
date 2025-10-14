@@ -47,4 +47,6 @@ public class FlowAgent : MonoBehaviour
             FlowFieldManager.Instance.allAgents.Remove(this);
         }
     }
+
+
 }
