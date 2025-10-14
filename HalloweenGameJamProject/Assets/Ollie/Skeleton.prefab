@@ -337,4 +337,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sr: {fileID: 8014866761869834037}
   cc2d: {fileID: 1556131311367235355}
-  enemy: {fileID: 0}
+  enemy: {fileID: 4303306956157691926}
