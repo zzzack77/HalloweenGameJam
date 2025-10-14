@@ -139,7 +139,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sr: {fileID: 5757226612142157832}
   cc2d: {fileID: 8771174314087633637}
-  enemy: {fileID: 0}
+  enemy: {fileID: 4303306956157691926}
 --- !u!1 &4303306956157691926
 GameObject:
   m_ObjectHideFlags: 0
