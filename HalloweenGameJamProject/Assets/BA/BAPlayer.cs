@@ -13,6 +13,9 @@ public class BAPlayer : MonoBehaviour
     public Animator animator;
 
     public AugmentStructure effects; 
+    
+    
+    private IPayLighting interactable;
 
     private void OnEnable()
     {
@@ -42,6 +45,13 @@ public class BAPlayer : MonoBehaviour
         // Store movement direction
         moveInput = new Vector2(moveX, moveY).normalized;
         CheckMovement();
+        
+        
+           if (interactable != null && Input.GetKeyDown(KeyCode.Space))
+                {
+                    interactable.CanActivate(ref lightHP);
+                    Debug.Log("player activated");
+                }
     }
 
     void FixedUpdate()
@@ -98,5 +108,12 @@ public class BAPlayer : MonoBehaviour
             animator.SetBool("IsMoving", false);
         }   
     }
+    
+    
+    public void SetInteractable(IPayLighting interactable)
+        {
+            this.interactable = interactable;
+            Debug.Log("interactable set");
+        }
 
 }
