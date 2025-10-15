@@ -25,7 +25,7 @@ public class AbilityManager : MonoBehaviour
                     OnMineAbility?.Invoke();
                     break;
                 case Ability.FireWheel:
-                    // event
+                    OnFireWheelAbility?.Invoke();
                     break;
             }
         }
