@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     private AugmentStructure effects;
     private BAPlayer player;
+    private PlayerStats playerStats;
     private bool explode;
     [SerializeField] private GameObject Exploder;
     [SerializeField] private GameObject Burner;
@@ -25,6 +26,7 @@ public class Enemy : MonoBehaviour
     {
         explode = false;    
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<BAPlayer>();
+        playerStats = player.GetComponent<PlayerStats>();
         originalConstraints = rb.constraints;
         healTimer = 0f;
     }
@@ -42,7 +44,6 @@ public class Enemy : MonoBehaviour
         }
     }
 
-
     public void TakeDamage(float damage)
     {
         effects = player.effects;
@@ -55,21 +56,7 @@ public class Enemy : MonoBehaviour
         if (health <= 0)
         {
             Debug.Log("Death");
-            SpawnSouls();
-            // Play death animation
-            // Update score
-            if (explode)
-            {
-                spriteRenderer.enabled = false;
-                Explosion();
-            }
-            else
-            {
-                
-                
-                Destroy(gameObject);
-
-            }
+            KilledByPlayer(10);
         }
     }
 
@@ -130,20 +117,7 @@ public class Enemy : MonoBehaviour
             if (health <= 0)
             {
                 Debug.Log("burned to death");
-                SpawnSouls();
-                // Play death animation
-                // Update score
-                if (explode)
-                {
-                    spriteRenderer.enabled = false;
-                    Explosion();
-                }
-                else
-                {
-                   
-                    Destroy(gameObject);
-
-                }
+                KilledByPlayer(10);
             }
             index--;
             Invoke("burn", 1f);
@@ -161,6 +135,21 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    void KilledByPlayer(int scoreIncrease)
+    {
+        SpawnSouls();
+        GameManager.Instance.IncreaseScore(scoreIncrease);
+
+        if (explode)
+        {
+            spriteRenderer.enabled = false;
+            Explosion();
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 }
 
 

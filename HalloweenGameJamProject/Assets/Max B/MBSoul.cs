@@ -129,6 +129,8 @@ public class MBSoul : MonoBehaviour
             case SoulState.Homing:
                 HomeToPlayer();
                 break;
+            default:
+                break;
         }
 
         // Always face the direction of movement, regardless of state
