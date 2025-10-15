@@ -5,6 +5,8 @@ public class Shotgun : PlayerRangedWeapon
     [SerializeField] private Transform[] shotPoint;
     [SerializeField] private GameObject bullet;
     [SerializeField] private int maxAmmo = 2;
+    [SerializeField] private float fireRate = 0.5f;
+    private float nextFireTime = 0;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -14,9 +16,10 @@ public class Shotgun : PlayerRangedWeapon
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && currentAmmo > 0)
+        if (Input.GetMouseButtonDown(0) && Time.time >= nextFireTime && currentAmmo > 0)
         {
             Shoot();
+            nextFireTime = Time.time + fireRate;
             
         }
         // Rotates the weapon to the cursor position
@@ -31,6 +34,13 @@ public class Shotgun : PlayerRangedWeapon
             Instantiate(bullet, shotPoint[i].position, shotPoint[i].rotation);
         }
         // Play shot sound
+        
+        int rand = Random.Range(0, shootClip.Length);
+        if (audioSource && shootClip[rand])
+        {
+            audioSource.PlayOneShot(shootClip[rand]);
+        }
+
         currentAmmo--;
         if (currentAmmo <= 0)
         {

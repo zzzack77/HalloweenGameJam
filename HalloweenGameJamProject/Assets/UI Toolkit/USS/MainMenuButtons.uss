@@ -88,7 +88,8 @@ TextField > TextInput {
     border-top-color: rgb(0, 0, 0);
     border-bottom-color: rgb(0, 0, 0);
     -unity-font-style: italic;
-    font-size: 33px;
+    font-size: 57px;
+    padding-left: 27px;
 }
 
 .deathScreenButtons {
