@@ -3,6 +3,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
+using Dan.Models;
+using Dan.Main;
+
 public class MainMenuScript : MonoBehaviour
 {
     [SerializeField] private string gameSceneName = "SampleScene";

@@ -3,10 +3,12 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    [SerializeField] private PlayerStats playerStats;
     public float lightHP = 100f; //light from lantern - acts as functional hp (percentage of max light) 
     [SerializeField] private GameObject meleeAttack;
+    [SerializeField] private GameObject fireWheel;
 
-    public float speed = 5f; // Movement speed
+    //public float speed = 5f; // Movement speed
     private Rigidbody2D rb;
     private Vector2 moveInput;
 
@@ -18,7 +20,7 @@ public class Player : MonoBehaviour
     public float meleeDamage = 3;
 
     [SerializeField] GameObject mine;
-    private bool canThrowMine = true;
+   
     public float mineThrowCooldown = 10f;
 
     
@@ -40,6 +42,7 @@ public class Player : MonoBehaviour
     {
         // Get the Rigidbody2D component
         rb = GetComponent<Rigidbody2D>();
+        
     }
 
     void Update()
@@ -69,12 +72,12 @@ public class Player : MonoBehaviour
     void FixedUpdate()
     {
         // Move the player using physics
-        rb.MovePosition(rb.position + moveInput * speed * Time.fixedDeltaTime);
+        rb.MovePosition(rb.position + moveInput * playerStats.movementSpeed * Time.fixedDeltaTime);
     }
 
     public void SpeedPowerup()
     {
-        speed = 10f;
+        playerStats.movementSpeed = playerStats.boostedSpeed;
         // Maybe apply some effect/sound effects
         // Potential UI update to show powerup
         StartCoroutine(SpeedPowerupTimer());
@@ -83,7 +86,7 @@ public class Player : MonoBehaviour
     IEnumerator SpeedPowerupTimer()
     {
         yield return new WaitForSeconds(speedPowerupDuration);
-        speed = 5f;
+        playerStats.movementSpeed = playerStats.baseSpeed;
     }
 
     //Ollie stuff
@@ -111,10 +114,24 @@ public class Player : MonoBehaviour
 
     public void ThrowMine()
     {
-        if (canThrowMine)
+        if (playerStats.canThrowMine)
         {
             Instantiate(mine, transform.position, Quaternion.identity);
-            StartCoroutine(CooldownHelper.CooldownRoutine(val => canThrowMine = val, mineThrowCooldown));
+            StartCoroutine(CooldownHelper.CooldownRoutine(val => playerStats.canThrowMine = val, mineThrowCooldown));
+        }
+        
+    }
+
+    public void ActivateFireWheel()
+    {
+        if (playerStats.canUseFireWheel)
+        {
+            fireWheel.SetActive(true);
+            StartCoroutine(CooldownHelper.CooldownRoutine(val => playerStats.canUseFireWheel = val, playerStats.fireWheelDuration));
+        }
+        if (!playerStats.canUseFireWheel)
+        {
+            fireWheel.SetActive(false);
         }
         
     }
