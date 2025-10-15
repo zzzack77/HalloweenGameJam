@@ -15,7 +15,7 @@ public class Zombie : MonoBehaviour
                 lastHit = Time.time;
 
                 BAPlayer player = collision.collider.GetComponent<BAPlayer>();
-                player.lightReducer(10f);
+                player.lightReducer(5f);
 
             }
         }

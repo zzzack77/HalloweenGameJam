@@ -17,8 +17,9 @@ public class BAPlayer : MonoBehaviour
     [SerializeField] GameObject mine;
     [SerializeField] GameObject fireWheel;
 
-    public AugmentStructure effects; 
-    
+    public AugmentStructure effects;
+
+    public Canvas DeathScreen;
     
     private IPayLighting interactable;
 
@@ -65,12 +66,18 @@ public class BAPlayer : MonoBehaviour
             interactable.CanActivate(playerStats);
                     Debug.Log("player activated");
                 }
+        LightDecay();
     }
 
     void FixedUpdate()
     {
         // Move the player using physics
         rb.MovePosition(rb.position + moveInput * playerStats.MovementSpeed * Time.fixedDeltaTime);
+    }
+
+    void LightDecay()
+    {
+        lightReducer(0.5f * Time.deltaTime);
     }
 
     public void SpeedPowerup()
@@ -94,7 +101,25 @@ public class BAPlayer : MonoBehaviour
         if (playerStats.LightHP < 0)
         {
             //this is for death stuff 
+
+            Death();
+
         }
+    }
+    public void Death()
+    {
+        //PlayerPrefs.SetInt("Score", PlayerStats.Score);
+
+        // optional: pause game time
+        Time.timeScale = 0f;
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
+        DeathScreen.gameObject.SetActive(true);
+
+        
+        
     }
 
     public void lightIncreaser(float value)
