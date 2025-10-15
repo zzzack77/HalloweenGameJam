@@ -203,7 +203,7 @@ public class Campfire : MonoBehaviour, IPayLighting
             lightSource.safeRadius = initialRadius * lightPercentage;
 
             // Debug log to track progress
-            Debug.Log($"Light %: {lightPercentage:F2}");
+            //Debug.Log($"Light %: {lightPercentage:F2}");
 
             // Check if the threshold is reached, then trigger next coroutine (once)
             if (lightPercentage > 0.9f)
