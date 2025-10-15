@@ -30,6 +30,14 @@ public class Pistol : PlayerRangedWeapon
         Instantiate(bullet, shotPoint.position, shotPoint.rotation);
         
         // Play shot sound
+       
+        int rand = Random.Range(0, shootClip.Length);
+        if (audioSource && shootClip[rand])
+        {
+            audioSource.PlayOneShot(shootClip[rand]);
+        }
+       
+        
         currentAmmo--;
         if (currentAmmo <= 0)
         {

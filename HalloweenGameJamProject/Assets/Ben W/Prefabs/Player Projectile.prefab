@@ -102,10 +102,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcf279317cce95b49af5171c63f67ae2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerStats: {fileID: 0}
   rb: {fileID: 0}
   timeAlive: 4
-  shootForce: 0.2
-  damage: 2
+  shootForce: 10
 --- !u!50 &5700989690129503230
 Rigidbody2D:
   serializedVersion: 5
