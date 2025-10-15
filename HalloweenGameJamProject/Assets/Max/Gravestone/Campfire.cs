@@ -97,6 +97,7 @@ public class Campfire : MonoBehaviour, IPayLighting
         litCampFire.gameObject.SetActive(true);
         unlitCampFire.gameObject.SetActive(false);
 
+        GameManager.Instance.IncreaseScore(5); //don't know if this is the amount we want to increase score by? -maxb
         StartCoroutine(CampFirePreLit());
     }
     

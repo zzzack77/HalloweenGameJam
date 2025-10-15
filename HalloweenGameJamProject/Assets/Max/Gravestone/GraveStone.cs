@@ -54,7 +54,8 @@ public class GraveStone : MonoBehaviour , IPayLighting
             rewardCanvas.gameObject.SetActive(true);
             RandomizeImageHandle = StartCoroutine(RandomizeImage());
         }
-        
+
+        GameManager.Instance.IncreaseScore(10); //don't know if this is the amount we want to increase score by? -maxb
         Invoke(nameof(DelayedReward) , 2f);
     }
 
