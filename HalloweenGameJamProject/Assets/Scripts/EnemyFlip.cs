@@ -24,7 +24,7 @@ public class EnemyFlip : MonoBehaviour
     {
         float currentXPos = transform.position.x;
         float direction = currentXPos - LastXPos;
-        if (Inverse = true)
+        if (Inverse == true)
         {
             if (direction > 0.01f) //Moving right
             {

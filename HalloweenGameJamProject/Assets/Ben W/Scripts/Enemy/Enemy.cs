@@ -1,9 +1,12 @@
 using System.Collections;
+using UnityEditor;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
     public float health;
+    public GameObject soulPrefab;
+
     [SerializeField] private Rigidbody2D rb;
     private AugmentStructure effects;
     private BAPlayer player;
@@ -12,8 +15,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] private GameObject Burner;
     [SerializeField] private SpriteRenderer spriteRenderer;
     private int index;
+    private int souls;
 
-    
 
     Coroutine freezeCo;
     RigidbodyConstraints2D originalConstraints;
@@ -38,6 +41,8 @@ public class Enemy : MonoBehaviour
         ApplyEffects(effects);
         if (health <= 0)
         {
+            Debug.Log("Death");
+            SpawnSouls();
             // Play death animation
             // Update score
             if (explode)
@@ -47,6 +52,8 @@ public class Enemy : MonoBehaviour
             }
             else
             {
+                
+                
                 Destroy(gameObject);
 
             }
@@ -109,6 +116,8 @@ public class Enemy : MonoBehaviour
             health--;
             if (health <= 0)
             {
+                Debug.Log("burned to death");
+                SpawnSouls();
                 // Play death animation
                 // Update score
                 if (explode)
@@ -118,6 +127,7 @@ public class Enemy : MonoBehaviour
                 }
                 else
                 {
+                   
                     Destroy(gameObject);
 
                 }
@@ -126,7 +136,18 @@ public class Enemy : MonoBehaviour
             Invoke("burn", 1f);
         }
     }
-    
+
+    void SpawnSouls()
+    {
+        if (soulPrefab == null) return;
+        souls = Random.Range(1, 3);
+
+        for (int i = 0; i < souls; i++)
+        {
+            Instantiate(soulPrefab, transform.position, Quaternion.identity);
+        }
+    }
+
 }
 
 

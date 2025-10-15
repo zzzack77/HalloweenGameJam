@@ -116,9 +116,9 @@ public class MBSoul : MonoBehaviour
         // State machine: handle behavior based on current state
         switch (state)
         {
-            case SoulState.Drifting:
-                // Do nothing, just drifting until homing is checked
-                break;
+            //case SoulState.Drifting:
+            //    // Do nothing, just drifting until homing is checked
+            //    break;
             case SoulState.ReturningToOrbit:
                 ReturnToOrbitCenter();
                 break;
