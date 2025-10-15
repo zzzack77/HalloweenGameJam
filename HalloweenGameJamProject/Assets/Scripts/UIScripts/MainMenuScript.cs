@@ -7,6 +7,7 @@ public class MainMenuScript : MonoBehaviour
 {
     [SerializeField] private string gameSceneName = "SampleScene";
     public GameObject leaderboardObject;
+    public GameObject howToPlayObject;
     private VisualElement root;
     public AudioSource clickAudio;
     public AudioSource hoverAudio;
@@ -53,8 +54,8 @@ public class MainMenuScript : MonoBehaviour
     void OpenHowToPlay()
     {
         clickAudio.Play();
-        Debug.Log("pressed button");
-
+        howToPlayObject.gameObject.SetActive(true);
+        this.gameObject.SetActive(false);
     }
 
     void QuitGame()
