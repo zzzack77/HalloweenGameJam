@@ -1,0 +1,7 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/USS/MainMenuButtons.uss?fileID=7433441132597879392&amp;guid=04a4f7ebfb82ec440ab704b02b2b8977&amp;type=3#MainMenuButtons" />
+    <ui:VisualElement style="flex-grow: 1; position: absolute; width: 100%; height: 100%; padding-top: 171px; padding-right: 45px; padding-bottom: 25px; padding-left: 45px; background-color: rgb(8, 11, 24); opacity: 1;">
+        <ui:Label text="How To Play" style="position: absolute; -unity-font-definition: url(&quot;project://database/Assets/Art/Fonts/unfinished_scream/OTF/UnfinishedScreamAlternative.otf?fileID=12800000&amp;guid=7ba28f98e33a09749afab1c338ab10f4&amp;type=3#UnfinishedScreamAlternative&quot;); color: rgb(255, 255, 255); top: 13px; left: 628px; font-size: 162px;" />
+        <ui:Button text="Back" name="back-button" class="buttonsMenu" style="position: absolute; top: 36px; left: 54px; right: auto; bottom: auto; width: 156px; height: 116px;" />
+    </ui:VisualElement>
+</ui:UXML>
