@@ -6,7 +6,7 @@ public class Enemy : MonoBehaviour
 {
     public float health;
     public GameObject soulPrefab;
-
+    private float healTimer; 
     [SerializeField] private Rigidbody2D rb;
     private AugmentStructure effects;
     private BAPlayer player;
@@ -16,7 +16,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private SpriteRenderer spriteRenderer;
     private int index;
     private int souls;
-
+    [SerializeField] private float maxHealth;
 
     Coroutine freezeCo;
     RigidbodyConstraints2D originalConstraints;
@@ -26,8 +26,21 @@ public class Enemy : MonoBehaviour
         explode = false;    
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<BAPlayer>();
         originalConstraints = rb.constraints;
+        healTimer = 0f;
     }
 
+    public void GainHealth(float heal)
+    {
+        if (healTimer - Time.time > 5f)
+        {
+            health += heal;
+            if (health >= maxHealth)
+            {
+                health = maxHealth;
+            }
+            healTimer = Time.time;
+        }
+    }
 
 
     public void TakeDamage(float damage)
