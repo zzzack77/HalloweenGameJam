@@ -14,6 +14,7 @@ public class MBSoul : MonoBehaviour
 
     private Rigidbody2D rb;
     private Transform player;
+    PlayerStats playerStats;
     private SoulState state = SoulState.Drifting; // Current state of the soul
 
     // --- Inspector Parameters ---
@@ -83,6 +84,7 @@ public class MBSoul : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.FindWithTag("Player").transform;
+        playerStats = GameObject.Find("Player").GetComponent<PlayerStats>();    
 
         // Randomize all parameters for unique behavior per soul
         speed = Random.Range(speedRange.x, speedRange.y);
@@ -247,6 +249,8 @@ public class MBSoul : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            playerStats.LightHP += playerStats.SoulLightGain;
+
             Destroy(gameObject);
             //MBGameManager.Instance.soulCount += 1;
         }
