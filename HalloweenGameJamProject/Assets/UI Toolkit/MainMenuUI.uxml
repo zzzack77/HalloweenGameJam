@@ -1,62 +1,17 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <Style src="project://database/Assets/UI%20Toolkit/MainMenuButtons.uss?fileID=7433441132597879392&amp;guid=04a4f7ebfb82ec440ab704b02b2b8977&amp;type=3#MainMenuButtons" />
-    <ui:VisualElement style="flex-grow: 1; align-items: flex-start; background-color: rgb(22, 22, 22); flex-direction: row;">
+    <Style src="project://database/Assets/UI%20Toolkit/USS/MainMenuButtons.uss?fileID=7433441132597879392&amp;guid=04a4f7ebfb82ec440ab704b02b2b8977&amp;type=3#MainMenuButtons" />
+    <ui:VisualElement style="flex-grow: 1; align-items: flex-start; background-color: rgb(38, 38, 38); flex-direction: row;">
         <ui:VisualElement style="flex-grow: 1; width: 33%; height: 100%;">
-            <ui:VisualElement style="flex-grow: 1; height: 30%; width: 100%;" />
-            <ui:VisualElement style="flex-grow: 1; height: 70%; width: 100%; padding-bottom: 244px; padding-right: 20px; padding-left: 20px; justify-content: space-evenly;">
-                <ui:Button text="Play" name="play-button" class="buttons" />
-                <ui:Button text="Leaderboard" name="leaderboard-button" class="buttons" />
-                <ui:Button text="How To Play" name="howToPlay-button" class="buttons" />
-                <ui:Button text="Quit" name="quit-button" class="buttons" />
+            <ui:VisualElement style="flex-grow: 1; height: 25%; width: 100%; padding-left: 20px;">
+                <ui:Label text="SOUL CATCHER" style="-unity-font-definition: url(&quot;project://database/Assets/Art/Fonts/unfinished_scream/TTF/UnfinishedScreamAlternative.ttf?fileID=12800000&amp;guid=2d3ea40e6c46409418c546461ead09b1&amp;type=3#UnfinishedScreamAlternative&quot;); font-size: 295px; color: rgb(255, 255, 255);" />
+            </ui:VisualElement>
+            <ui:VisualElement style="flex-grow: 1; height: 75%; width: 100%; padding-bottom: -11px; padding-right: 20px; padding-left: 20px; justify-content: space-evenly;">
+                <ui:Button text="PLAY" name="play-button" class="buttons" />
+                <ui:Button text="LEADERBOARD" name="leaderboard-button" class="buttons" />
+                <ui:Button text="HOW TO PLAY" name="howToPlay-button" class="buttons" />
+                <ui:Button text="QUIT" name="quit-button" class="buttons" />
             </ui:VisualElement>
         </ui:VisualElement>
         <ui:VisualElement name="VisualElement" style="flex-grow: 1; width: 60%; height: 100%; padding-top: 50px; padding-right: 50px; padding-bottom: 50px; padding-left: 50px; position: relative;" />
-    </ui:VisualElement>
-    <ui:VisualElement style="flex-grow: 1; position: absolute; width: 100%; height: 100%; padding-top: 71px; padding-right: 71px; padding-bottom: 71px; padding-left: 71px; background-color: rgb(8, 11, 24);">
-        <ui:VisualElement style="flex-grow: 1; flex-direction: row; width: 100%; background-color: rgb(34, 34, 34); border-left-color: rgb(255, 255, 255); border-right-color: rgb(255, 255, 255); border-top-color: rgb(255, 255, 255); border-bottom-color: rgb(255, 255, 255); border-top-width: 3px; border-right-width: 3px; border-bottom-width: 3px; border-left-width: 3px; border-top-left-radius: 28px; border-top-right-radius: 28px; border-bottom-right-radius: 28px; border-bottom-left-radius: 28px;">
-            <ui:VisualElement style="flex-grow: 1; width: 10%; border-left-color: rgb(255, 255, 255); border-right-color: rgb(255, 255, 255); border-top-color: rgb(255, 255, 255); border-bottom-color: rgb(255, 255, 255); border-right-width: 3px;">
-                <ui:Label text="No." name="Label" class="leaderboardText" style="font-size: 52px; border-left-color: rgb(255, 255, 255); border-right-color: rgb(255, 255, 255); border-top-color: rgb(255, 255, 255); border-bottom-color: rgb(255, 255, 255); border-bottom-width: 3px;" />
-                <ui:Label text="1." class="leaderboardText" />
-                <ui:Label text="2." class="leaderboardText" />
-                <ui:Label text="3." class="leaderboardText" />
-                <ui:Label text="4." class="leaderboardText" />
-                <ui:Label text="5." class="leaderboardText" />
-                <ui:Label text="6." class="leaderboardText" />
-                <ui:Label text="7." class="leaderboardText" />
-                <ui:Label text="8." class="leaderboardText" />
-                <ui:Label text="9." class="leaderboardText" />
-                <ui:Label text="10." class="leaderboardText" />
-                <ui:Label text="-" name="playerRank" class="leaderboardText" style="border-bottom-width: 0; color: rgb(223, 227, 0);" />
-            </ui:VisualElement>
-            <ui:VisualElement style="flex-grow: 1; width: 70%;">
-                <ui:Label text="Name" name="Label" class="leaderboardText" style="font-size: 52px; border-left-color: rgb(255, 255, 255); border-right-color: rgb(255, 255, 255); border-top-color: rgb(255, 255, 255); border-bottom-color: rgb(255, 255, 255); border-bottom-width: 3px;" />
-                <ui:Label text="-" name="name1" class="leaderboardText" />
-                <ui:Label name="name2" text="-" class="leaderboardText" />
-                <ui:Label name="name3" text="-" class="leaderboardText" />
-                <ui:Label name="name4" text="-" class="leaderboardText" />
-                <ui:Label name="name5" text="-" class="leaderboardText" />
-                <ui:Label name="name6" text="-" class="leaderboardText" />
-                <ui:Label name="name7" text="-" class="leaderboardText" />
-                <ui:Label name="name8" text="-" class="leaderboardText" />
-                <ui:Label name="name9" text="-" class="leaderboardText" />
-                <ui:Label name="name10" text="-" class="leaderboardText" />
-                <ui:Label name="playerName" text="Enter Username..." class="leaderboardText" style="border-bottom-width: 0; color: rgb(222, 226, 0);" />
-            </ui:VisualElement>
-            <ui:VisualElement style="flex-grow: 1; width: 20%; border-left-color: rgb(255, 255, 255); border-right-color: rgb(255, 255, 255); border-top-color: rgb(255, 255, 255); border-bottom-color: rgb(255, 255, 255); border-left-width: 3px;">
-                <ui:Label text="Score" name="Label" class="leaderboardText" style="font-size: 52px; border-left-color: rgb(255, 255, 255); border-right-color: rgb(255, 255, 255); border-top-color: rgb(255, 255, 255); border-bottom-color: rgb(255, 255, 255); border-bottom-width: 3px;" />
-                <ui:Label text="-" name="score1" class="leaderboardText" />
-                <ui:Label name="score2" text="-" class="leaderboardText" />
-                <ui:Label name="score3" text="-" class="leaderboardText" />
-                <ui:Label name="score4" text="-" class="leaderboardText" />
-                <ui:Label name="score5" text="-" class="leaderboardText" />
-                <ui:Label name="score6" text="-" class="leaderboardText" />
-                <ui:Label name="score7" text="-" class="leaderboardText" />
-                <ui:Label name="score8" text="-" class="leaderboardText" />
-                <ui:Label name="score9" text="-" class="leaderboardText" />
-                <ui:Label name="score10" text="-" class="leaderboardText" />
-                <ui:Label name="playerScore" text="-" class="leaderboardText" style="border-bottom-width: 0; color: rgb(223, 227, 0);" />
-            </ui:VisualElement>
-        </ui:VisualElement>
-        <ui:Button text="Back" style="position: absolute; top: 16px; left: 16px; right: auto; bottom: auto;" />
     </ui:VisualElement>
 </ui:UXML>

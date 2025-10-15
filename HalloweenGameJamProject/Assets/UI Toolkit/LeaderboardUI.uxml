@@ -1,0 +1,52 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/USS/MainMenuButtons.uss?fileID=7433441132597879392&amp;guid=04a4f7ebfb82ec440ab704b02b2b8977&amp;type=3#MainMenuButtons" />
+    <ui:VisualElement style="flex-grow: 1; position: absolute; width: 100%; height: 100%; padding-top: 171px; padding-right: 45px; padding-bottom: 25px; padding-left: 45px; background-color: rgb(8, 11, 24); opacity: 1;">
+        <ui:Label text="LEADERBOARD" style="position: absolute; -unity-font-definition: url(&quot;project://database/Assets/Art/Fonts/unfinished_scream/OTF/UnfinishedScreamAlternative.otf?fileID=12800000&amp;guid=7ba28f98e33a09749afab1c338ab10f4&amp;type=3#UnfinishedScreamAlternative&quot;); color: rgb(255, 255, 255); top: 13px; left: 628px; font-size: 162px;" />
+        <ui:VisualElement style="flex-grow: 1; flex-direction: row; width: 100%; background-color: rgb(34, 34, 34); border-left-color: rgb(255, 255, 255); border-right-color: rgb(255, 255, 255); border-top-color: rgb(255, 255, 255); border-bottom-color: rgb(255, 255, 255); border-top-width: 3px; border-right-width: 3px; border-bottom-width: 3px; border-left-width: 3px; border-top-left-radius: 28px; border-top-right-radius: 28px; border-bottom-right-radius: 28px; border-bottom-left-radius: 28px;">
+            <ui:VisualElement style="flex-grow: 1; width: 10%; border-left-color: rgb(255, 255, 255); border-right-color: rgb(255, 255, 255); border-top-color: rgb(255, 255, 255); border-bottom-color: rgb(255, 255, 255); border-right-width: 3px;">
+                <ui:Label text="No." name="Label" class="leaderboardText" style="font-size: 52px; border-left-color: rgb(255, 255, 255); border-right-color: rgb(255, 255, 255); border-top-color: rgb(255, 255, 255); border-bottom-color: rgb(255, 255, 255); border-bottom-width: 3px;" />
+                <ui:Label text="1." class="leaderboardText" />
+                <ui:Label text="2." class="leaderboardText" />
+                <ui:Label text="3." class="leaderboardText" />
+                <ui:Label text="4." class="leaderboardText" />
+                <ui:Label text="5." class="leaderboardText" />
+                <ui:Label text="6." class="leaderboardText" />
+                <ui:Label text="7." class="leaderboardText" />
+                <ui:Label text="8." class="leaderboardText" />
+                <ui:Label text="9." class="leaderboardText" />
+                <ui:Label text="10." class="leaderboardText" />
+                <ui:Label text="-" name="playerRank" class="leaderboardText" style="border-bottom-width: 0; color: rgb(223, 227, 0);" />
+            </ui:VisualElement>
+            <ui:VisualElement style="flex-grow: 1; width: 70%;">
+                <ui:Label text="Name" name="Label" class="leaderboardText" style="font-size: 52px; border-left-color: rgb(255, 255, 255); border-right-color: rgb(255, 255, 255); border-top-color: rgb(255, 255, 255); border-bottom-color: rgb(255, 255, 255); border-bottom-width: 3px;" />
+                <ui:Label text="-" name="name1" class="leaderboardText" />
+                <ui:Label name="name2" text="-" class="leaderboardText" />
+                <ui:Label name="name3" text="-" class="leaderboardText" />
+                <ui:Label name="name4" text="-" class="leaderboardText" />
+                <ui:Label name="name5" text="-" class="leaderboardText" />
+                <ui:Label name="name6" text="-" class="leaderboardText" />
+                <ui:Label name="name7" text="-" class="leaderboardText" />
+                <ui:Label name="name8" text="-" class="leaderboardText" />
+                <ui:Label name="name9" text="-" class="leaderboardText" />
+                <ui:Label name="name10" text="-" class="leaderboardText" />
+                <ui:Label name="playerName" text="Enter Username..." class="leaderboardText" style="border-bottom-width: 0; color: rgb(222, 226, 0);" />
+            </ui:VisualElement>
+            <ui:VisualElement style="flex-grow: 1; width: 20%; border-left-color: rgb(255, 255, 255); border-right-color: rgb(255, 255, 255); border-top-color: rgb(255, 255, 255); border-bottom-color: rgb(255, 255, 255); border-left-width: 3px;">
+                <ui:Label text="Score" name="Label" class="leaderboardText" style="font-size: 52px; border-left-color: rgb(255, 255, 255); border-right-color: rgb(255, 255, 255); border-top-color: rgb(255, 255, 255); border-bottom-color: rgb(255, 255, 255); border-bottom-width: 3px;" />
+                <ui:Label text="-" name="score1" class="leaderboardText" />
+                <ui:Label name="score2" text="-" class="leaderboardText" />
+                <ui:Label name="score3" text="-" class="leaderboardText" />
+                <ui:Label name="score4" text="-" class="leaderboardText" />
+                <ui:Label name="score5" text="-" class="leaderboardText" />
+                <ui:Label name="score6" text="-" class="leaderboardText" />
+                <ui:Label name="score7" text="-" class="leaderboardText" />
+                <ui:Label name="score8" text="-" class="leaderboardText" />
+                <ui:Label name="score9" text="-" class="leaderboardText" />
+                <ui:Label name="score10" text="-" class="leaderboardText" />
+                <ui:Label name="playerScore" text="-" class="leaderboardText" style="border-bottom-width: 0; color: rgb(223, 227, 0);" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:Button text="Back" name="back-button" class="buttonsMenu" style="position: absolute; top: 36px; left: 54px; right: auto; bottom: auto; width: 156px; height: 116px;" />
+        <ui:Button text="Refresh" name="refresh-button" class="buttonsMenu" style="position: absolute; top: 42px; left: 1635px; right: auto; bottom: auto; width: 225px; height: 114px; -unity-text-align: upper-left;" />
+    </ui:VisualElement>
+</ui:UXML>
