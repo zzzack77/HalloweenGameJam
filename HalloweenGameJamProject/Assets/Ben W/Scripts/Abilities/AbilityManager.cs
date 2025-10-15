@@ -14,6 +14,7 @@ public class AbilityManager : MonoBehaviour
     public Ability ability;
 
     public static event Action OnMineAbility;
+    public static event Action OnFireWheelAbility;
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space) && ability != Ability.None)
