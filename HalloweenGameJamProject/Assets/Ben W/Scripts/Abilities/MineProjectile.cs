@@ -9,14 +9,11 @@ public class MineProjectile : PlayerProjectile
         playerStats = GameObject.Find("Player").GetComponent<PlayerStats>();
         timeAlive = 1.5f;
         rb = GetComponent<Rigidbody2D>();
+        rb.AddForce(transform.right * shootForce, ForceMode2D.Impulse);
     }
     
     // Update is called once per frame
-    void Update()
-    {
-        TravelForward();
-    }
-
+   
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Enemy"))

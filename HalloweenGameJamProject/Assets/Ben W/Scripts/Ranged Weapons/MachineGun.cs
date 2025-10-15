@@ -1,11 +1,12 @@
+using System.Collections;
 using UnityEngine;
 
-public class Shotgun : PlayerRangedWeapon
+public class MachineGun: PlayerRangedWeapon
 {
-    [SerializeField] private Transform[] shotPoint;
+    [SerializeField] private Transform shotPoint;
     [SerializeField] private GameObject bullet;
-    [SerializeField] private int maxAmmo = 2;
-    [SerializeField] private float fireRate = 0.5f;
+    [SerializeField] private int maxAmmo = 30;
+    [SerializeField] private float fireRate = 0.1f;
     private float nextFireTime = 0;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -16,7 +17,7 @@ public class Shotgun : PlayerRangedWeapon
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && Time.time >= nextFireTime && currentAmmo > 0)
+        if (Input.GetMouseButton(0)&&  Time.time >= nextFireTime && currentAmmo > 0 )
         {
             Shoot();
             nextFireTime = Time.time + fireRate;
@@ -26,21 +27,21 @@ public class Shotgun : PlayerRangedWeapon
         RotateWeapon();
     }
 
-    // Shoots the bullets and reduces ammo, also reloads if ammo reaches 0
+   
+    // Shoots the bullet and reduces ammo, also reloads if ammo reaches 0
     public override void Shoot()
     {
-        for (int i = 0; i < shotPoint.Length; i++)
-        {
-            Instantiate(bullet, shotPoint[i].position, shotPoint[i].rotation);
-        }
-        // Play shot sound
         
+        Instantiate(bullet, shotPoint.position, shotPoint.rotation);
+        
+        // Play shot sound
         int rand = Random.Range(0, shootClip.Length);
         if (audioSource && shootClip[rand])
         {
             audioSource.PlayOneShot(shootClip[rand]);
         }
-
+        
+        
         currentAmmo--;
         if (currentAmmo <= 0)
         {
@@ -48,6 +49,5 @@ public class Shotgun : PlayerRangedWeapon
         }
 
     }
-
-
 }
+
