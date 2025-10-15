@@ -248,7 +248,7 @@ public class MBSoul : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Destroy(gameObject);
-            MBGameManager.Instance.soulCount += 1;
+            //MBGameManager.Instance.soulCount += 1;
         }
     }
 }

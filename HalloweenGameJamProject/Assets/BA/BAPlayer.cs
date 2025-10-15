@@ -4,19 +4,26 @@ using UnityEngine;
 
 public class BAPlayer : MonoBehaviour
 {
-    public float lightHP = 100f; //light from lantern - acts as functional hp (percentage of max light) 
-    public float speed = 5f; // Movement speed
+    //public float lightHP = 100f; //light from lantern - acts as functional hp (percentage of max light) 
+    //public float speed = 5f; // Movement speed
     private Rigidbody2D rb;
     private Vector2 moveInput;
+
+    private PlayerStats playerStats;
     
-    public float speedPowerupDuration = 10f;
+    //public float speedPowerupDuration = 10f;
     public Animator animator;
+
+    [SerializeField] GameObject mine;
+    [SerializeField] GameObject fireWheel;
 
     public AugmentStructure effects; 
     
     
     private IPayLighting interactable;
 
+
+   private float PlayerStatsLightHP;
     private void OnEnable()
     {
         Powerup.OnSpeedBoost += SpeedPowerup;
@@ -34,6 +41,10 @@ public class BAPlayer : MonoBehaviour
         effects = new AugmentStructure();
         effects.setAug(1, true);
         effects.setAug(2, true);
+
+        playerStats = GetComponent<PlayerStats>();
+
+        playerStats.LightHP = playerStats.LightHPStart;
     }
 
     void Update()
@@ -50,7 +61,8 @@ public class BAPlayer : MonoBehaviour
         
            if (interactable != null && Input.GetKeyDown(KeyCode.Space))
                 {
-                    interactable.CanActivate(ref lightHP);
+            //playerStats.LightHP = PlayerStatsLightHP;
+            interactable.CanActivate(playerStats);
                     Debug.Log("player activated");
                 }
     }
@@ -58,12 +70,12 @@ public class BAPlayer : MonoBehaviour
     void FixedUpdate()
     {
         // Move the player using physics
-        rb.MovePosition(rb.position + moveInput * speed * Time.fixedDeltaTime);
+        rb.MovePosition(rb.position + moveInput * playerStats.MovementSpeed * Time.fixedDeltaTime);
     }
 
     public void SpeedPowerup()
     {
-        speed = 10f;
+        playerStats.MovementSpeed = 10f;
         // Maybe apply some effect/sound effects
         // Potential UI update to show powerup
         StartCoroutine(SpeedPowerupTimer());
@@ -71,15 +83,15 @@ public class BAPlayer : MonoBehaviour
 
     IEnumerator SpeedPowerupTimer()
     {
-        yield return new WaitForSeconds(speedPowerupDuration);
-        speed = 5f;
+        yield return new WaitForSeconds(playerStats.SpeedPowerupDuration);
+        playerStats.MovementSpeed = 5f;
     }
 
     //Ollie stuff
     public void lightReducer(float value)
     {
-        lightHP -= value;
-        if (lightHP < 0)
+        playerStats.LightHP -= value;
+        if (playerStats.LightHP < 0)
         {
             //this is for death stuff 
         }
@@ -87,10 +99,10 @@ public class BAPlayer : MonoBehaviour
 
     public void lightIncreaser(float value)
     {
-        lightHP += value;
-        if (lightHP > 100)
+        playerStats.LightHP += value;
+        if (playerStats.LightHP > 100)
         {
-            lightHP = 100;  //max light (100%) 
+            playerStats.LightHP = 100;  //max light (100%) 
         }
     }
 
@@ -117,4 +129,27 @@ public class BAPlayer : MonoBehaviour
             Debug.Log("interactable set");
         }
 
+    public void ThrowMine()
+    {
+        if (playerStats.CanThrowMine)
+        {
+            Instantiate(mine, transform.position, Quaternion.identity);
+            StartCoroutine(CooldownHelper.CooldownRoutine(val => playerStats.CanThrowMine = val, playerStats.MineThrowCooldown));
+        }
+
+    }
+
+    public void ActivateFireWheel()
+    {
+        if (playerStats.CanUseFireWheel)
+        {
+            fireWheel.SetActive(true);
+            StartCoroutine(CooldownHelper.CooldownRoutine(val => playerStats.CanUseFireWheel = val, playerStats.FireWheelDuration));
+        }
+        if (!playerStats.CanUseFireWheel)
+        {
+            fireWheel.SetActive(false);
+        }
+
+    }
 }

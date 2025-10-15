@@ -6,6 +6,8 @@ using UnityEngine.Rendering.Universal;
 
 public class Campfire : MonoBehaviour, IPayLighting
 {
+    //Player Stats
+    private PlayerStats playerStats;
     // Audio
     public AudioSource campfireStartAudio;
     public AudioSource campfireIdelAudio;
@@ -41,7 +43,7 @@ public class Campfire : MonoBehaviour, IPayLighting
     public bool bActive{get;set;}
     public bool PlayerInRange { get; private set; }
 
-    private void Awake()
+    void Awake()
     {
         innerLight2D = innerLight.GetComponent<Light2D>();
         centerLight2D = centerLight.GetComponent<Light2D>();
@@ -56,15 +58,27 @@ public class Campfire : MonoBehaviour, IPayLighting
         outerInitalLight = outerLight2D.intensity;
         initialRadius = lightSource.safeRadius;
 
+
         ExtinguishFire();
     }
 
-    // Returns true if player can activate a campfire
-    public bool CanActivate(ref float playerLight)
+    void Start()
     {
-        if (playerLight >= lightingCost && bActive == false)
+        
+    }
+
+    // Returns true if player can activate a campfire
+    public bool CanActivate(PlayerStats playerStats)
+    {
+        Debug.Log(playerStats.LightHP);
+        Debug.Log(playerStats.CampfireLightCost);
+        Debug.Log(bActive);
+
+
+        if (playerStats.LightHP >= playerStats.CampfireLightCost && bActive == false)
         {
-            playerLight -= lightingCost;;
+            Debug.Log("PassedIF(ZackisCUte)");
+            playerStats.LightHP -= playerStats.CampfireLightCost;
             bActive = true;
             Activate();
             promptCanvas.gameObject.SetActive(false);

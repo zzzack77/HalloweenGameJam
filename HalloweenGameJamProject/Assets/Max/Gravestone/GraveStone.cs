@@ -24,11 +24,11 @@ public class GraveStone : MonoBehaviour , IPayLighting
 
     private Coroutine RandomizeImageHandle;
    
-    public bool CanActivate(ref float playerLight)
+    public bool CanActivate(PlayerStats playerStats)
     {
-        if (playerLight >= lightingCost && bActive == false)
+        if (playerStats.LightHP >= playerStats.GraveStoneCost && bActive == false)
         {
-            playerLight -= lightingCost;;
+            playerStats.LightHP -= playerStats.GraveStoneCost;
             bActive = true;
             canInteract = false;
             promptCanvas.gameObject.SetActive(false);

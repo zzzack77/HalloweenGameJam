@@ -2,12 +2,12 @@ using UnityEngine;
 
 public class MineProjectile : PlayerProjectile
 {
-    
+    PlayerStats playerStats;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        playerStats = GameObject.Find("Player").GetComponent<PlayerStats>();
         timeAlive = 1.5f;
-        playerStats.mineDamage = 5;
         rb = GetComponent<Rigidbody2D>();
     }
     
@@ -22,7 +22,7 @@ public class MineProjectile : PlayerProjectile
         if (collision.CompareTag("Enemy"))
         {
             Enemy enemy = collision.GetComponent<Enemy>();
-            enemy.TakeDamage(playerStats.mineDamage);
+            enemy.TakeDamage(playerStats.MineDamage);
             Destroy(gameObject);
         }
     }

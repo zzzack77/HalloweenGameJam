@@ -16,7 +16,7 @@ public class FireWheel : MonoBehaviour
         transform.Rotate(0f, 0f, -rotationSpeed * Time.deltaTime);
 
         timer += Time.deltaTime;
-        if (timer >= playerStats.fireWheelTickInterval)
+        if (timer >= playerStats.FireWheelTickInterval)
         {
             timer = 0f;
 
@@ -29,7 +29,7 @@ public class FireWheel : MonoBehaviour
                     continue;
                 }
 
-                enemy.TakeDamage(playerStats.fireWheelDamage);
+                enemy.TakeDamage(playerStats.FireWheelDamage);
             }
         }
     }
