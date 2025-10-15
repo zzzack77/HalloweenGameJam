@@ -27,11 +27,15 @@ public class BAPlayer : MonoBehaviour
     private void OnEnable()
     {
         Powerup.OnSpeedBoost += SpeedPowerup;
+        AbilityManager.OnMineAbility += ThrowMine;
+        AbilityManager.OnFireWheelAbility += ActivateFireWheel;
     }
 
     private void OnDisable()
     {
         Powerup.OnSpeedBoost -= SpeedPowerup;
+        AbilityManager.OnMineAbility -= ThrowMine;
+        AbilityManager.OnFireWheelAbility -= ActivateFireWheel;
     }
 
     void Start()
@@ -143,13 +147,17 @@ public class BAPlayer : MonoBehaviour
     {
         if (playerStats.CanUseFireWheel)
         {
-            fireWheel.SetActive(true);
-            StartCoroutine(CooldownHelper.CooldownRoutine(val => playerStats.CanUseFireWheel = val, playerStats.FireWheelDuration));
+            StartCoroutine(FireWheelRoutine());
         }
-        if (!playerStats.CanUseFireWheel)
-        {
-            fireWheel.SetActive(false);
-        }
+    }
 
+    private IEnumerator FireWheelRoutine()
+    {
+        playerStats.CanUseFireWheel = false;
+        fireWheel.SetActive(true);
+        yield return new WaitForSeconds(playerStats.FireWheelDuration);
+        fireWheel.SetActive(false);
+        yield return new WaitForSeconds(playerStats.FireWheelCooldown);
+        playerStats.CanUseFireWheel = true;
     }
 }

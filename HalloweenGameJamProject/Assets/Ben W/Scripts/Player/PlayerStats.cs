@@ -54,9 +54,9 @@ public class PlayerStats : MonoBehaviour
 
     [Header("Abilities")]
     private float mineDamage = 5f;
-    private float mineArmTime;
-    private float fireWheelDamage;
-    private float fireWheelTickInterval;
+    private float mineArmTime = 1f;
+    private float fireWheelDamage = 1f;
+    private float fireWheelTickInterval = 1f;
 
     public float MineDamage { get => mineDamage; set => mineDamage = value; }
     public float MineArmTime { get => mineArmTime; set => mineArmTime = value; }
@@ -79,7 +79,7 @@ public class PlayerStats : MonoBehaviour
     [Header("Cooldowns")]
     private float meleeCooldown;
     private float mineCooldown;
-    private float fireWheelCooldown;
+    private float fireWheelCooldown = 15f;
     private float explosionCooldown;
     private float flameCooldown;
     private float mineThrowCooldown = 10f;
@@ -96,7 +96,7 @@ public class PlayerStats : MonoBehaviour
     [Header("Durations")]
     private float bulletDamageBoostDuration;
     private float speedPowerupDuration;
-    private float fireWheelDuration;
+    private float fireWheelDuration = 10f;
 
     public float BulletDamageBoostDuration { get => bulletDamageBoostDuration; set => bulletDamageBoostDuration = value; }
     public float SpeedPowerupDuration { get => speedPowerupDuration; set => speedPowerupDuration = value; }
