@@ -3,20 +3,18 @@ using UnityEngine;
 
 public class PlayerProjectile : MonoBehaviour
 {
+    public PlayerStats playerStats;
     public Rigidbody2D rb;
     public float timeAlive = 4;
     public float shootForce = 0.2f;
-    public float damage = 2f;
-    public float damageIncrease = 2f;
-    public float damageBoostDuration = 8f;
-
-    private AugmentStructure effects;
-   
+    //public float damage = 2f;
+    //public float damageIncrease = 2f;
+    //public float damageBoostDuration = 8f;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        effects = GameObject.FindGameObjectWithTag("Player").GetComponent<BAPlayer>().effects;
     }
 
     // Update is called once per frame
@@ -27,6 +25,7 @@ public class PlayerProjectile : MonoBehaviour
 
     private void OnEnable()
     {
+        playerStats = GameObject.Find("Player").GetComponent<PlayerStats>();
         Powerup.OnDamageBoost += DamageBoostPowerup;
     }
 
@@ -35,23 +34,14 @@ public class PlayerProjectile : MonoBehaviour
         Powerup.OnDamageBoost -= DamageBoostPowerup;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.collider.CompareTag("Enemy"))
-        {
-            Enemy enemy = collision.collider.GetComponent<Enemy>();
-            enemy.TakeDamage(damage);
-            Destroy(gameObject);
-        }
-        
-    }
+    
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Enemy"))
         {
-            Enemy enemy = collision.GetComponentInParent<Enemy>();
-            enemy.TakeDamage(damage);
+            Enemy enemy = collision.GetComponent<Enemy>();
+            enemy.TakeDamage(playerStats.bulletDamage);
             Destroy(gameObject);
         }
     }
@@ -68,13 +58,13 @@ public class PlayerProjectile : MonoBehaviour
 
     public void DamageBoostPowerup()
     {
-        damage += damageIncrease;
+        playerStats.bulletDamage += playerStats.bulletDamageIncrease;
         StartCoroutine(DamageBoostTimer());
     }
 
     IEnumerator DamageBoostTimer()
     {
-        yield return new WaitForSeconds(damageBoostDuration);
-        damage -= damageIncrease;
+        yield return new WaitForSeconds(playerStats.bulletDamageBoostDuration);
+        playerStats.bulletDamage -= playerStats.bulletDamageIncrease;
     }
 }

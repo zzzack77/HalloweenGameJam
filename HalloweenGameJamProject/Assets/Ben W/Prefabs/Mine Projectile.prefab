@@ -165,6 +165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0334cdb333610294cb3b9b4aa0be82ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerStats: {fileID: 0}
+  rb: {fileID: 5700989690129503230}
   timeAlive: 4
   shootForce: 0.2
-  damage: 5
