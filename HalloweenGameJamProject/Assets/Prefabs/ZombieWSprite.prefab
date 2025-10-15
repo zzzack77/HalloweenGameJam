@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 30716184683340665}
   - component: {fileID: 1839418887880682334}
   - component: {fileID: 8376796787449501073}
+  - component: {fileID: 2076654813941791694}
   m_Layer: 0
   m_Name: Zombie
   m_TagString: Untagged
@@ -195,6 +196,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2076654813941791694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6587028638474283591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c192ccb2bc5b09347b23d841e0358cfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Inverse: 0
 --- !u!1 &7426635482792728154
 GameObject:
   m_ObjectHideFlags: 0
@@ -320,6 +334,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -287624812910038585, guid: 5ae76704bf56d344cb9c4ccfd40bf831, type: 3}
+      propertyPath: soulPrefab
+      value: 
+      objectReference: {fileID: 6495806148022659791, guid: 169ebb132111b4d48ad4247abf3d9e33, type: 3}
     - target: {fileID: 697226984509060339, guid: 5ae76704bf56d344cb9c4ccfd40bf831, type: 3}
       propertyPath: m_LocalPosition.x
       value: -26.24

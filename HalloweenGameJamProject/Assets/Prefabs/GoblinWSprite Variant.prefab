@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_PointLightOuterRadius
       value: 0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 273460856555155484, guid: 2854244ce20bb6642bc361c6879ecb77, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.31000057
+      objectReference: {fileID: 0}
     - target: {fileID: 1598772856974599398, guid: 2854244ce20bb6642bc361c6879ecb77, type: 3}
       propertyPath: m_LocalScale.x
       value: 3.3333335
@@ -96,6 +100,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: -0.456
       objectReference: {fileID: 0}
+    - target: {fileID: 7484479278429037982, guid: 2854244ce20bb6642bc361c6879ecb77, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.31
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -103,6 +111,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6642540715508103123, guid: 2854244ce20bb6642bc361c6879ecb77, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1337352368523986197}
+    - targetCorrespondingSourceObject: {fileID: 6642540715508103123, guid: 2854244ce20bb6642bc361c6879ecb77, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7734276550025916540}
   m_SourcePrefab: {fileID: 100100000, guid: 2854244ce20bb6642bc361c6879ecb77, type: 3}
 --- !u!4 &2897844877070185631 stripped
 Transform:
@@ -136,6 +147,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &7734276550025916540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7077343493686306730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c192ccb2bc5b09347b23d841e0358cfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Inverse: 1
 --- !u!1001 &7607941828175938319
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -144,6 +168,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -287624812910038585, guid: 64f99311c9c287648a124b856b6c25e4, type: 3}
+      propertyPath: soulPrefab
+      value: 
+      objectReference: {fileID: 6495806148022659791, guid: 169ebb132111b4d48ad4247abf3d9e33, type: 3}
     - target: {fileID: 697226984509060339, guid: 64f99311c9c287648a124b856b6c25e4, type: 3}
       propertyPath: m_LocalPosition.x
       value: -24.9

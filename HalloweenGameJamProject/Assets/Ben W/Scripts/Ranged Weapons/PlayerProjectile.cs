@@ -41,7 +41,7 @@ public class PlayerProjectile : MonoBehaviour
         if (collision.CompareTag("Enemy"))
         {
             Enemy enemy = collision.GetComponent<Enemy>();
-            enemy.TakeDamage(playerStats.bulletDamage);
+            enemy.TakeDamage(playerStats.BulletDamage);
             Destroy(gameObject);
         }
     }
@@ -58,13 +58,13 @@ public class PlayerProjectile : MonoBehaviour
 
     public void DamageBoostPowerup()
     {
-        playerStats.bulletDamage += playerStats.bulletDamageIncrease;
+        playerStats.BulletDamage += playerStats.BulletDamageIncrease;
         StartCoroutine(DamageBoostTimer());
     }
 
     IEnumerator DamageBoostTimer()
     {
-        yield return new WaitForSeconds(playerStats.bulletDamageBoostDuration);
-        playerStats.bulletDamage -= playerStats.bulletDamageIncrease;
+        yield return new WaitForSeconds(playerStats.BulletDamageBoostDuration);
+        playerStats.BulletDamage -= playerStats.BulletDamageIncrease;
     }
 }
