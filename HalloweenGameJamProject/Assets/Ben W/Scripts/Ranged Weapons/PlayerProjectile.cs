@@ -15,12 +15,16 @@ public class PlayerProjectile : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        
+        rb.AddForce(transform.right * shootForce, ForceMode2D.Impulse);
+        StartCoroutine(Despawn());
     }
-
-    // Update is called once per frame
-    void Update()
+    
+    IEnumerator Despawn()
     {
-        TravelForward();
+        yield return new WaitForSeconds(timeAlive);
+        Destroy(gameObject);
+        
     }
 
     private void OnEnable()
@@ -46,15 +50,7 @@ public class PlayerProjectile : MonoBehaviour
         }
     }
 
-    public void TravelForward()
-    {
-        rb.AddForce(transform.right * shootForce, ForceMode2D.Impulse);
-        timeAlive -= Time.deltaTime;
-        if (timeAlive < 0)
-        {
-            Destroy(gameObject);
-        }
-    }
+    
 
     public void DamageBoostPowerup()
     {

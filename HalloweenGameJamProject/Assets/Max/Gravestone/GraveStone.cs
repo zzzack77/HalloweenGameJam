@@ -14,14 +14,21 @@ public class GraveStone : MonoBehaviour , IPayLighting
     [SerializeField] private Image rewardImage;
     [SerializeField] private TextMeshProUGUI rewardText;
     [SerializeField] private Sprite[] items;
-
+    
+    
+    [SerializeField] protected AudioSource audioSource;      // reference to AudioSource
+    [SerializeField] protected AudioClip equipClip;          // sound for equipping
+    [SerializeField] protected AudioClip randomizeClip; 
+    
+    
+    
     [SerializeField] private float RandomizerTime= 0.2f;
     public float lightingCost { get; } = 10;
     public bool bActive{get;set;}
     public bool PlayerInRange { get; private set; }
     public bool canInteract = true;
     private bool canInteractEquip = false;
-
+    private int SelectedEquipment; // change variable type to whatever's appropriate
     private Coroutine RandomizeImageHandle;
    
     public bool CanActivate(PlayerStats playerStats)
@@ -38,8 +45,18 @@ public class GraveStone : MonoBehaviour , IPayLighting
         
         if (canInteractEquip && bActive)
         {
-            Debug.Log("canInteractEquip");
+           
             //------- equip logic here -------
+            
+            //player.new ability(selectedEquipment) example
+            
+            
+            // sounds
+            if (audioSource && equipClip)
+            {
+                audioSource.PlayOneShot(equipClip);
+            }
+            
             rewardCanvas.gameObject.SetActive(false);
             canInteractEquip = false;
             return true;
@@ -54,7 +71,10 @@ public class GraveStone : MonoBehaviour , IPayLighting
             rewardCanvas.gameObject.SetActive(true);
             RandomizeImageHandle = StartCoroutine(RandomizeImage());
         }
-        
+        if (audioSource && randomizeClip)
+        {
+            audioSource.PlayOneShot(randomizeClip);
+        }
         Invoke(nameof(DelayedReward) , 2f);
     }
 
@@ -89,6 +109,7 @@ public class GraveStone : MonoBehaviour , IPayLighting
                 break;
         }
         rewardImage.sprite = items[i];
+        SelectedEquipment = i;
         if(rewardText != null)
         {
             rewardText.gameObject.SetActive(true);
