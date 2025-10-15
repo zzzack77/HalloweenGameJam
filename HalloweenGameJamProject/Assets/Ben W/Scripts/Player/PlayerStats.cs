@@ -14,7 +14,15 @@ public class PlayerStats : MonoBehaviour
 
     public float MovementSpeed { get => movementSpeed; set => movementSpeed = value; }
     public float BoostedSpeed { get => boostedSpeed; set => boostedSpeed = value; }
-    public float LightHP { get => lightHP; set => lightHP = value; }
+    public float LightHP 
+    { 
+        get => lightHP;
+        set
+        {
+            lightHP = value;
+            healthToLight.AdjustLight(value);
+        } 
+    }
     public float LightHPStart { get => lightHPStart; set => lightHPStart = value; }
     public float LightHPMax { get => lightHPMax; set => lightHPMax = value; }
     public float LightHPLossRate { get => lightHPLossRate; set => lightHPLossRate = value; }
@@ -102,5 +110,10 @@ public class PlayerStats : MonoBehaviour
     public bool CanThrowMine { get => canThrowMine; set => canThrowMine = value; }
     public bool CanUseFireWheel { get => canUseFireWheel; set => canUseFireWheel = value; }
 
+    private HealthToLight healthToLight;
 
+    private void Start()
+    {
+        healthToLight = GetComponent<HealthToLight>();
+    }
 }
