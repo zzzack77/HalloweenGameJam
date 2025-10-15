@@ -29,7 +29,7 @@
                 <ui:Label name="name8" text="-" class="leaderboardText" />
                 <ui:Label name="name9" text="-" class="leaderboardText" />
                 <ui:Label name="name10" text="-" class="leaderboardText" />
-                <ui:Label name="playerName" text="Enter Username..." class="leaderboardText" style="border-bottom-width: 0; color: rgb(222, 226, 0);" />
+                <ui:Label name="playerName" text="-" class="leaderboardText" style="border-bottom-width: 0; color: rgb(222, 226, 0);" />
             </ui:VisualElement>
             <ui:VisualElement style="flex-grow: 1; width: 20%; border-left-color: rgb(255, 255, 255); border-right-color: rgb(255, 255, 255); border-top-color: rgb(255, 255, 255); border-bottom-color: rgb(255, 255, 255); border-left-width: 3px;">
                 <ui:Label text="Score" name="Label" class="leaderboardText" style="font-size: 52px; border-left-color: rgb(255, 255, 255); border-right-color: rgb(255, 255, 255); border-top-color: rgb(255, 255, 255); border-bottom-color: rgb(255, 255, 255); border-bottom-width: 3px;" />

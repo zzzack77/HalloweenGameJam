@@ -1,7 +1,6 @@
-﻿using System.Linq;
-using System.Text.RegularExpressions;
+﻿using System.Text.RegularExpressions;
 using UnityEngine;
-using UnityEngine.SocialPlatforms.Impl;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 public class LeaderboardInputController : MonoBehaviour
@@ -9,18 +8,26 @@ public class LeaderboardInputController : MonoBehaviour
     private LeaderboardControler leaderboardController;
 
     public UIDocument mainMenuUIDocument;
-    public UIDocument leaderboardUIDocument;
+    //public UIDocument leaderboardUIDocument;
 
-    public GameObject mainMenu;
+    public AudioSource clickAudio;
+    public AudioSource hoverAudio;
+
+    //public GameObject mainMenu;
 
     private VisualElement root;
 
+    private Label playerScore;
     private TextField textInput;
     private Label feedbackLabel;
     private Button submitButton;
-    private Button returnButton;
 
-    private int testScore = 64;
+    private Button returnButton;
+    private Button playAgainButton;
+
+
+
+    private int testScore = 65;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void OnEnable()
@@ -30,11 +37,14 @@ public class LeaderboardInputController : MonoBehaviour
         root = uiDocument.rootVisualElement;
 
         // Find UI elements
+        playerScore = root.Q<Label>("playerScore");
+        playerScore.text = PlayerPrefs.GetInt("Score").ToString();
         textInput = root.Q<TextField>("textInput");
-        textInput.maxLength = 16;
+        textInput.maxLength = 15;
         feedbackLabel = root.Q<Label>("errorMessage");
         submitButton = root.Q<Button>("enterUsername");
-        returnButton = root.Q<Button>("returnButton");
+        returnButton = root.Q<Button>("return-button");
+        playAgainButton = root.Q<Button>("playAgain-button");
 
         // input validation checks
         this.textInput.RegisterValueChangedCallback(evt =>
@@ -48,10 +58,17 @@ public class LeaderboardInputController : MonoBehaviour
         // On buttons clicks
         submitButton.clicked += () => HandleSubmit(textInput.value);
         returnButton.clicked += () => ReturnButtonPress();
+        playAgainButton.clicked += () => PlayAgainButtonPress();
+
+        submitButton.RegisterCallback<MouseEnterEvent>(evt => { PlayHoverSound(); });
+        returnButton.RegisterCallback<MouseEnterEvent>(evt => { PlayHoverSound(); });
+        playAgainButton.RegisterCallback<MouseEnterEvent>(evt => { PlayHoverSound(); });
+        //textInput.RegisterCallback<MouseEnterEvent>(evt => { PlayHoverSound(); });
     }
 
     void HandleSubmit(string username)
     {
+        clickAudio.Play();
         // Check if username is valid using the same validation logic
         if (GetValidationError(username) == null)
         {
@@ -112,24 +129,36 @@ public class LeaderboardInputController : MonoBehaviour
         if (name.Length < 3)
             return "Must be at least 3 characters.";
 
-        if (name.Length > 16)
-            return "Maximum 16 characters.";
+        if (name.Length > 15)
+            return "Maximum 15 characters.";
 
         // Allowed characters
         if (!Regex.IsMatch(name, @"^[a-zA-Z0-9_-]+$"))
             return "Only letters, numbers, _ and - allowed.";
 
         // Disallowed words
-        string[] banned = { "admin", "mod", "test" };
-        if (banned.Any(w => name.ToLower().Contains(w)))
-            return "That name is not allowed.";
+        //string[] banned = { "" };
+        //if (banned.Any(w => name.ToLower().Contains(w)))
+        //    return "That name is not allowed.";
 
         return null; // no error
     }
     void ReturnButtonPress()
     {
-        mainMenu.SetActive(true);
+        clickAudio.Play();
+        SceneManager.LoadScene("MenuScene");
+
+        //mainMenu.SetActive(true);
         this.gameObject.SetActive(false);
+    }
+    void PlayAgainButtonPress()
+    {
+        clickAudio.Play();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+    void PlayHoverSound()
+    {
+        hoverAudio.Play();
     }
 
 }
