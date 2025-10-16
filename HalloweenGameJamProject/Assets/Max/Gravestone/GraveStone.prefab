@@ -776,13 +776,19 @@ MonoBehaviour:
   rewardImage: {fileID: 260084363602194320}
   rewardText: {fileID: 932761622077352494}
   items:
-  - {fileID: -1251921460288418418, guid: 5184da77aeaff194486c667fac2df8a6, type: 3}
-  - {fileID: -2032160249, guid: 20be030eaeb16b149b5b6c63276a3eb6, type: 3}
-  - {fileID: 7938417114378459739, guid: 152e0a5c353965841b75b27a6d893403, type: 3}
-  - {fileID: 5069602607931332970, guid: 152e0a5c353965841b75b27a6d893403, type: 3}
+  - {fileID: 8065230681185555814, guid: b96daded6d436da459f07665284d7f78, type: 3}
+  - {fileID: 403208247147482157, guid: 85b5061d2ad8d6b4f9b3e49175c9a8a9, type: 3}
+  - {fileID: 5986030973748356752, guid: 202686f1c519a7a40ab060df41447f47, type: 3}
+  - {fileID: -6977805274951193238, guid: fcd94a692a53afe41b0bb8e3f57583e7, type: 3}
+  - {fileID: -6977805274951193238, guid: fcd94a692a53afe41b0bb8e3f57583e7, type: 3}
+  - {fileID: -6977805274951193238, guid: fcd94a692a53afe41b0bb8e3f57583e7, type: 3}
+  - {fileID: 6390213738485850488, guid: ad84a30e317cb554e8ce0465802f1f3c, type: 3}
+  - {fileID: 4887033997381331036, guid: b76db6d617c14ba46bbd8c9d910d0aba, type: 3}
   audioSource: {fileID: 5643057231336632150}
   equipClip: {fileID: 8300000, guid: 569567f64d8ab5b459eb3921ef98b392, type: 3}
-  randomizeClip: {fileID: 8300000, guid: 22e42c94261bfda45acf36af3b6d4d6b, type: 3}
+  randomizeClip: {fileID: 0}
+  abilityManager: {fileID: 0}
+  weaponSelect: {fileID: 0}
   RandomizerTime: 0.1
   canInteract: 1
 --- !u!212 &4535704539113239882
