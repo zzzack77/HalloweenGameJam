@@ -9,7 +9,9 @@ public class Campfire : MonoBehaviour, IPayLighting
     //Player Stats
     private PlayerStats playerStats;
     // Audio
-    public AudioSource campfireStartAudio;
+    [SerializeField] private AudioClip campfireStartAudio;
+
+    //public AudioSource campfireStartAudio;
     public AudioSource campfireIdelAudio;
 
     // Sprites
@@ -90,7 +92,8 @@ public class Campfire : MonoBehaviour, IPayLighting
     // Call to activate campfire with soft start lighting
     public void Activate()
     {
-        campfireStartAudio.Play();
+        SoundFXManager.Instance.PlaySoundFXClip(campfireStartAudio, transform, 1f);
+        //campfireStartAudio.Play();
         campfireIdelAudio.Play();
 
         particles.Play();

@@ -20,7 +20,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4122205893715525869
 Transform:
   m_ObjectHideFlags: 0
@@ -82,6 +82,7 @@ MonoBehaviour:
   mainMenuUIDocument: {fileID: 0}
   clickAudio: {fileID: 4018125164903635202}
   hoverAudio: {fileID: 7802977198991942950}
+  deathAudioMusic: {fileID: 8300000, guid: 72e28c145a6de394abc1ad5f3498817d, type: 3}
 --- !u!82 &4018125164903635202
 AudioSource:
   m_ObjectHideFlags: 0
