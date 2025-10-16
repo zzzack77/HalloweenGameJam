@@ -45,14 +45,14 @@ TagManager:
   - name: BehindPlayer
     uniqueID: 2273176489
     locked: 0
+  - name: Campfire
+    uniqueID: 3548257001
+    locked: 0
   - name: Player
     uniqueID: 2922836565
     locked: 0
   - name: InfrontPlayer
     uniqueID: 3317315297
-    locked: 0
-  - name: Campfire
-    uniqueID: 3548257001
     locked: 0
   - name: Smoke
     uniqueID: 2095756753
