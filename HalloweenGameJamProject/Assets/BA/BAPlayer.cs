@@ -17,10 +17,14 @@ public class BAPlayer : MonoBehaviour
     [SerializeField] GameObject mine;
     [SerializeField] GameObject fireWheel;
 
-    public AugmentStructure effects; 
-    
-    
+    public AugmentStructure effects;
+
+    [SerializeField] private AudioClip deathAudio;
+
+
     private IPayLighting interactable;
+
+   
 
 
    private float PlayerStatsLightHP;
@@ -97,6 +101,8 @@ public class BAPlayer : MonoBehaviour
         playerStats.LightHP -= value;
         if (playerStats.LightHP < 0)
         {
+            Debug.Log("player died");
+            SoundFXManager.Instance.PlaySoundFXClip(deathAudio, transform, 1f);
             //this is for death stuff 
         }
     }

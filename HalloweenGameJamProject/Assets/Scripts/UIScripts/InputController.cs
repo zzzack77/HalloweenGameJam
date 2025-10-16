@@ -32,7 +32,7 @@ public class LeaderboardInputController : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void OnEnable()
     {
-        SoundFXManager.Instance.PlaySoundFXClip(deathAudioMusic, transform, 0.2f);
+        SoundFXManager.Instance.PlaySoundFXClip(deathAudioMusic, transform, 0.1f);
         // Get doc and ui root
         var uiDocument = GetComponent<UIDocument>();
         root = uiDocument.rootVisualElement;
