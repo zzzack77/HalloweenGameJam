@@ -11,7 +11,7 @@ public class PlayerStats : MonoBehaviour
     private float lightHPMax = 100f;
     private float lightHPLossRate = 1f;
     private float soulLightGain = 2f;
-    private float camplightRegenRate = 5f;
+    private float camplightRegenRate = 4f;
     private int score;
     
 
@@ -38,7 +38,7 @@ public class PlayerStats : MonoBehaviour
 
 
     [Header("Sinks")]
-    private float campfireLightCost = 15f;
+    private float campfireLightCost = 20f;
     private float graveStoneCost = 20f;
 
     public float CampfireLightCost { get => campfireLightCost; set => campfireLightCost = value; }
