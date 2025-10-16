@@ -786,7 +786,7 @@ MonoBehaviour:
   - {fileID: 4887033997381331036, guid: b76db6d617c14ba46bbd8c9d910d0aba, type: 3}
   audioSource: {fileID: 5643057231336632150}
   equipClip: {fileID: 8300000, guid: 569567f64d8ab5b459eb3921ef98b392, type: 3}
-  randomizeClip: {fileID: 0}
+  randomizeClip: {fileID: 8300000, guid: 84d17e2b403407548bb967a1e4bd4a65, type: 3}
   abilityManager: {fileID: 0}
   weaponSelect: {fileID: 0}
   RandomizerTime: 0.1
