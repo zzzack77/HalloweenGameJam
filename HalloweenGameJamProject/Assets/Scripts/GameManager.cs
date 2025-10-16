@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
 
     [Header("PlayerStats")]
     public int score = 0;
+    public SpriteRenderer playerSpriteRenderer;
 
     void Awake()
     {
@@ -47,5 +48,28 @@ public class GameManager : MonoBehaviour
     public void ResetScore()
     {
         playerStats.Score = 0;
+    }
+
+    //                        //
+    //  Hit Flash Management  //
+    //                        //
+    public void HitFlash(SpriteRenderer spriteRenderer)
+    {
+        StartCoroutine(HitFlashCoroutine(spriteRenderer));
+    }
+    public void HitFlashPlayer()
+    {
+        StartCoroutine(HitFlashCoroutine(playerSpriteRenderer));
+    }
+
+    private System.Collections.IEnumerator HitFlashCoroutine(SpriteRenderer spriteRenderer)
+    {
+        if (spriteRenderer == null)
+            yield break;
+
+        Color originalColor = spriteRenderer.color;
+        spriteRenderer.color = Color.red;
+        yield return new WaitForSeconds(0.1f);
+        spriteRenderer.color = originalColor;
     }
 }

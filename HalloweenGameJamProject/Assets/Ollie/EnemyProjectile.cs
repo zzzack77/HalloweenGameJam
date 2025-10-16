@@ -33,7 +33,8 @@ public class EnemyProjectile : MonoBehaviour
             lastHit = Time.time;
 
             BAPlayer player = collision.GetComponent<Collider2D>().GetComponent<BAPlayer>();
-            player.lightReducer(10f);
+            player.lightReducer(6f);
+            GameManager.Instance.HitFlashPlayer();
             GameObject.Destroy(this.gameObject);
 
         }

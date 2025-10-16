@@ -176,6 +176,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7431739023828536951}
     m_Modifications:
+    - target: {fileID: 710889969869650831, guid: b5c31279801393e42a4a73ed301e3476, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 710889969869650831, guid: b5c31279801393e42a4a73ed301e3476, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 710889969869650831, guid: b5c31279801393e42a4a73ed301e3476, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5260460429951837447, guid: b5c31279801393e42a4a73ed301e3476, type: 3}
       propertyPath: m_Name
       value: SkeletonSpriteHolder
@@ -251,6 +263,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Inverse: 1
+--- !u!212 &4775437055958466472 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 710889969869650831, guid: b5c31279801393e42a4a73ed301e3476, type: 3}
+  m_PrefabInstance: {fileID: 5447196220887122983}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7966827591226096260
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -271,6 +288,10 @@ PrefabInstance:
       propertyPath: circleCollider
       value: 
       objectReference: {fileID: 119414434515221280}
+    - target: {fileID: -287624812910038585, guid: 520ed75a7fa75e44c9b99e1968f282a9, type: 3}
+      propertyPath: spriteRenderer
+      value: 
+      objectReference: {fileID: 4775437055958466472}
     - target: {fileID: 697226984509060339, guid: 520ed75a7fa75e44c9b99e1968f282a9, type: 3}
       propertyPath: m_LocalPosition.x
       value: -19.911375
