@@ -31,10 +31,9 @@ public class Pistol : PlayerRangedWeapon
         
         // Play shot sound
        
-        int rand = Random.Range(0, shootClip.Length);
-        if (audioSource && shootClip[rand])
+        if (SoundFXManager.Instance != null)
         {
-            audioSource.PlayOneShot(shootClip[rand]);
+            SoundFXManager.Instance.PlayRandomSoundFXClip(shootClip, transform, 1f);
         }
        
         

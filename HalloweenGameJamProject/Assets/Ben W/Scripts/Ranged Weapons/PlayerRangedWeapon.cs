@@ -4,13 +4,13 @@ using UnityEngine;
 public class PlayerRangedWeapon : MonoBehaviour
 {
     public int currentAmmo = 0;
-    [SerializeField] protected AudioSource audioSource;      // reference to AudioSource
+    
     [SerializeField] protected AudioClip[] shootClip;          // sound for shooting
     [SerializeField] protected AudioClip reloadClip;         // sound for reloading
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-       audioSource = GetComponent<AudioSource>();
+      
     }
 
     // Update is called once per frame
@@ -35,9 +35,9 @@ public class PlayerRangedWeapon : MonoBehaviour
 
     public IEnumerator ReloadCountdown(float reloadTime, int maxAmmo)
     {
-        if (audioSource && reloadClip)
+        if (SoundFXManager.Instance != null)
         {
-            audioSource.PlayOneShot(reloadClip);
+            SoundFXManager.Instance.PlaySoundFXClip(reloadClip, transform, 1f);
         }
         
         yield return new WaitForSeconds(reloadTime);
