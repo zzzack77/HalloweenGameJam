@@ -46,12 +46,14 @@ public class BAPlayer : MonoBehaviour
         // Get the Rigidbody2D component
         rb = GetComponent<Rigidbody2D>();
         effects = new AugmentStructure();
+        effects.setAug(0, true);
         effects.setAug(1, true);
         effects.setAug(2, true);
 
         playerStats = GetComponent<PlayerStats>();
 
         playerStats.LightHP = playerStats.LightHPStart;
+        playerStats.BulletDamage = 2; 
     }
 
     void Update()

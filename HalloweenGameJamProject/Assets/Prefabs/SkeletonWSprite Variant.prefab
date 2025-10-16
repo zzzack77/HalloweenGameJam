@@ -260,9 +260,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -287624812910038585, guid: 520ed75a7fa75e44c9b99e1968f282a9, type: 3}
+      propertyPath: maxHealth
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -287624812910038585, guid: 520ed75a7fa75e44c9b99e1968f282a9, type: 3}
       propertyPath: soulPrefab
       value: 
       objectReference: {fileID: 6495806148022659791, guid: 169ebb132111b4d48ad4247abf3d9e33, type: 3}
+    - target: {fileID: -287624812910038585, guid: 520ed75a7fa75e44c9b99e1968f282a9, type: 3}
+      propertyPath: circleCollider
+      value: 
+      objectReference: {fileID: 119414434515221280}
     - target: {fileID: 697226984509060339, guid: 520ed75a7fa75e44c9b99e1968f282a9, type: 3}
       propertyPath: m_LocalPosition.x
       value: -19.911375
@@ -333,6 +341,11 @@ PrefabInstance:
       addedObject: {fileID: 53832637201533774}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 520ed75a7fa75e44c9b99e1968f282a9, type: 3}
+--- !u!58 &119414434515221280 stripped
+CircleCollider2D:
+  m_CorrespondingSourceObject: {fileID: 8009623007848464804, guid: 520ed75a7fa75e44c9b99e1968f282a9, type: 3}
+  m_PrefabInstance: {fileID: 7966827591226096260}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7431739023828536951 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 697226984509060339, guid: 520ed75a7fa75e44c9b99e1968f282a9, type: 3}
