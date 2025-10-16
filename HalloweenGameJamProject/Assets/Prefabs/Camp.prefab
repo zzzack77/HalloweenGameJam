@@ -5167,7 +5167,7 @@ MonoBehaviour:
   m_ApplyToSortingLayers: 00000000a9eb7d8755f236aee136bac5d1b5ea7c
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
-  m_LightOrder: 0
+  m_LightOrder: -1
   m_AlphaBlendOnOverlap: 0
   m_OverlapOperation: 0
   m_NormalMapDistance: 1
@@ -10612,7 +10612,7 @@ MonoBehaviour:
   m_ApplyToSortingLayers: 00000000a9eb7d8755f236aee136bac5e91a7ed3d1b5ea7c
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
-  m_LightOrder: 0
+  m_LightOrder: -1
   m_AlphaBlendOnOverlap: 0
   m_OverlapOperation: 0
   m_NormalMapDistance: 1
@@ -10724,7 +10724,7 @@ MonoBehaviour:
   m_ApplyToSortingLayers: 00000000a9eb7d8755f236aee136bac5e91a7ed3d1b5ea7c
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
-  m_LightOrder: 0
+  m_LightOrder: -1
   m_AlphaBlendOnOverlap: 0
   m_OverlapOperation: 0
   m_NormalMapDistance: 3
@@ -10918,7 +10918,7 @@ MonoBehaviour:
   m_ApplyToSortingLayers: 00000000a9eb7d8755f236aee136bac5d1b5ea7c
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
-  m_LightOrder: 0
+  m_LightOrder: -1
   m_AlphaBlendOnOverlap: 0
   m_OverlapOperation: 0
   m_NormalMapDistance: 1

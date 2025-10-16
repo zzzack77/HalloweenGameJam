@@ -18,12 +18,15 @@ public class LightProximity : MonoBehaviour
     void Start()
     {
         playerStats = GameObject.Find("Player").GetComponent<PlayerStats>();
-        player = GameObject.Find("Player").GetComponent<BAPlayer>();
+        
     }
 
     void Update()
     {
         if (LightManager.Instance == null) return;
+
+        LightBurn();
+        lightGain();
 
         bool nearLight = LightManager.Instance.IsNearAnyLight(transform.position);
 
@@ -32,8 +35,6 @@ public class LightProximity : MonoBehaviour
             // Entered safe area
             isSafe = true;
             Debug.Log("Entered light area");
-
-            LightGain();
 
             // Fade out danger sound if playing
             if (dangerCoroutine != null)
@@ -48,8 +49,6 @@ public class LightProximity : MonoBehaviour
             // Left safe area
             isSafe = false;
             Debug.Log("Left light area - danger!");
-
-            LightBurn();
 
             // Start danger sequence
             if (dangerCoroutine == null)
@@ -97,14 +96,21 @@ public class LightProximity : MonoBehaviour
 
     void LightBurn()
     {
-        player.lightReducer(playerStats.LightHPLossRate * Time.deltaTime);
+        if( isSafe == false)
+        {
+            // Player is not in light, player will take damage
+            player = GameObject.Find("Player").GetComponent<BAPlayer>();
+            player.lightReducer(playerStats.LightHPLossRate * Time.deltaTime);
+        }
     }
-
-    void LightGain()
-
+    void lightGain()
     {
-        player.lightIncreaser(playerStats.LightRegenRate * Time.deltaTime);
-        
+        if (isSafe == true)
+        {
+            // Player is in campfire light, player will heal
+            player = GameObject.Find("Player").GetComponent<BAPlayer>();
+            player.lightIncreaser(playerStats.CamplightRegenRate * Time.deltaTime);
+        }
     }
 
 

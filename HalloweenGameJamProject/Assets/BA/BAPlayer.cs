@@ -109,6 +109,11 @@ public class BAPlayer : MonoBehaviour
         }
     }
 
+    //void lightBurn()
+    //{
+    //    lightReducer(playerStats.LightHPLossRate * Time.deltaTime);
+    //}
+
     public void Death()
     {
         //Adds up score and saves it

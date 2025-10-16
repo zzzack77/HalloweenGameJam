@@ -9,9 +9,9 @@ public class PlayerStats : MonoBehaviour
     private float lightHP;
     private float lightHPStart = 50f;
     private float lightHPMax = 100f;
-    private float lightHPLossRate = 10f;
+    private float lightHPLossRate = 1f;
     private float soulLightGain = 2f;
-    private float lightRegenRate = 5f;
+    private float camplightRegenRate = 5f;
     private int score;
     
 
@@ -25,19 +25,21 @@ public class PlayerStats : MonoBehaviour
         {
             lightHP = value;
             healthToLight.AdjustLight(value);
+
+            //healthToLight.AdjustLight();
         } 
     }
     public float LightHPStart { get => lightHPStart; set => lightHPStart = value; }
     public float LightHPMax { get => lightHPMax; set => lightHPMax = value; }
     public float LightHPLossRate { get => lightHPLossRate; set => lightHPLossRate = value; }
     public float SoulLightGain { get => soulLightGain; set => soulLightGain = value; }
-    public float LightRegenRate { get => lightRegenRate; set => lightRegenRate = value; }
+    public float CamplightRegenRate { get => camplightRegenRate; set => camplightRegenRate = value; }
     public int Score { get => score; set => score = value; }
 
 
     [Header("Sinks")]
-    private float campfireLightCost = 30f;
-    private float graveStoneCost = 40f;
+    private float campfireLightCost = 15f;
+    private float graveStoneCost = 20f;
 
     public float CampfireLightCost { get => campfireLightCost; set => campfireLightCost = value; }
     public float GraveStoneCost { get => graveStoneCost; set => graveStoneCost = value; }
@@ -122,5 +124,10 @@ public class PlayerStats : MonoBehaviour
     private void Start()
     {
         healthToLight = GetComponent<HealthToLight>();
+    }
+
+    private void Update()
+    {
+        Debug.Log ("Light HP: " + LightHP);
     }
 }
