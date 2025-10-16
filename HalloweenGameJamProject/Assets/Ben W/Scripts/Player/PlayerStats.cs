@@ -121,9 +121,11 @@ public class PlayerStats : MonoBehaviour
 
     private HealthToLight healthToLight;
 
-    private void Start()
+    
+    private void Awake()
     {
         healthToLight = GetComponent<HealthToLight>();
+
     }
 
     private void Update()
