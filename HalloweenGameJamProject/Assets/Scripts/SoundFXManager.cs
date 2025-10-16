@@ -27,6 +27,9 @@ public class SoundFXManager : MonoBehaviour
 
         Destroy(audioSource.gameObject, clipLength);
     }
+
+
+
     public void PlayRandomSoundFXClip(AudioClip[] audioClip, Transform spawnTransform, float volume)
     {
         int rand = Random.Range(0, audioClip.Length);

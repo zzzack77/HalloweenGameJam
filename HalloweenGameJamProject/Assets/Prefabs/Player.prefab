@@ -51,12 +51,12 @@ GameObject:
   - component: {fileID: 2330806885949301522}
   - component: {fileID: 6223534895403540127}
   - component: {fileID: 2957586310588132896}
-  - component: {fileID: 2890983695464927388}
   - component: {fileID: 7598545819507089097}
   - component: {fileID: 2543807229860034871}
   - component: {fileID: 2374972643277086612}
   - component: {fileID: 1129222885865213888}
   - component: {fileID: 5081438919844507167}
+  - component: {fileID: 8441306847530671914}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -175,6 +175,7 @@ MonoBehaviour:
   animator: {fileID: 1101204832469036289}
   mine: {fileID: 7074812357325333642, guid: a64d04f8a897ebc4facbb0569eb2007b, type: 3}
   fireWheel: {fileID: 2648621909747207633}
+  deathAudio: {fileID: 8300000, guid: 20b71ea060b2651489bf8245ca223481, type: 3}
 --- !u!50 &3935763004969015378
 Rigidbody2D:
   serializedVersion: 5
@@ -290,20 +291,6 @@ MonoBehaviour:
   deathAudio: {fileID: 0}
   fadeSpeed: 0.5
   dangerDelay: 17
---- !u!114 &2890983695464927388
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 640649217180564966}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38f48a8d66b2adc46887f23a3a88ac01, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ShadowGroup: 0
-  m_Priority: 0
 --- !u!82 &7598545819507089097
 AudioSource:
   m_ObjectHideFlags: 0
@@ -539,6 +526,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ability: 1
+--- !u!114 &8441306847530671914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 640649217180564966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e97b81529bce1a498ca46353b56d139, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  score: 0
 --- !u!1 &1203985244614211709
 GameObject:
   m_ObjectHideFlags: 0
@@ -835,7 +835,7 @@ MonoBehaviour:
   m_ComponentVersion: 2
   m_LightType: 1
   m_BlendStyleIndex: 0
-  m_FalloffIntensity: 0.373
+  m_FalloffIntensity: 0.501
   m_Color: {r: 0.31763974, g: 0.8113208, b: 0.7636234, a: 1}
   m_Intensity: 5.33
   m_LightVolumeIntensity: 1
@@ -856,8 +856,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.00054979324, y: 0.0006504059, z: 0}
-    m_Extent: {x: 9.55905, y: 9.55935, z: 0}
+    m_Center: {x: -0.00034999847, y: 0.00064992905, z: 0}
+    m_Extent: {x: 10.61875, y: 10.61915, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -865,7 +865,7 @@ MonoBehaviour:
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1
-  m_ShapeLightFalloffSize: 9.06
+  m_ShapeLightFalloffSize: 10.12
   m_ShapeLightFalloffOffset: {x: 0, y: 0}
   m_ShapePath:
   - {x: 0.5, y: 0, z: 0}
@@ -1928,9 +1928,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentAmmo: 0
+  audioSource: {fileID: 0}
+  shootClip: []
+  reloadClip: {fileID: 0}
   shotPoint: {fileID: 6123498275844252930}
   bullet: {fileID: 8678158489558912884, guid: 79fac4b98823e9540bb97641606fa9fb, type: 3}
   maxAmmo: 30
+  fireRate: 0.1
 --- !u!212 &6996226638034669333 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 5637921383617926247, guid: 463f51a405eaf4046b0ee79319d0c7d9, type: 3}
