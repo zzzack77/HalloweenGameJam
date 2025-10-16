@@ -175,6 +175,7 @@ MonoBehaviour:
   animator: {fileID: 1101204832469036289}
   mine: {fileID: 7074812357325333642, guid: a64d04f8a897ebc4facbb0569eb2007b, type: 3}
   fireWheel: {fileID: 2648621909747207633}
+  DeathScreen: {fileID: 0}
 --- !u!50 &3935763004969015378
 Rigidbody2D:
   serializedVersion: 5
@@ -183,7 +184,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 640649217180564966}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -201,7 +202,7 @@ Rigidbody2D:
   m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &46578971388232962
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1928,9 +1929,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentAmmo: 0
+  audioSource: {fileID: 0}
+  shootClip: []
+  reloadClip: {fileID: 0}
   shotPoint: {fileID: 6123498275844252930}
   bullet: {fileID: 8678158489558912884, guid: 79fac4b98823e9540bb97641606fa9fb, type: 3}
   maxAmmo: 30
+  fireRate: 0.1
 --- !u!212 &6996226638034669333 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 5637921383617926247, guid: 463f51a405eaf4046b0ee79319d0c7d9, type: 3}
