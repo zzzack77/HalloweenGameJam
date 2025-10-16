@@ -346,10 +346,6 @@ PrefabInstance:
       propertyPath: circleCollider
       value: 
       objectReference: {fileID: 5191739177532568020}
-    - target: {fileID: -287624812910038585, guid: 5ae76704bf56d344cb9c4ccfd40bf831, type: 3}
-      propertyPath: spriteRenderer
-      value: 
-      objectReference: {fileID: 1839418887880682334}
     - target: {fileID: 697226984509060339, guid: 5ae76704bf56d344cb9c4ccfd40bf831, type: 3}
       propertyPath: m_LocalPosition.x
       value: -26.24
