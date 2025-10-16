@@ -10,7 +10,7 @@ public class EnemyProjectile : MonoBehaviour
     private float maxSpeed = 10f;
     private float acceleration = 20f;
     private Vector2 dir;
-
+    private float rotationSpeed = 150f;
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -21,6 +21,8 @@ public class EnemyProjectile : MonoBehaviour
 
     void Update()
     {
+        // Rotate around Z axis (2D rotation)
+        transform.Rotate(0f, 0f, -rotationSpeed * Time.deltaTime);
         GO();
     }
 
