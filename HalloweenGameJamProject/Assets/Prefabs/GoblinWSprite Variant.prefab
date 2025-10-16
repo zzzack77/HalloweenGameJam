@@ -988,6 +988,34 @@ PrefabInstance:
       propertyPath: circleCollider
       value: 
       objectReference: {fileID: 482786179504784043}
+    - target: {fileID: -287624812910038585, guid: 64f99311c9c287648a124b856b6c25e4, type: 3}
+      propertyPath: spriteRenderer
+      value: 
+      objectReference: {fileID: 4957844055841078095}
+    - target: {fileID: -287624812910038585, guid: 64f99311c9c287648a124b856b6c25e4, type: 3}
+      propertyPath: hurtSounds.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: -287624812910038585, guid: 64f99311c9c287648a124b856b6c25e4, type: 3}
+      propertyPath: 'hurtSounds.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8300000, guid: ac64f64d4370779448f9664a637aaff8, type: 3}
+    - target: {fileID: -287624812910038585, guid: 64f99311c9c287648a124b856b6c25e4, type: 3}
+      propertyPath: 'hurtSounds.Array.data[1]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 8acc362db2f7b3b439b13636e92d9341, type: 3}
+    - target: {fileID: -287624812910038585, guid: 64f99311c9c287648a124b856b6c25e4, type: 3}
+      propertyPath: 'hurtSounds.Array.data[2]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 0277c5fa0dd7b2746a3df47fcd8a7a06, type: 3}
+    - target: {fileID: -287624812910038585, guid: 64f99311c9c287648a124b856b6c25e4, type: 3}
+      propertyPath: 'hurtSounds.Array.data[3]'
+      value: 
+      objectReference: {fileID: 8300000, guid: d1cac634a19e8a24aa107d6cb53141a6, type: 3}
+    - target: {fileID: -287624812910038585, guid: 64f99311c9c287648a124b856b6c25e4, type: 3}
+      propertyPath: 'hurtSounds.Array.data[4]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 610c9440f1ed971469ac95f07be45210, type: 3}
     - target: {fileID: 697226984509060339, guid: 64f99311c9c287648a124b856b6c25e4, type: 3}
       propertyPath: m_LocalPosition.x
       value: -24.9

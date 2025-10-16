@@ -16,7 +16,8 @@ GameObject:
   - component: {fileID: 8285044084869026310}
   - component: {fileID: 1015014844126189329}
   - component: {fileID: 2717411557023190011}
-  m_Layer: 0
+  - component: {fileID: 7984031716429633457}
+  m_Layer: 10
   m_Name: Camp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -98,7 +99,7 @@ CircleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1024
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -5112,6 +5113,43 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!70 &7984031716429633457
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1963116341231503971}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: -0.015715431, y: -0.5706375}
+  m_Size: {x: 1.456574, y: 0.46687633}
+  m_Direction: 1
 --- !u!1 &2433008279602617494
 GameObject:
   m_ObjectHideFlags: 0
@@ -5122,7 +5160,7 @@ GameObject:
   m_Component:
   - component: {fileID: 49024283708536757}
   - component: {fileID: 4102205026022635227}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CenterOrage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5235,7 +5273,7 @@ GameObject:
   - component: {fileID: 7347769234298796366}
   - component: {fileID: 6712536026803995164}
   - component: {fileID: 746123491746708816}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10069,7 +10107,7 @@ GameObject:
   - component: {fileID: 4954891280325857868}
   - component: {fileID: 415126785140506831}
   - component: {fileID: 5434671087163505948}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10170,7 +10208,7 @@ GameObject:
   m_Component:
   - component: {fileID: 300055640343522670}
   - component: {fileID: 8034651707623452567}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: UpLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10282,7 +10320,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6715782453076836645}
   - component: {fileID: 965465340661229801}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: UnlitCampFire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10368,7 +10406,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2852395893954883438}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Lights
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10406,7 +10444,7 @@ GameObject:
   - component: {fileID: 7680072599325203645}
   - component: {fileID: 6969647557360915846}
   - component: {fileID: 1168535930712016691}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10480,7 +10518,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4530719680389553975}
   - component: {fileID: 2837540791841191694}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: shadow_Circle_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10567,7 +10605,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6327538414905229282}
   - component: {fileID: 6323841266896454918}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: OuterRed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10679,7 +10717,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3658890128832305988}
   - component: {fileID: 440835579921681617}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Light 2D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10764,7 +10802,7 @@ GameObject:
   - component: {fileID: 6246604500095865894}
   - component: {fileID: 2848212928484208001}
   - component: {fileID: 7491350429062029895}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: LitCampFire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10828,7 +10866,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -746710295
-  m_SortingLayer: 4
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: -3591475534189650280, guid: 413e80193e582544eab422d6bafb4f42, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -10873,7 +10911,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4583473690664369231}
   - component: {fileID: 7269308972166589894}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: InnerYellow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10986,7 +11024,7 @@ GameObject:
   - component: {fileID: 6082570687937495280}
   - component: {fileID: 4677083651034273567}
   - component: {fileID: 9030013552270307937}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

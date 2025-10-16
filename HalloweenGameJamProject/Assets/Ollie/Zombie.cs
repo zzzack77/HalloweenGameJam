@@ -16,6 +16,7 @@ public class Zombie : MonoBehaviour
 
                 BAPlayer player = collision.collider.GetComponent<BAPlayer>();
                 player.lightReducer(10f);
+                GameManager.Instance.HitFlashPlayer();
 
             }
         }

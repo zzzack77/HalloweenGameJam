@@ -470,6 +470,15 @@ MonoBehaviour:
   spriteRenderer: {fileID: 7858761629582245447}
   maxHealth: 10
   circleCollider: {fileID: 8009623007848464804}
+  hurtSounds:
+  - {fileID: 8300000, guid: b91e7b403277d5c47855df4be6b6749d, type: 3}
+  - {fileID: 8300000, guid: 3257e4eb5c6e27e4181467944b350eb2, type: 3}
+  - {fileID: 8300000, guid: a7a7d96cfb4a1fe45bfc98872bd815fa, type: 3}
+  - {fileID: 8300000, guid: b6133e156e815c84eb67fe3d617a64da, type: 3}
+  - {fileID: 8300000, guid: 868b25ffbb7481d4b9c89ca82d65b412, type: 3}
+  - {fileID: 8300000, guid: 5e93cbcf5c78d724c880f58da15b4baf, type: 3}
+  - {fileID: 8300000, guid: 6ea781fbede01e34bba894c384ecd68c, type: 3}
+  - {fileID: 8300000, guid: b133143391caae34d9a65975c0846a08, type: 3}
 --- !u!114 &2480203614206372337
 MonoBehaviour:
   m_ObjectHideFlags: 0
