@@ -26,6 +26,8 @@ public class LeaderboardInputController : MonoBehaviour
     private Button playAgainButton;
 
     [SerializeField] private AudioClip deathAudioMusic;
+    public AudioClip deathAudio;
+
 
     private int testScore = 65;
 
@@ -35,6 +37,8 @@ public class LeaderboardInputController : MonoBehaviour
     void OnEnable()
     {
         SoundFXManager.Instance.PlaySoundFXClip(deathAudioMusic, transform, 0.2f);
+        SoundFXManager.Instance.PlaySoundFXClip(deathAudio, transform, 0.3f);
+
         // Get doc and ui root
         var uiDocument = GetComponent<UIDocument>();
         root = uiDocument.rootVisualElement;

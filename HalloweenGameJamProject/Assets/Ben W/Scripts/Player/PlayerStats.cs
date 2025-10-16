@@ -130,6 +130,8 @@ public class PlayerStats : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log ("Light HP: " + LightHP);
+        //Debug.Log ("Light HP: " + LightHP);
+        Debug.Log("Score: " + score);
+
     }
 }
