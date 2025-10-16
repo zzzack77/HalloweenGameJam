@@ -17,7 +17,7 @@ public class AbilityManager : MonoBehaviour
     public static event Action OnFireWheelAbility;
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && ability != Ability.None)
+        if (Input.GetKeyDown(KeyCode.LeftShift) && ability != Ability.None)
         {
             switch (ability)
             {

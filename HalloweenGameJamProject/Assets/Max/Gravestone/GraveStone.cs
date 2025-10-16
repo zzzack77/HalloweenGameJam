@@ -18,10 +18,12 @@ public class GraveStone : MonoBehaviour , IPayLighting
     
     [SerializeField] protected AudioSource audioSource;      // reference to AudioSource
     [SerializeField] protected AudioClip equipClip;          // sound for equipping
-    [SerializeField] protected AudioClip randomizeClip; 
-    
-    
-    
+    [SerializeField] protected AudioClip randomizeClip;
+
+    [SerializeField] AbilityManager abilityManager;
+    public AugmentStructure effects;
+    [SerializeField] private WeaponSelect weaponSelect;
+
     [SerializeField] private float RandomizerTime= 0.2f;
     public float lightingCost { get; } = 10;
     public bool bActive{get;set;}
@@ -30,7 +32,9 @@ public class GraveStone : MonoBehaviour , IPayLighting
     private bool canInteractEquip = false;
     private int SelectedEquipment; // change variable type to whatever's appropriate
     private Coroutine RandomizeImageHandle;
-   
+
+    private float rewardTime = 0f;
+
     public bool CanActivate(PlayerStats playerStats)
     {
         if (playerStats.LightHP >= playerStats.GraveStoneCost && bActive == false)
@@ -78,7 +82,7 @@ public class GraveStone : MonoBehaviour , IPayLighting
         }
 
         GameManager.Instance.IncreaseScore(10); //don't know if this is the amount we want to increase score by? -maxb
-        Invoke(nameof(DelayedReward) , 2f);
+        
     }
 
     private void DelayedReward()
@@ -89,24 +93,37 @@ public class GraveStone : MonoBehaviour , IPayLighting
         int i = Random.Range(0, items.Length);
         switch (i)
         {
+            case 0 :
+                rewardText.text = "Press Space to Equip Augment...";
+                effects.setAug(0, true);
+                break;
             case 1 :
                 rewardText.text = "Press Space to Equip Augment...";
-                
+                effects.setAug(1, true);
                 break;
             case 2 :
-                rewardText.text = "Press Space to Equip Weapon...";
+                rewardText.text = "Press Space to Equip Augment...";
+                effects.setAug(2, true);
                 break;
             case 3 :
-                rewardText.text = "Press Space to Equip ...";
+                rewardText.text = "Press Space to Equip Weapon...";
+                weaponSelect.weaponInt = 1;
                 break;
             case 4 :
-                rewardText.text = "Press Space to Equip ...";
+                rewardText.text = "Press Space to Equip Weapon...";
+                weaponSelect.weaponInt = 2;
                 break;
             case 5 :
-                rewardText.text = "Press Space to Equip ...";
+                rewardText.text = "Press Space to Equip Weapon...";
+                weaponSelect.weaponInt = 3;
                 break;
-            case 6 :
-                rewardText.text = "Press Space to Equip ...";
+            case 6:
+                rewardText.text = "Press Space to Equip Ability...";
+                abilityManager.ability = Ability.Mine;
+                break;
+            case 7:
+                rewardText.text = "Press Space to Equip Ability...";
+                abilityManager.ability = Ability.FireWheel;
                 break;
             default:
                 break;
@@ -125,13 +142,16 @@ public class GraveStone : MonoBehaviour , IPayLighting
     IEnumerator RandomizeImage()
     {
         
-        while (true && rewardImage)
+        while (true && rewardImage && rewardTime < 2)
         {
+            rewardTime += RandomizerTime;
             int i =  Random.Range(0, items.Length);
             rewardImage.sprite = items[i];
             yield return new WaitForSeconds(RandomizerTime);
         }
-        
+       
+        DelayedReward();
+
     }
     
     private void OnTriggerEnter2D(Collider2D other)
