@@ -76,8 +76,11 @@ public class GraveStone : MonoBehaviour , IPayLighting
         {
             audioSource.PlayOneShot(randomizeClip);
         }
-
-        GameManager.Instance.IncreaseScore(10); //don't know if this is the amount we want to increase score by? -maxb
+        if(GameManager.Instance)
+        {
+             GameManager.Instance.IncreaseScore(10); //don't know if this is the amount we want to increase score by? -maxb
+        }
+       
         Invoke(nameof(DelayedReward) , 2f);
     }
 

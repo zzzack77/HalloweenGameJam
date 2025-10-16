@@ -350,6 +350,30 @@ PrefabInstance:
       propertyPath: spriteRenderer
       value: 
       objectReference: {fileID: 1839418887880682334}
+    - target: {fileID: -287624812910038585, guid: 5ae76704bf56d344cb9c4ccfd40bf831, type: 3}
+      propertyPath: hurtSounds.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: -287624812910038585, guid: 5ae76704bf56d344cb9c4ccfd40bf831, type: 3}
+      propertyPath: 'hurtSounds.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 7ed55d2d72eeb9c42a749b0feb159790, type: 3}
+    - target: {fileID: -287624812910038585, guid: 5ae76704bf56d344cb9c4ccfd40bf831, type: 3}
+      propertyPath: 'hurtSounds.Array.data[1]'
+      value: 
+      objectReference: {fileID: 8300000, guid: ac119ed0d4d1d884c9a51fba1b1b07bc, type: 3}
+    - target: {fileID: -287624812910038585, guid: 5ae76704bf56d344cb9c4ccfd40bf831, type: 3}
+      propertyPath: 'hurtSounds.Array.data[2]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 1f1b320539727d94bbd5e64babb379ae, type: 3}
+    - target: {fileID: -287624812910038585, guid: 5ae76704bf56d344cb9c4ccfd40bf831, type: 3}
+      propertyPath: 'hurtSounds.Array.data[3]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 96d6885adb3891247a83a2fdf84f930f, type: 3}
+    - target: {fileID: -287624812910038585, guid: 5ae76704bf56d344cb9c4ccfd40bf831, type: 3}
+      propertyPath: 'hurtSounds.Array.data[4]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 1c2c83dc32ceb7b478f19c5e829d2722, type: 3}
     - target: {fileID: 697226984509060339, guid: 5ae76704bf56d344cb9c4ccfd40bf831, type: 3}
       propertyPath: m_LocalPosition.x
       value: -26.24

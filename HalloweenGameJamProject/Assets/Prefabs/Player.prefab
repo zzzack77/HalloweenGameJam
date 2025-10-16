@@ -1276,6 +1276,26 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2313850847018747260, guid: 463f51a405eaf4046b0ee79319d0c7d9, type: 3}
+      propertyPath: reloadClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 766febdc2136c1a4ea6a244657fc8ab4, type: 3}
+    - target: {fileID: 2313850847018747260, guid: 463f51a405eaf4046b0ee79319d0c7d9, type: 3}
+      propertyPath: shootClip.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2313850847018747260, guid: 463f51a405eaf4046b0ee79319d0c7d9, type: 3}
+      propertyPath: 'shootClip.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8300000, guid: cb8f596b25fecc94b942e1c77924f13a, type: 3}
+    - target: {fileID: 2313850847018747260, guid: 463f51a405eaf4046b0ee79319d0c7d9, type: 3}
+      propertyPath: 'shootClip.Array.data[1]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 0ee78fd256c65c94c8c729e7efb467d5, type: 3}
+    - target: {fileID: 2313850847018747260, guid: 463f51a405eaf4046b0ee79319d0c7d9, type: 3}
+      propertyPath: 'shootClip.Array.data[2]'
+      value: 
+      objectReference: {fileID: 8300000, guid: b8ed7f01964971c489df1cf4eed09b4b, type: 3}
     - target: {fileID: 5637921383617926247, guid: 463f51a405eaf4046b0ee79319d0c7d9, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -1432,6 +1452,26 @@ PrefabInstance:
       propertyPath: maxAmmo
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 3936064035555995820, guid: 10f18c2dcb1e10240be9e03a2263d2ca, type: 3}
+      propertyPath: reloadClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 766febdc2136c1a4ea6a244657fc8ab4, type: 3}
+    - target: {fileID: 3936064035555995820, guid: 10f18c2dcb1e10240be9e03a2263d2ca, type: 3}
+      propertyPath: shootClip.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3936064035555995820, guid: 10f18c2dcb1e10240be9e03a2263d2ca, type: 3}
+      propertyPath: 'shootClip.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8300000, guid: f0c3efdfde20be94bae7624ef9b2b923, type: 3}
+    - target: {fileID: 3936064035555995820, guid: 10f18c2dcb1e10240be9e03a2263d2ca, type: 3}
+      propertyPath: 'shootClip.Array.data[1]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 28d07e848ded4004b971c1cd87a4a95d, type: 3}
+    - target: {fileID: 3936064035555995820, guid: 10f18c2dcb1e10240be9e03a2263d2ca, type: 3}
+      propertyPath: 'shootClip.Array.data[2]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 9dc5ab7d05240c4479d85067627a8522, type: 3}
     - target: {fileID: 4590789385081242069, guid: 10f18c2dcb1e10240be9e03a2263d2ca, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.76
@@ -1684,9 +1724,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentAmmo: 0
-  audioSource: {fileID: 0}
-  shootClip: []
-  reloadClip: {fileID: 0}
+  shootClip:
+  - {fileID: 8300000, guid: 0ee78fd256c65c94c8c729e7efb467d5, type: 3}
+  reloadClip: {fileID: 8300000, guid: 766febdc2136c1a4ea6a244657fc8ab4, type: 3}
   shotPoint: {fileID: 6123498275844252930}
   bullet: {fileID: 8678158489558912884, guid: 79fac4b98823e9540bb97641606fa9fb, type: 3}
   maxAmmo: 30
