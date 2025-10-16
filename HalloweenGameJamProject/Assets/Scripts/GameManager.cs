@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour
 
     public void ResetScore()
     {
-        playerStats.Score = 0;
+        playerStats.Score = 50;
     }
 
     //                        //

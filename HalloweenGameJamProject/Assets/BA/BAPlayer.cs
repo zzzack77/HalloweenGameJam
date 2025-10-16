@@ -29,9 +29,18 @@ public class BAPlayer : MonoBehaviour
    private float PlayerStatsLightHP;
     private void OnEnable()
     {
+        Time.timeScale = 1f;
+
+        playerStats = GetComponent<PlayerStats>();
+
         Powerup.OnSpeedBoost += SpeedPowerup;
         AbilityManager.OnMineAbility += ThrowMine;
         AbilityManager.OnFireWheelAbility += ActivateFireWheel;
+
+        playerStats.LightHP = playerStats.LightHPStart;
+        Debug.Log(playerStats.LightHP);
+        Debug.Log(playerStats.LightHPStart);
+
     }
 
     private void OnDisable()
@@ -50,9 +59,7 @@ public class BAPlayer : MonoBehaviour
         effects.setAug(1, true);
         effects.setAug(2, true);
 
-        playerStats = GetComponent<PlayerStats>();
 
-        playerStats.LightHP = playerStats.LightHPStart;
         playerStats.BulletDamage = 2; 
     }
 
@@ -125,6 +132,8 @@ public class BAPlayer : MonoBehaviour
         
         //Cursor.lockState = CursorLockMode.None;
         //Cursor.visible = true;
+
+        
 
         DeathScreen.SetActive(true);
 
