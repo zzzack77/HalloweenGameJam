@@ -644,7 +644,7 @@ SpriteRenderer:
   m_Size: {x: 3.5368898, y: 3.4160001}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1001 &8461931058369530603
@@ -657,7 +657,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 640649217180564966, guid: a477f471cd685594ebd876b8b70565c6, type: 3}
       propertyPath: m_Name
-      value: Player Variant
+      value: PlayerVariant1
       objectReference: {fileID: 0}
     - target: {fileID: 1197469285528250841, guid: a477f471cd685594ebd876b8b70565c6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -677,6 +677,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3786111378574813526, guid: a477f471cd685594ebd876b8b70565c6, type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4383965690519162451, guid: a477f471cd685594ebd876b8b70565c6, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4383965690519162451, guid: a477f471cd685594ebd876b8b70565c6, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4383965690519162451, guid: a477f471cd685594ebd876b8b70565c6, type: 3}
+      propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4711204214817855546, guid: a477f471cd685594ebd876b8b70565c6, type: 3}
@@ -880,6 +892,18 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9127846099523303694, guid: a477f471cd685594ebd876b8b70565c6, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9127846099523303694, guid: a477f471cd685594ebd876b8b70565c6, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9127846099523303694, guid: a477f471cd685594ebd876b8b70565c6, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9127846099523303694, guid: a477f471cd685594ebd876b8b70565c6, type: 3}
       propertyPath: m_SortingLayer
       value: 2
       objectReference: {fileID: 0}
@@ -922,16 +946,6 @@ PrefabInstance:
 --- !u!4 &414682450501807519 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8119970384239503220, guid: a477f471cd685594ebd876b8b70565c6, type: 3}
-  m_PrefabInstance: {fileID: 8461931058369530603}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1670946033506523559 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7088302865692169036, guid: a477f471cd685594ebd876b8b70565c6, type: 3}
-  m_PrefabInstance: {fileID: 8461931058369530603}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &4747965313146037181 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3786111378574813526, guid: a477f471cd685594ebd876b8b70565c6, type: 3}
   m_PrefabInstance: {fileID: 8461931058369530603}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &5199399783536515178 stripped
@@ -1018,6 +1032,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fade8429ed682f408eaa35b83671e24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  outerlightObject: {fileID: 4747965313146037181}
-  innerlightObject: {fileID: 1670946033506523559}
+  outerlightObject: {fileID: 0}
+  innerlightObject: {fileID: 0}
+  outerLightMinimumFalloffIntensity: 0.6
   replaceWPlayerHealth: 100
