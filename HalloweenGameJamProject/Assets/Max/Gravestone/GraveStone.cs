@@ -35,6 +35,12 @@ public class GraveStone : MonoBehaviour , IPayLighting
 
     private float rewardTime = 0f;
 
+    public void Start()
+    {
+        abilityManager = GameObject.Find("Player").GetComponent<AbilityManager>();
+        weaponSelect = GameObject.Find("GunParent").GetComponent<WeaponSelect>();
+        
+    }
     public bool CanActivate(PlayerStats playerStats)
     {
         if (playerStats.LightHP >= playerStats.GraveStoneCost && bActive == false)
