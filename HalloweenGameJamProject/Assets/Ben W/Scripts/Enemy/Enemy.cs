@@ -55,7 +55,7 @@ public class Enemy : MonoBehaviour
         ApplyEffects(effects);
         if (health <= 0)
         {
-            //Debug.Log("Death");
+            Debug.Log("Death");
             KilledByPlayer(10);
         }
     }
@@ -116,7 +116,7 @@ public class Enemy : MonoBehaviour
             health--;
             if (health <= 0)
             {
-                //Debug.Log("burned to death");
+                Debug.Log("burned to death");
                 KilledByPlayer(10);
             }
             index--;
@@ -137,8 +137,9 @@ public class Enemy : MonoBehaviour
 
     void KilledByPlayer(int scoreIncrease)
     {
+        Debug.Log("killed by player");
         SpawnSouls();
-        //GameManager.Instance.IncreaseScore(scoreIncrease);
+        GameManager.Instance.IncreaseScore(scoreIncrease);
 
         if (explode)
         {
