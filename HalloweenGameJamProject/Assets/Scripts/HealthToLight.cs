@@ -8,6 +8,7 @@ public class HealthToLight : MonoBehaviour
     private Light2D outerLight;
     private Light2D innerLight;
 
+
     [SerializeField]
     private float outerLightMinimumFalloffIntensity = 0.6f;
 
@@ -18,7 +19,7 @@ public class HealthToLight : MonoBehaviour
         outerLight = outerlightObject.GetComponent<Light2D>();
         innerLight = innerlightObject.GetComponent<Light2D>();
     }
-    
+
     public void AdjustLight(float playerHealth)
     {
         outerLight.falloffIntensity = Mathf.Lerp(1f, 0.6f, playerHealth / 100);
@@ -28,4 +29,6 @@ public class HealthToLight : MonoBehaviour
         innerLight.intensity = Mathf.Lerp(1f, 5.3f, playerHealth / 100);
 
     }
+    
+
 }
