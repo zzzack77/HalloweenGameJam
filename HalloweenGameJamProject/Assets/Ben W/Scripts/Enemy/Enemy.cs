@@ -58,6 +58,7 @@ public class Enemy : MonoBehaviour
             Debug.Log("null effects ");
         }
         health -= damage;
+        GameManager.Instance.HitFlash(spriteRenderer);
         ApplyEffects(effects);
         
         if (SoundFXManager.Instance != null)
