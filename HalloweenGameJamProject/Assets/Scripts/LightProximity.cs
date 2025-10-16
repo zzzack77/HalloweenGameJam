@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.Rendering;
 
 public class LightProximity : MonoBehaviour
 {
@@ -11,6 +12,14 @@ public class LightProximity : MonoBehaviour
 
     private bool isSafe = false;
     private Coroutine dangerCoroutine;
+    private PlayerStats playerStats;
+    private BAPlayer player;
+
+    void Start()
+    {
+        playerStats = GameObject.Find("Player").GetComponent<PlayerStats>();
+        player = GameObject.Find("Player").GetComponent<BAPlayer>();
+    }
 
     void Update()
     {
@@ -23,6 +32,8 @@ public class LightProximity : MonoBehaviour
             // Entered safe area
             isSafe = true;
             Debug.Log("Entered light area");
+
+            LightGain();
 
             // Fade out danger sound if playing
             if (dangerCoroutine != null)
@@ -37,6 +48,8 @@ public class LightProximity : MonoBehaviour
             // Left safe area
             isSafe = false;
             Debug.Log("Left light area - danger!");
+
+            LightBurn();
 
             // Start danger sequence
             if (dangerCoroutine == null)
@@ -81,4 +94,18 @@ public class LightProximity : MonoBehaviour
         dangerAudio.Stop();
         dangerAudio.volume = 1f; // reset for next time
     }
+
+    void LightBurn()
+    {
+        player.lightReducer(playerStats.LightHPLossRate * Time.deltaTime);
+    }
+
+    void LightGain()
+
+    {
+        player.lightIncreaser(playerStats.LightRegenRate * Time.deltaTime);
+        
+    }
+
+
 }

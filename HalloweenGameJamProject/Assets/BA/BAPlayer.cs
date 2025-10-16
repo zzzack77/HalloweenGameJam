@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 
@@ -17,9 +18,11 @@ public class BAPlayer : MonoBehaviour
     [SerializeField] GameObject mine;
     [SerializeField] GameObject fireWheel;
 
-    public AugmentStructure effects; 
-    
-    
+    public AugmentStructure effects;
+
+    public GameObject DeathScreen;
+
+
     private IPayLighting interactable;
 
 
@@ -77,6 +80,8 @@ public class BAPlayer : MonoBehaviour
         rb.MovePosition(rb.position + moveInput * playerStats.MovementSpeed * Time.fixedDeltaTime);
     }
 
+
+
     public void SpeedPowerup()
     {
         playerStats.MovementSpeed = 10f;
@@ -98,7 +103,24 @@ public class BAPlayer : MonoBehaviour
         if (playerStats.LightHP < 0)
         {
             //this is for death stuff 
+            Death();
         }
+    }
+
+    public void Death()
+    {
+        //Adds up score and saves it
+        PlayerPrefs.SetInt("Score",playerStats.Score);
+
+        // optional: pause game time
+        Time.timeScale = 0f;
+
+        
+        //Cursor.lockState = CursorLockMode.None;
+        //Cursor.visible = true;
+
+        DeathScreen.SetActive(true);
+
     }
 
     public void lightIncreaser(float value)
