@@ -70,9 +70,9 @@ public class Campfire : MonoBehaviour, IPayLighting
     // Returns true if player can activate a campfire
     public bool CanActivate(PlayerStats playerStats)
     {
-        Debug.Log(playerStats.LightHP);
-        Debug.Log(playerStats.CampfireLightCost);
-        Debug.Log(bActive);
+        //Debug.Log(playerStats.LightHP);
+        //Debug.Log(playerStats.CampfireLightCost);
+        //Debug.Log(bActive);
 
 
         if (playerStats.LightHP >= playerStats.CampfireLightCost && bActive == false)
@@ -97,7 +97,7 @@ public class Campfire : MonoBehaviour, IPayLighting
         litCampFire.gameObject.SetActive(true);
         unlitCampFire.gameObject.SetActive(false);
 
-        GameManager.Instance.IncreaseScore(5); //don't know if this is the amount we want to increase score by? -maxb
+        //GameManager.Instance.IncreaseScore(5); //don't know if this is the amount we want to increase score by? -maxb
         StartCoroutine(CampFirePreLit());
     }
     
