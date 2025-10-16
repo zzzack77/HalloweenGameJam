@@ -23,6 +23,9 @@ public class Enemy : MonoBehaviour
 
     Coroutine freezeCo;
     RigidbodyConstraints2D originalConstraints;
+    
+    //Enemy Sounds
+    [SerializeField] private AudioClip[] hurtSounds; 
 
     public void Start()
     {
@@ -56,6 +59,12 @@ public class Enemy : MonoBehaviour
         }
         health -= damage;
         ApplyEffects(effects);
+        
+        if (SoundFXManager.Instance != null)
+        {
+            SoundFXManager.Instance.PlayRandomSoundFXClip(hurtSounds, transform, 1f);
+        }
+        
         if (health <= 0)
         {
             Debug.Log("Death");
@@ -114,6 +123,10 @@ public class Enemy : MonoBehaviour
     public void burn()
     {
         health--;
+        if (SoundFXManager.Instance != null)
+        {
+            SoundFXManager.Instance.PlayRandomSoundFXClip(hurtSounds, transform, 1f);
+        }
         if (health <= 0)
         {
             Debug.Log("burned to death");

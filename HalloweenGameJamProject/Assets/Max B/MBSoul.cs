@@ -80,6 +80,10 @@ public class MBSoul : MonoBehaviour
     public float attractionRadius;
 
     private Vector2 orbitCenter; // The center point around which the soul orbits
+    
+    
+    //Pickup Sounds
+    [SerializeField] private AudioClip[] pickupSounds;  
 
     void Start()
     {
@@ -254,7 +258,11 @@ public class MBSoul : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             baplayer.lightIncreaser(playerStats.SoulLightGain);
-
+            if (SoundFXManager.Instance != null)
+            {
+                SoundFXManager.Instance.PlayRandomSoundFXClip(pickupSounds, transform, 1f);
+            }
+         
             Destroy(gameObject);
             //MBGameManager.Instance.soulCount += 1;
         }

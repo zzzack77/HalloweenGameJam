@@ -277,6 +277,17 @@ MonoBehaviour:
   noiseMagnitude: 0
   homingDelay: 0
   attractionRadius: 0
+  pickupSounds:
+  - {fileID: 8300000, guid: e8affb9ecb0bae2419d99ebca8a897b7, type: 3}
+  - {fileID: 8300000, guid: 193474824703e7949a9acc847488741a, type: 3}
+  - {fileID: 8300000, guid: 2955f597351959447948f0ebe6a55c92, type: 3}
+  - {fileID: 8300000, guid: 02fea66780bfcd94783aa6fa5015d51b, type: 3}
+  - {fileID: 8300000, guid: ad223f72d1c22cc4d9d3a6124de16f58, type: 3}
+  - {fileID: 8300000, guid: 6fb4ff1687d65ac4787c418714051b6a, type: 3}
+  - {fileID: 8300000, guid: 81f13b301f1dfea4385400ddf6237cc7, type: 3}
+  - {fileID: 8300000, guid: a1092fc884e1d6f44bce479d684255af, type: 3}
+  - {fileID: 8300000, guid: 626c20007f4c4b140ad4f00a364ca245, type: 3}
+  - {fileID: 8300000, guid: 4371ceca21c9cab4aa6cccdbef1443e7, type: 3}
 --- !u!1 &7560513855314004518
 GameObject:
   m_ObjectHideFlags: 0
