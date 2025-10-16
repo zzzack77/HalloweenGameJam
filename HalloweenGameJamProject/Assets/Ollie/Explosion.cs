@@ -15,9 +15,9 @@ public class Explosion : MonoBehaviour
 
     void Update()
     {
-        sr.color = new Color(255, 0, 0, tempA);
+
         tempA += 0.01f;
-        if (tempA >= 0.7)
+        if (tempA >= 0.3)
         {
             GameObject.Destroy(enemy);
         }
