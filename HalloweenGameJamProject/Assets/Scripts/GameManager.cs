@@ -6,11 +6,16 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
 
+    private PlayerStats playerStats;
+
     [Header("PlayerStats")]
     public int score = 0;
 
+
     void Awake()
     {
+        playerStats = GameObject.Find("Player").GetComponent<PlayerStats>();
+
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
@@ -19,6 +24,7 @@ public class GameManager : MonoBehaviour
 
         Instance = this;
         DontDestroyOnLoad(gameObject);
+
     }
 
     //                   //
@@ -26,17 +32,17 @@ public class GameManager : MonoBehaviour
     //                   //
     public void IncreaseScore(int scoreVal)
     {
-        score += scoreVal;
+        playerStats.Score += scoreVal;
     }
 
     public void DecreaseScore(int scoreVal)
     {
-        score -= scoreVal;
+        playerStats.Score -= scoreVal;
         //if (score < 0) score = 0; //do we want this? -maxb
     }
 
     public void ResetScore()
     {
-        score = 0;
+        playerStats.Score = 0;
     }
 }
