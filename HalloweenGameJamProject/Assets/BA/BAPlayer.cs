@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 
@@ -20,6 +21,7 @@ public class BAPlayer : MonoBehaviour
     public AugmentStructure effects;
 
     [SerializeField] private AudioClip deathAudio;
+    public GameObject DeathScreen;
 
 
     private IPayLighting interactable;
@@ -46,13 +48,17 @@ public class BAPlayer : MonoBehaviour
     {
         // Get the Rigidbody2D component
         rb = GetComponent<Rigidbody2D>();
+
+        //Augments 
         effects = new AugmentStructure();
-        effects.setAug(1, true);
-        effects.setAug(2, true);
+        effects.setAug(0, true); //freeze
+        effects.setAug(1, true); //burn
+        effects.setAug(2, true); //explode
 
         playerStats = GetComponent<PlayerStats>();
 
         playerStats.LightHP = playerStats.LightHPStart;
+        playerStats.BulletDamage = 2;
     }
 
     void Update()
@@ -81,6 +87,8 @@ public class BAPlayer : MonoBehaviour
         rb.MovePosition(rb.position + moveInput * playerStats.MovementSpeed * Time.fixedDeltaTime);
     }
 
+
+
     public void SpeedPowerup()
     {
         playerStats.MovementSpeed = 10f;
@@ -104,7 +112,24 @@ public class BAPlayer : MonoBehaviour
             Debug.Log("player died");
             SoundFXManager.Instance.PlaySoundFXClip(deathAudio, transform, 1f);
             //this is for death stuff 
+            Death();
         }
+    }
+
+    public void Death()
+    {
+        //Adds up score and saves it
+        PlayerPrefs.SetInt("Score",playerStats.Score);
+
+        // optional: pause game time
+        Time.timeScale = 0f;
+
+        
+        //Cursor.lockState = CursorLockMode.None;
+        //Cursor.visible = true;
+
+        DeathScreen.SetActive(true);
+
     }
 
     public void lightIncreaser(float value)
