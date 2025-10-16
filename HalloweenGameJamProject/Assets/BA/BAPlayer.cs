@@ -123,12 +123,12 @@ public class BAPlayer : MonoBehaviour
 
     public void Death()
     {
+        
         //Adds up score and saves it
-        PlayerPrefs.SetInt("Score",playerStats.Score);
+        //PlayerPrefs.SetInt("Score",playerStats.Score);
 
         // optional: pause game time
         Time.timeScale = 0f;
-
         
         //Cursor.lockState = CursorLockMode.None;
         //Cursor.visible = true;
