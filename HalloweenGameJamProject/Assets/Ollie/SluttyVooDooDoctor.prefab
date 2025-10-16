@@ -469,6 +469,7 @@ MonoBehaviour:
   Burner: {fileID: 3906864380537015161}
   spriteRenderer: {fileID: 7858761629582245447}
   maxHealth: 0
+  circleCollider: {fileID: 8009623007848464804}
 --- !u!114 &2480203614206372337
 MonoBehaviour:
   m_ObjectHideFlags: 0

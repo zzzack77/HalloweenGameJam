@@ -338,6 +338,10 @@ PrefabInstance:
       propertyPath: soulPrefab
       value: 
       objectReference: {fileID: 6495806148022659791, guid: 169ebb132111b4d48ad4247abf3d9e33, type: 3}
+    - target: {fileID: -287624812910038585, guid: 5ae76704bf56d344cb9c4ccfd40bf831, type: 3}
+      propertyPath: circleCollider
+      value: 
+      objectReference: {fileID: 5191739177532568020}
     - target: {fileID: 697226984509060339, guid: 5ae76704bf56d344cb9c4ccfd40bf831, type: 3}
       propertyPath: m_LocalPosition.x
       value: -26.24
@@ -409,5 +413,10 @@ PrefabInstance:
 --- !u!4 &3352414018213938307 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 697226984509060339, guid: 5ae76704bf56d344cb9c4ccfd40bf831, type: 3}
+  m_PrefabInstance: {fileID: 2822392430367879280}
+  m_PrefabAsset: {fileID: 0}
+--- !u!58 &5191739177532568020 stripped
+CircleCollider2D:
+  m_CorrespondingSourceObject: {fileID: 8009623007848464804, guid: 5ae76704bf56d344cb9c4ccfd40bf831, type: 3}
   m_PrefabInstance: {fileID: 2822392430367879280}
   m_PrefabAsset: {fileID: 0}
