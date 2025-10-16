@@ -25,13 +25,14 @@ public class LeaderboardInputController : MonoBehaviour
     private Button returnButton;
     private Button playAgainButton;
 
-
+    [SerializeField] private AudioClip deathAudioMusic;
 
     private int testScore = 65;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void OnEnable()
     {
+        SoundFXManager.Instance.PlaySoundFXClip(deathAudioMusic, transform, 0.2f);
         // Get doc and ui root
         var uiDocument = GetComponent<UIDocument>();
         root = uiDocument.rootVisualElement;
@@ -87,7 +88,7 @@ public class LeaderboardInputController : MonoBehaviour
 
             leaderboardController = FindFirstObjectByType<LeaderboardControler>();
 
-            leaderboardController.SetEntry(username, PlayerPrefs.GetInt("Score"));
+            leaderboardController.SetEntry(username, GameManager.Instance.score);
 
 
             // Open main menu leaderboard

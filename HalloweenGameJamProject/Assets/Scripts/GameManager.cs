@@ -39,10 +39,4 @@ public class GameManager : MonoBehaviour
     {
         score = 0;
     }
-
-    public void GetScoreForLeaderboard()
-    {
-        PlayerPrefs.SetInt("Score", score); //Is this what you wanted Zack? -maxb
-                                            //you can also just use "GameManager.Instance.score" as a variable to get the score from anywhere if thats easier?
-    }
 }

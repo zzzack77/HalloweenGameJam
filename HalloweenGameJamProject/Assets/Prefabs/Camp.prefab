@@ -70,7 +70,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 999c09fcfee0b23488a23326db8790b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  campfireStartAudio: {fileID: 1015014844126189329}
+  campfireStartAudio: {fileID: 8300000, guid: 3458080e9f6eec042b35bfbef77f7cfc, type: 3}
   campfireIdelAudio: {fileID: 2717411557023190011}
   litCampFire: {fileID: 7228112794316273729}
   unlitCampFire: {fileID: 4045560160163875484}
