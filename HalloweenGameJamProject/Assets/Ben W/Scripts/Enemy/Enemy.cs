@@ -6,7 +6,7 @@ public class Enemy : MonoBehaviour
 {
     public float health;
     public GameObject soulPrefab;
-    private float healTimer; 
+    private float healTimer;
     [SerializeField] private Rigidbody2D rb;
     private AugmentStructure effects;
     private BAPlayer player;
@@ -18,13 +18,16 @@ public class Enemy : MonoBehaviour
     private int index;
     private int souls;
     [SerializeField] private float maxHealth;
+    private bool burning;
+    [SerializeField] private CircleCollider2D circleCollider;
 
     Coroutine freezeCo;
     RigidbodyConstraints2D originalConstraints;
 
     public void Start()
     {
-        explode = false;    
+        explode = false;
+        burning = false;
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<BAPlayer>();
         playerStats = player.GetComponent<PlayerStats>();
         originalConstraints = rb.constraints;
@@ -47,7 +50,7 @@ public class Enemy : MonoBehaviour
     public void TakeDamage(float damage)
     {
         effects = player.effects;
-        if(effects == null)
+        if (effects == null)
         {
             Debug.Log("null effects ");
         }
@@ -67,15 +70,19 @@ public class Enemy : MonoBehaviour
             //Debug.Log("past enemy");
             if (augmentStructure.burn == true)
             {
-                Burner.SetActive(true);
-                index = 5;
-                burn();
+                if (!burning)
+                {
+                    burning = true;
+                    Burner.SetActive(true);
+                    index = 3;
+                    burn();
+                }
             }
             if (augmentStructure.freeze == true)
             {
-                freeze(2.5f);
+                freeze(1f);
             }
-            if(augmentStructure.explode == true)
+            if (augmentStructure.explode == true)
             {
                 explode = true;
             }
@@ -106,19 +113,19 @@ public class Enemy : MonoBehaviour
 
     public void burn()
     {
-        if (index <= 0)
+        health--;
+        if (health <= 0)
         {
+            Debug.Log("burned to death");
+            KilledByPlayer(10);
+        }
+        else if (index <= 0)
+        {
+            burning = false;
             Burner.SetActive(false);
-            return;
         }
         else
         {
-            health--;
-            if (health <= 0)
-            {
-                Debug.Log("burned to death");
-                KilledByPlayer(10);
-            }
             index--;
             Invoke("burn", 1f);
         }
@@ -131,6 +138,7 @@ public class Enemy : MonoBehaviour
 
         for (int i = 0; i < souls; i++)
         {
+            //Debug.Log("soul made");
             Instantiate(soulPrefab, transform.position, Quaternion.identity);
         }
     }
@@ -144,6 +152,7 @@ public class Enemy : MonoBehaviour
         if (explode)
         {
             spriteRenderer.enabled = false;
+            circleCollider.enabled = false;
             Explosion();
         }
         else
@@ -152,5 +161,3 @@ public class Enemy : MonoBehaviour
         }
     }
 }
-
-
