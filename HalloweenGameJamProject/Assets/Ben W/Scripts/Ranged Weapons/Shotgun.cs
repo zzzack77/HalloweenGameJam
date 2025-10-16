@@ -37,7 +37,7 @@ public class Shotgun : PlayerRangedWeapon
         
         if (SoundFXManager.Instance != null)
         {
-            SoundFXManager.Instance.PlayRandomSoundFXClip(shootClip, transform, 1f);
+            SoundFXManager.Instance.PlayRandomSoundFXClip(shootClip, transform, 0.25f);
         }
 
         currentAmmo--;
