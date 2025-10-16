@@ -10,8 +10,8 @@ public class PlayerStats : MonoBehaviour
     private float lightHPStart = 50f;
     private float lightHPMax = 100f;
     private float lightHPLossRate = 1f;
-    private float soulLightGain = 2f;
-    private float camplightRegenRate = 5f;
+    private float soulLightGain = 4f;
+    private float camplightRegenRate = 8f;
     private int score;
     
 

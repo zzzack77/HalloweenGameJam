@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Max Scene.unity
     guid: 52d5b1457d09cf342b6e429e3fc49b05
   - enabled: 1
+    path: Assets/Scenes/MenuScene.unity
+    guid: a669e828dc6c91e49b9999ad7a856954
+  - enabled: 1
     path: Assets/Scenes/Demo Scene.unity
     guid: 946b0b86faa49a844bcf2c3d75271474
   m_configObjects:
