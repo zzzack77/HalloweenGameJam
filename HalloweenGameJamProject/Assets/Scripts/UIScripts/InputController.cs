@@ -29,6 +29,8 @@ public class LeaderboardInputController : MonoBehaviour
 
     private int testScore = 65;
 
+    private PlayerStats playerStats;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void OnEnable()
     {
@@ -64,6 +66,9 @@ public class LeaderboardInputController : MonoBehaviour
         submitButton.RegisterCallback<MouseEnterEvent>(evt => { PlayHoverSound(); });
         returnButton.RegisterCallback<MouseEnterEvent>(evt => { PlayHoverSound(); });
         playAgainButton.RegisterCallback<MouseEnterEvent>(evt => { PlayHoverSound(); });
+
+
+        playerStats = GameObject.Find("Player").GetComponent<PlayerStats>();
         //textInput.RegisterCallback<MouseEnterEvent>(evt => { PlayHoverSound(); });
     }
 
@@ -88,7 +93,7 @@ public class LeaderboardInputController : MonoBehaviour
 
             leaderboardController = FindFirstObjectByType<LeaderboardControler>();
 
-            leaderboardController.SetEntry(username, GameManager.Instance.score);
+            leaderboardController.SetEntry(username, playerStats.Score);
 
 
             // Open main menu leaderboard

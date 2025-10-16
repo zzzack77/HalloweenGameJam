@@ -1,6 +1,6 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI%20Toolkit/USS/MainMenuButtons.uss?fileID=7433441132597879392&amp;guid=04a4f7ebfb82ec440ab704b02b2b8977&amp;type=3#MainMenuButtons" />
-    <ui:VisualElement style="flex-grow: 1; align-items: flex-start; background-color: rgb(38, 38, 38); flex-direction: row;">
+    <ui:VisualElement style="flex-grow: 1; align-items: flex-start; background-color: rgba(38, 38, 38, 0); flex-direction: row;">
         <ui:VisualElement style="flex-grow: 1; width: 33%; height: 100%;">
             <ui:VisualElement style="flex-grow: 1; height: 25%; width: 100%; padding-left: 20px;">
                 <ui:Label text="SOUL CATCHER" style="-unity-font-definition: url(&quot;project://database/Assets/Art/Fonts/unfinished_scream/TTF/UnfinishedScreamAlternative.ttf?fileID=12800000&amp;guid=2d3ea40e6c46409418c546461ead09b1&amp;type=3#UnfinishedScreamAlternative&quot;); font-size: 295px; color: rgb(255, 255, 255);" />
