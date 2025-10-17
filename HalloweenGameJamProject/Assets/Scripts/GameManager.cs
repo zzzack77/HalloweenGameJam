@@ -74,6 +74,10 @@ public class GameManager : MonoBehaviour
         Color originalColor = spriteRenderer.color;
         spriteRenderer.color = Color.red;
         yield return new WaitForSeconds(0.1f);
-        spriteRenderer.color = originalColor;
+        if (spriteRenderer != null)
+        {
+            spriteRenderer.color = originalColor;
+
+        }
     }
 }

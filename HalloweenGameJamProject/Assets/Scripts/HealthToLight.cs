@@ -22,11 +22,13 @@ public class HealthToLight : MonoBehaviour
 
     public void AdjustLight(float playerHealth)
     {
-        outerLight.falloffIntensity = Mathf.Lerp(1f, 0.6f, playerHealth / 100);
-        outerLight.intensity = Mathf.Lerp(0.1f, 2.9f, playerHealth / 100);
+        outerLight.falloffIntensity = Mathf.Lerp(1f, 0.3f, playerHealth / 100);
+        outerLight.intensity = Mathf.Lerp(0f, 5f, playerHealth / 100);
+
+        
 
         innerLight.falloffIntensity = Mathf.Lerp(1f, 0.5f, playerHealth / 100);
-        innerLight.intensity = Mathf.Lerp(1f, 5.3f, playerHealth / 100);
+        innerLight.intensity = Mathf.Lerp(0f, 5.3f, playerHealth / 100);
 
     }
     

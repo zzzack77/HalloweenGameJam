@@ -168,9 +168,14 @@ public class Campfire : MonoBehaviour, IPayLighting
         {
             elapsed += Time.deltaTime;
             LightPercentage = Mathf.Lerp(1.0f,0f,elapsed / LightTime);
-            
-            innerLight2D.intensity = innerInitalLight *LightPercentage;
-            centerLight2D.intensity = centerInitalLight * LightPercentage;
+
+
+            //innerLight2D.intensity = innerInitalLight *LightPercentage;
+
+
+            centerLight2D.intensity = Mathf.Lerp(centerInitalLight, 3.5f, LightPercentage);
+            centerLight2D.shapeLightFalloffSize = initialRadius * LightPercentage;
+
             outerLight2D.intensity = outerInitalLight * LightPercentage;
             lightSource.safeRadius = initialRadius *  LightPercentage;
             
@@ -201,8 +206,11 @@ public class Campfire : MonoBehaviour, IPayLighting
             lightPercentage = Mathf.Lerp(0.1f, 1f, elapsed / lightWarmUpTime);
 
             // Apply lighting changes
-            innerLight2D.intensity = innerInitalLight * lightPercentage;
-            centerLight2D.intensity = centerInitalLight * lightPercentage;
+            //innerLight2D.intensity = innerInitalLight * lightPercentage;
+            //centerLight2D.intensity = centerInitalLight * lightPercentage;
+
+            centerLight2D.intensity = Mathf.Lerp(centerInitalLight, 3.5f, lightPercentage);
+            centerLight2D.shapeLightFalloffSize = initialRadius * lightPercentage;
             outerLight2D.intensity = outerInitalLight * lightPercentage;
             lightSource.safeRadius = initialRadius * lightPercentage;
 

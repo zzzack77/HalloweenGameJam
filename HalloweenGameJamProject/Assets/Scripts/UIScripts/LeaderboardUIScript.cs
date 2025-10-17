@@ -99,6 +99,8 @@ public class LeaderboardUIScript : MonoBehaviour
     }
     void OnEntryReceived(Entry entry)
     {
+        leaderboardController = FindFirstObjectByType<LeaderboardControler>();
+
         var playerRank = root.Q<Label>("playerRank");
         var playerName = root.Q<Label>("playerName");
         var playerScore = root.Q<Label>("playerScore");
