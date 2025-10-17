@@ -6,6 +6,7 @@ using UnityEngine.Rendering.Universal;
 
 public class Campfire : MonoBehaviour, IPayLighting
 {
+
     //Player Stats
     private PlayerStats playerStats;
     // Audio
@@ -194,6 +195,7 @@ public class Campfire : MonoBehaviour, IPayLighting
     // Eases lights in for smoothness
     IEnumerator CampFirePreLit()
     {
+
         float elapsed = 0f;
         float lightPercentage = 0.1f;
 
