@@ -36,6 +36,9 @@ public class LeaderboardInputController : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void OnEnable()
     {
+        playerStats = GameObject.Find("Player").GetComponent<PlayerStats>();
+
+
         SoundFXManager.Instance.PlaySoundFXClip(deathAudioMusic, transform, 0.2f);
         SoundFXManager.Instance.PlaySoundFXClip(deathAudio, transform, 0.3f);
 
@@ -45,7 +48,7 @@ public class LeaderboardInputController : MonoBehaviour
 
         // Find UI elements
         playerScore = root.Q<Label>("playerScore");
-        playerScore.text = PlayerPrefs.GetInt("Score").ToString();
+        playerScore.text = playerStats.Score.ToString();
         textInput = root.Q<TextField>("textInput");
         textInput.maxLength = 15;
         feedbackLabel = root.Q<Label>("errorMessage");
@@ -72,7 +75,6 @@ public class LeaderboardInputController : MonoBehaviour
         playAgainButton.RegisterCallback<MouseEnterEvent>(evt => { PlayHoverSound(); });
 
 
-        playerStats = GameObject.Find("Player").GetComponent<PlayerStats>();
         //textInput.RegisterCallback<MouseEnterEvent>(evt => { PlayHoverSound(); });
     }
 
