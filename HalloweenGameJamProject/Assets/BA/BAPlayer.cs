@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 public class BAPlayer : MonoBehaviour
@@ -65,7 +66,10 @@ public class BAPlayer : MonoBehaviour
 
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene("MenuScene");
+        }
         // Get input from WASD or Arrow keys
         float moveX = Input.GetAxisRaw("Horizontal"); // A/D or Left/Right
         float moveY = Input.GetAxisRaw("Vertical");   // W/S or Up/Down

@@ -29,18 +29,22 @@ public class GameManager : MonoBehaviour
     {
         playerStats = GameObject.Find("Player").GetComponent<PlayerStats>();
     }
+    
 
     //                   //
     //  SCORE MANAGEMENT //
     //                   //
     public void IncreaseScore(int scoreVal)
     {
+        playerStats = GameObject.Find("Player").GetComponent<PlayerStats>();
+        Debug.Log("Increase score");
         playerStats.Score += scoreVal;
         //playerStats.Score
     }
 
     public void DecreaseScore(int scoreVal)
     {
+        playerStats = GameObject.Find("Player").GetComponent<PlayerStats>();
         playerStats.Score -= scoreVal;
         //if (score < 0) score = 0; //do we want this? -maxb
     }

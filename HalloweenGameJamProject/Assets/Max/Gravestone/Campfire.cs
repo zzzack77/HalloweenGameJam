@@ -79,7 +79,7 @@ public class Campfire : MonoBehaviour, IPayLighting
 
         if (playerStats.LightHP >= playerStats.CampfireLightCost && bActive == false)
         {
-            Debug.Log("PassedIF(ZackisCUte)");
+            //Debug.Log("PassedIF(ZackisCUte)");
             playerStats.LightHP -= playerStats.CampfireLightCost;
             bActive = true;
             Activate();

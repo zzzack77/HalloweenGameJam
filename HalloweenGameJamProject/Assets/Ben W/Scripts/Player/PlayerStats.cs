@@ -26,7 +26,7 @@ public class PlayerStats : MonoBehaviour
         {
             lightHP = value;
             healthToLight.AdjustLight(value);
-
+            text1.text = "Heath : " + (Mathf.Round(LightHP * 10) / 10f).ToString();
             //healthToLight.AdjustLight();
         } 
     }
@@ -35,7 +35,12 @@ public class PlayerStats : MonoBehaviour
     public float LightHPLossRate { get => lightHPLossRate; set => lightHPLossRate = value; }
     public float SoulLightGain { get => soulLightGain; set => soulLightGain = value; }
     public float CamplightRegenRate { get => camplightRegenRate; set => camplightRegenRate = value; }
-    public int Score { get => score; set => score = value; }
+    public int Score { get => score; 
+        set { 
+            score = value;
+            text2.text = "Score : " + value;
+        } 
+    }
 
 
     [Header("Sinks")]
@@ -138,9 +143,11 @@ public class PlayerStats : MonoBehaviour
             text1.text = "Heath : " + (Mathf.Round(LightHP * 10) / 10f).ToString();
 
         if (text2 != null)
+        {
             text2.text = "Score : " + Score.ToString();
-        //Debug.Log ("Light HP: " + LightHP);
-        Debug.Log("Score: " + score);
+            //Debug.Log ("Light HP: " + LightHP);
+            Debug.Log("Score: " + score);
+        }
 
     }
 }
