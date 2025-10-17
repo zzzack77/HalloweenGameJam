@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4122205893715525869}
   - component: {fileID: 2204061919478751982}
-  - component: {fileID: 5510263505521830652}
   - component: {fileID: 2081684526629619756}
   - component: {fileID: 4018125164903635202}
   - component: {fileID: 7802977198991942950}
@@ -20,7 +19,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4122205893715525869
 Transform:
   m_ObjectHideFlags: 0
@@ -55,18 +54,6 @@ MonoBehaviour:
   m_WorldSpaceSizeMode: 1
   m_WorldSpaceWidth: 1920
   m_WorldSpaceHeight: 1080
---- !u!114 &5510263505521830652
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1378533473387900386}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b389d44ec5d32b347a8c0e1b220e1c8d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2081684526629619756
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -83,6 +70,7 @@ MonoBehaviour:
   clickAudio: {fileID: 4018125164903635202}
   hoverAudio: {fileID: 7802977198991942950}
   deathAudioMusic: {fileID: 8300000, guid: 72e28c145a6de394abc1ad5f3498817d, type: 3}
+  deathAudio: {fileID: 0}
 --- !u!82 &4018125164903635202
 AudioSource:
   m_ObjectHideFlags: 0

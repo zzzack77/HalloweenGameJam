@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.Rendering;
 
@@ -121,7 +122,9 @@ public class PlayerStats : MonoBehaviour
 
     private HealthToLight healthToLight;
 
-    
+    public TMP_Text text1;
+    public TMP_Text text2;
+
     private void Awake()
     {
         healthToLight = GetComponent<HealthToLight>();
@@ -130,6 +133,12 @@ public class PlayerStats : MonoBehaviour
 
     private void Update()
     {
+        
+        if (text1 != null)
+            text1.text = "Heath : " + (Mathf.Round(LightHP * 10) / 10f).ToString();
+
+        if (text2 != null)
+            text2.text = "Score : " + Score.ToString();
         //Debug.Log ("Light HP: " + LightHP);
         Debug.Log("Score: " + score);
 
