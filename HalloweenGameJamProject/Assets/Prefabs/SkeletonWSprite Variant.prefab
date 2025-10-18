@@ -366,11 +366,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8009623007848464804, guid: 520ed75a7fa75e44c9b99e1968f282a9, type: 3}
       propertyPath: m_Radius
-      value: 1.0819883
+      value: 0.39
+      objectReference: {fileID: 0}
+    - target: {fileID: 8009623007848464804, guid: 520ed75a7fa75e44c9b99e1968f282a9, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.03
       objectReference: {fileID: 0}
     - target: {fileID: 8009623007848464804, guid: 520ed75a7fa75e44c9b99e1968f282a9, type: 3}
       propertyPath: m_Offset.y
-      value: 0.010489464
+      value: -0.98
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
