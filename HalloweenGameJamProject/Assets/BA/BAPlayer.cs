@@ -26,7 +26,7 @@ public class BAPlayer : MonoBehaviour
 
     private IPayLighting interactable;
 
-
+    public AudioSource heartbeat;
    private float PlayerStatsLightHP;
     private void OnEnable()
     {
@@ -77,14 +77,31 @@ public class BAPlayer : MonoBehaviour
         // Store movement direction
         moveInput = new Vector2(moveX, moveY).normalized;
         CheckMovement();
-        
-        
+
+        if (playerStats.LightHP < 10)
+        {
+            heartbeat.volume = 1f;
+            heartbeat.loop = true;
+            heartbeat.Play();
+        }
+        else
+        {
+            heartbeat.loop = false;
+
+            //if (heartbeat.volume > 0)
+            //{
+            //    heartbeat.volume =- 0.1f;
+
+            //}
+        }
+
+
            if (interactable != null && Input.GetKeyDown(KeyCode.Space))
-                {
+        {
             //playerStats.LightHP = PlayerStatsLightHP;
             interactable.CanActivate(playerStats);
-                    Debug.Log("player activated");
-                }
+            Debug.Log("player activated");
+        }
     }
 
     void FixedUpdate()

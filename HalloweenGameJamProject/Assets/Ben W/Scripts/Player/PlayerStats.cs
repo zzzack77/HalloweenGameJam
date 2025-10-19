@@ -146,7 +146,7 @@ public class PlayerStats : MonoBehaviour
         {
             text2.text = "Score : " + Score.ToString();
             //Debug.Log ("Light HP: " + LightHP);
-            Debug.Log("Score: " + score);
+            //Debug.Log("Score: " + score);
         }
 
     }
