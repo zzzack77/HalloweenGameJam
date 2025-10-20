@@ -4,7 +4,7 @@ public class Pistol : PlayerRangedWeapon
 {
     [SerializeField] private Transform shotPoint;
     [SerializeField] private GameObject bullet;
-    [SerializeField] private int maxAmmo = 10;
+    private int maxAmmo = 10;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -14,6 +14,12 @@ public class Pistol : PlayerRangedWeapon
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            currentAmmo = 0;
+            StartCoroutine(ReloadCountdown(2, maxAmmo));
+
+        }
         if (Input.GetMouseButtonDown(0) && currentAmmo > 0)
         {
             Shoot();

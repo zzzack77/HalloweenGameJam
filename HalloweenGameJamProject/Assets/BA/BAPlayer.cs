@@ -26,8 +26,9 @@ public class BAPlayer : MonoBehaviour
 
     private IPayLighting interactable;
 
-    public AudioSource heartbeat;
-   private float PlayerStatsLightHP;
+    public AudioClip heartbeat;
+    private float PlayerStatsLightHP;
+    private bool isHeatBeating = false;
     private void OnEnable()
     {
         Time.timeScale = 1f;
@@ -80,20 +81,26 @@ public class BAPlayer : MonoBehaviour
 
         if (playerStats.LightHP < 10)
         {
-            heartbeat.volume = 1f;
-            heartbeat.loop = true;
-            heartbeat.Play();
+            if (!isHeatBeating)
+            {
+                SoundFXManager.Instance.PlaySoundFXClip(heartbeat, transform, 1f);
+                isHeatBeating = true;
+            }
         }
         else
         {
-            heartbeat.loop = false;
-
-            //if (heartbeat.volume > 0)
-            //{
-            //    heartbeat.volume =- 0.1f;
-
-            //}
+            isHeatBeating = false;
         }
+        //else
+        //{
+        //    heartbeat.loop = false;
+
+        //    //if (heartbeat.volume > 0)
+        //    //{
+        //    //    heartbeat.volume =- 0.1f;
+
+        //    //}
+        //}
 
 
            if (interactable != null && Input.GetKeyDown(KeyCode.Space))
